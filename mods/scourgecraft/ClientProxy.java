@@ -1,9 +1,11 @@
 package mods.scourgecraft;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import mods.scourgecraft.client.SoundHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
     @Override
@@ -24,5 +26,11 @@ public class ClientProxy extends CommonProxy {
         {
             return null;
         }
+    }
+    
+
+    public void soundRegistry()
+    {
+        MinecraftForge.EVENT_BUS.register(new SoundHandler());
     }
 }

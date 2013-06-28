@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -22,6 +23,12 @@ public class BlockLightFence1 extends BlockFence
             this.setLightValue(1.0F);
         }
     }
+    
+    @Override
+	public void registerIcons(IconRegister reg)
+	{
+		this.blockIcon = reg.registerIcon(ScourgeCraftCore.modid + ":" + this.getUnlocalizedName2());
+	}
 
     /**
      * Returns true if the specified block can be connected by a fence

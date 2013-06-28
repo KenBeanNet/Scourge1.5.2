@@ -7,7 +7,7 @@ public class CreativeTabUtility extends CreativeTabs
 {
     public CreativeTabUtility()
     {
-        super("tabUtility");
+        super("ScourgeCraft : Utility");
     }
 
     @Override

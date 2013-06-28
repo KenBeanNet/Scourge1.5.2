@@ -3,6 +3,7 @@ package mods.scourgecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -35,7 +36,6 @@ public class ScourgeCraftCore
     		clientSide = "mods.scourgecraft.ClientProxy", 
     		serverSide = "mods.scourgecraft.CommonProxy"
     )
-    
     public static CommonProxy proxy;
     
     public static CreativeTabBlock tabBlocks = new CreativeTabBlock();
@@ -164,9 +164,22 @@ public class ScourgeCraftCore
     //Misc Ids
     public int accelleronID;
     public int accelleraunchID;
+    public int emptyBlockID;
+    public int survivalTeleportBlockID;
+    public int miningTeleportBlockID;
+    public int eventTeleportBlockID;
     
     public static Block accelleron;
     public static Block accelleraunch;
+    public static Block emptyBlock;
+    public static Block survivalTeleportBlock;
+    public static Block miningTeleportBlock;
+    public static Block eventTeleportBlock;
+    
+    //Dimensions
+    public static int survivalID;
+    public static int miningID;
+    public static int eventID;
     
     @Mod.PreInit
     public void preInit(FMLPreInitializationEvent event) {
@@ -232,8 +245,18 @@ public class ScourgeCraftCore
     	
     	accelleronID = config.get("Misc Items", "accelleron", 920).getInt();
     	accelleraunchID = config.get("Misc Items", "accelleraunch", 921).getInt();
+    	emptyBlockID = config.get("Misc Items", "emptyBlock", 922).getInt();
+    	survivalTeleportBlockID = config.get("Misc Items", "survivalTeleportBlock", 923).getInt();
+    	miningTeleportBlockID = config.get("Misc Items", "miningTeleportBlock", 924).getInt();
+    	eventTeleportBlockID = config.get("Misc Items", "eventTeleportBlock", 925).getInt();
+    	
+    	survivalID = config.get("Dimensions", "Survival World Id", 10).getInt();
+    	miningID = config.get("Dimensions", "Mining World Id", 11).getInt();
+    	eventID = config.get("Dimensions", "Event World Id", 12).getInt();
     	
     	config.save();
+    	
+    	proxy.soundRegistry();
     }
     
     @Mod.Init
@@ -298,74 +321,89 @@ public class ScourgeCraftCore
         
         accelleron = (new BlockAccelleron(this.accelleronID)).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setHardness(6.0F).setResistance(10.0F).setUnlocalizedName("accelleron").setCreativeTab(tabUtility);
         accelleraunch = (new BlockAcceleraunch(this.accelleraunchID)).setStepSound(Block.soundGlassFootstep).setHardness(2.0F).setResistance(1.0F).setUnlocalizedName("accelleraunch").setCreativeTab(tabUtility);
+        emptyBlock = (new BlockGlass(emptyBlockID)).setBlockUnbreakable().setUnlocalizedName("emptyBlock").setHardness(1.0F).setResistance(1.0F).setCreativeTab(tabUtility);
+        survivalTeleportBlock = (new BlockTeleport(survivalTeleportBlockID, Material.portal, "Survival", survivalID)).setBlockUnbreakable().setUnlocalizedName("survivalportal").setCreativeTab(tabBlocks);
+        miningTeleportBlock = (new BlockTeleport(miningTeleportBlockID, Material.portal, "Mining", miningID)).setBlockUnbreakable().setUnlocalizedName("miningportal").setCreativeTab(tabBlocks);
+        eventTeleportBlock = (new BlockTeleport(eventTeleportBlockID, Material.portal, "Event", eventID)).setBlockUnbreakable().setUnlocalizedName("eventportal").setCreativeTab(tabBlocks);
         
         
     	gameRegisters();
     	languageRegisters();
     	recipeRegisters();
+    	
+    	DimensionManager.registerProviderType(survivalID, WorldProviderSurvival.class, true);
+        DimensionManager.registerDimension(survivalID, survivalID);
+        DimensionManager.registerProviderType(miningID, WorldProviderMining.class, true);
+        DimensionManager.registerDimension(miningID, miningID);
+        DimensionManager.registerProviderType(eventID, WorldProviderEvent.class, true);
+        DimensionManager.registerDimension(eventID, eventID);
     }
     
     private void gameRegisters()
     {
-    	GameRegistry.registerBlock(workshopLamp, workshopLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(rupeelamp, rupeelamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(arlemitelamp, arlemitelamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(lavalamp, lavalamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(enderlamp, enderlamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(aqualamp, aqualamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(krakenlamp, krakenlamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(drakenlamp, drakenlamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(blaziclamp, blaziclamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(milkylamp, milkylamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(realmiteLamp, realmiteLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(lapizLamp, lapizLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(redStoneOreLamp, redStoneOreLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(goldenLamp, goldenLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(netheriteLamp, netheriteLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(diamondLamp, diamondLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(draviteLamp, draviteLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(villageLamp, villageLamp.getUnlocalizedName2());
-    	GameRegistry.registerBlock(cellLamp, cellLamp.getUnlocalizedName2());
+    	GameRegistry.registerBlock(workshopLamp, modid + "workshopLamp");
+    	GameRegistry.registerBlock(rupeelamp, modid + "rupeelamp");
+    	GameRegistry.registerBlock(arlemitelamp, modid + "arlemitelamp");
+    	GameRegistry.registerBlock(lavalamp, modid + "lavalamp");
+    	GameRegistry.registerBlock(enderlamp, modid + "enderlamp");
+    	GameRegistry.registerBlock(aqualamp, modid + "aqualamp");
+    	GameRegistry.registerBlock(krakenlamp, modid + "krakenlamp");
+    	GameRegistry.registerBlock(drakenlamp, modid + "drakenlamp");
+    	GameRegistry.registerBlock(blaziclamp, modid + "blaziclamp");
+    	GameRegistry.registerBlock(milkylamp, modid + "milkylamp");
+    	GameRegistry.registerBlock(realmiteLamp, modid + "realmiteLamp");
+    	GameRegistry.registerBlock(lapizLamp, modid + "lapizLamp");
+    	GameRegistry.registerBlock(redStoneOreLamp, modid + "redStoneOreLamp");
+    	GameRegistry.registerBlock(goldenLamp, modid + "goldenLamp");
+    	GameRegistry.registerBlock(netheriteLamp, modid + "netheriteLamp");
+    	GameRegistry.registerBlock(diamondLamp, modid + "diamondLamp");
+    	GameRegistry.registerBlock(draviteLamp, modid + "draviteLamp");
+    	GameRegistry.registerBlock(villageLamp, modid + "villageLamp");
+    	GameRegistry.registerBlock(cellLamp, modid + "cellLamp");
     	
-    	GameRegistry.registerBlock(iceikaStoneBricks, iceikaStoneBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(iceikaSnowyBrick, iceikaSnowyBrick.getUnlocalizedName2());
-    	GameRegistry.registerBlock(arlemitebricks, arlemitebricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(realmitebricks, realmitebricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(ancientbricks, ancientbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(netheritebricks, netheritebricks.getUnlocalizedName2());
-    	//GameRegistry.registerBlock(clrdbricks, clrdbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(aquatonicbricks, aquatonicbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(lavabricks, lavabricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(goldbricks, goldbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(lapisbricks, lapisbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(redstonebricks, redstonebricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(ironbricks, ironbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(darkbricks, darkbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(milkstonebricks, milkstonebricks.getUnlocalizedName2());
-    	//GameRegistry.registerBlock(miniBricks, miniBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(greenbricks, greenbricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(purplebricks, purplebricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(pinkbricks, pinkbricks.getUnlocalizedName2());
-    	//GameRegistry.registerBlock(greenbricksstairs, greenbricksstairs.getUnlocalizedName2());
-    	//GameRegistry.registerBlock(purplebrickstairs, purplebrickstairs.getUnlocalizedName2());
-    	GameRegistry.registerBlock(enderBricks, enderBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(diamondBricks, diamondBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(dungeonBricks, dungeonBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(dreambricks, dreambricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(lunabricks, lunabricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(dreambricks2, dreambricks2.getUnlocalizedName2());
-    	GameRegistry.registerBlock(karosBricks, karosBricks.getUnlocalizedName2());
-    	GameRegistry.registerBlock(karosBricks2, karosBricks2.getUnlocalizedName2());
+    	GameRegistry.registerBlock(iceikaStoneBricks, modid + "iceikaStoneBricks");
+    	GameRegistry.registerBlock(iceikaSnowyBrick, modid + "iceikaSnowyBrick");
+    	GameRegistry.registerBlock(arlemitebricks, modid + "arlemitebricks");
+    	GameRegistry.registerBlock(realmitebricks, modid + "realmitebricks");
+    	GameRegistry.registerBlock(ancientbricks, modid + "ancientbricks");
+    	GameRegistry.registerBlock(netheritebricks, modid + "netheritebricks");
+    	//GameRegistry.registerBlock(clrdbricks, modid + "clrdbricks");
+    	GameRegistry.registerBlock(aquatonicbricks, modid + "aquatonicbricks");
+    	GameRegistry.registerBlock(lavabricks, modid + "lavabricks");
+    	GameRegistry.registerBlock(goldbricks, modid + "goldbricks");
+    	GameRegistry.registerBlock(lapisbricks, modid + "lapisbricks");
+    	GameRegistry.registerBlock(redstonebricks, modid + "redstonebricks");
+    	GameRegistry.registerBlock(ironbricks, modid + "ironbricks");
+    	GameRegistry.registerBlock(darkbricks, modid + "darkbricks");
+    	GameRegistry.registerBlock(milkstonebricks, modid + "milkstonebricks");
+    	//GameRegistry.registerBlock(miniBricks, modid + "miniBricks");
+    	GameRegistry.registerBlock(greenbricks, modid + "greenbricks");
+    	GameRegistry.registerBlock(purplebricks, modid + "purplebricks");
+    	GameRegistry.registerBlock(pinkbricks, modid + "pinkbricks");
+    	//GameRegistry.registerBlock(greenbricksstairs, modid + "greenbricksstairs");
+    	//GameRegistry.registerBlock(purplebrickstairs, modid + "purplebrickstairs");
+    	GameRegistry.registerBlock(enderBricks, modid + "enderBricks");
+    	GameRegistry.registerBlock(diamondBricks, modid + "diamondBricks");
+    	GameRegistry.registerBlock(dungeonBricks, modid + "dungeonBricks");
+    	GameRegistry.registerBlock(dreambricks, modid + "dreambricks");
+    	GameRegistry.registerBlock(lunabricks, modid + "lunabricks");
+    	GameRegistry.registerBlock(dreambricks2, modid + "dreambricks2");
+    	GameRegistry.registerBlock(karosBricks, modid + "karosBricks");
+    	GameRegistry.registerBlock(karosBricks2, modid + "karosBricks2");
     	
-    	GameRegistry.registerBlock(fenceLighton, fenceLighton.getUnlocalizedName2());
-    	GameRegistry.registerBlock(stoneFence, stoneFence.getUnlocalizedName2());
-    	GameRegistry.registerBlock(woodFence, woodFence.getUnlocalizedName2());
-    	GameRegistry.registerBlock(fenceLightoff, fenceLightoff.getUnlocalizedName2());
-    	GameRegistry.registerBlock(fenceLightoff1, fenceLightoff1.getUnlocalizedName2());
-    	GameRegistry.registerBlock(fenceLighton1, fenceLighton1.getUnlocalizedName2());
+    	GameRegistry.registerBlock(fenceLighton, modid + "fenceLighton");
+    	GameRegistry.registerBlock(stoneFence, modid + "stoneFence");
+    	GameRegistry.registerBlock(woodFence, modid + "woodFence");
+    	GameRegistry.registerBlock(fenceLightoff, modid + "fenceLightoff");
+    	GameRegistry.registerBlock(fenceLightoff1, modid + "fenceLightoff1");
+    	GameRegistry.registerBlock(fenceLighton1, modid + "fenceLighton1");
     	
-    	GameRegistry.registerBlock(accelleron, accelleron.getUnlocalizedName2());
-    	GameRegistry.registerBlock(accelleraunch, accelleraunch.getUnlocalizedName2());
+    	GameRegistry.registerBlock(accelleron, modid + "accelleron");
+    	GameRegistry.registerBlock(accelleraunch, modid + "accelleraunch");
+    	GameRegistry.registerBlock(emptyBlock, modid + "emptyBlock");
+    	GameRegistry.registerBlock(survivalTeleportBlock, modid + "survivalTeleportBlock");
+    	GameRegistry.registerBlock(miningTeleportBlock, modid + "miningTeleportBlock");
+    	GameRegistry.registerBlock(eventTeleportBlock, modid + "eventTeleportBlock");
     	
     	NetworkRegistry.instance().registerGuiHandler(instance, proxy);
     	proxy.registerRenderInformation();
@@ -433,6 +471,10 @@ public class ScourgeCraftCore
     	
     	LanguageRegistry.addName(accelleron, "Accelleron");
     	LanguageRegistry.addName(accelleraunch, "Accelleraunch");
+    	LanguageRegistry.addName(emptyBlock, "Empty Block");
+    	LanguageRegistry.addName(survivalTeleportBlock, "Survival Teleport Block");
+    	LanguageRegistry.addName(miningTeleportBlock, "Mining Teleport Block");
+    	LanguageRegistry.addName(eventTeleportBlock, "Event Teleport Block");
     }
 
 	private void recipeRegisters()
