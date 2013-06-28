@@ -79,7 +79,7 @@ public class BlockTeleport extends Block
             {
                 EntityPlayerMP var6 = (EntityPlayerMP)var5;
                 //var6.addStat(AchievementPageDivineRPG.liesWithin, 1);
-                var1.playSound((double)var2 + 0.5D, (double)var3 + 0.5D, (double)var4 + 0.5D, myWorldName + "Portal", 0.5F, ((EntityPlayerMP)var5).getRNG().nextFloat() * 0.4F + 0.8F, false);
+                var1.playSound((double)var2 + 0.5D, (double)var3 + 0.5D, (double)var4 + 0.5D, myWorldName + "portal", 0.5F, ((EntityPlayerMP)var5).getRNG().nextFloat() * 0.4F + 0.8F, false);
 
                 if (var6.dimension != myDimensionId)
                 {

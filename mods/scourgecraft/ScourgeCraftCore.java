@@ -30,7 +30,7 @@ public class ScourgeCraftCore
     @Mod.Instance("ScourgeCraft")
     public static ScourgeCraftCore instance;
     
-    public static final String modid = "ScourgeCraft";
+    public static final String modid = "scourgecraft";
     
     @SidedProxy(
     		clientSide = "mods.scourgecraft.ClientProxy", 
@@ -322,9 +322,9 @@ public class ScourgeCraftCore
         accelleron = (new BlockAccelleron(this.accelleronID)).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setHardness(6.0F).setResistance(10.0F).setUnlocalizedName("accelleron").setCreativeTab(tabUtility);
         accelleraunch = (new BlockAcceleraunch(this.accelleraunchID)).setStepSound(Block.soundGlassFootstep).setHardness(2.0F).setResistance(1.0F).setUnlocalizedName("accelleraunch").setCreativeTab(tabUtility);
         emptyBlock = (new BlockGlass(emptyBlockID)).setBlockUnbreakable().setUnlocalizedName("emptyBlock").setHardness(1.0F).setResistance(1.0F).setCreativeTab(tabUtility);
-        survivalTeleportBlock = (new BlockTeleport(survivalTeleportBlockID, Material.portal, "Survival", survivalID)).setBlockUnbreakable().setUnlocalizedName("survivalportal").setCreativeTab(tabBlocks);
-        miningTeleportBlock = (new BlockTeleport(miningTeleportBlockID, Material.portal, "Mining", miningID)).setBlockUnbreakable().setUnlocalizedName("miningportal").setCreativeTab(tabBlocks);
-        eventTeleportBlock = (new BlockTeleport(eventTeleportBlockID, Material.portal, "Event", eventID)).setBlockUnbreakable().setUnlocalizedName("eventportal").setCreativeTab(tabBlocks);
+        survivalTeleportBlock = (new BlockTeleport(survivalTeleportBlockID, Material.portal, "survival", survivalID)).setBlockUnbreakable().setUnlocalizedName("survivalportal").setCreativeTab(tabBlocks);
+        miningTeleportBlock = (new BlockTeleport(miningTeleportBlockID, Material.portal, "mining", miningID)).setBlockUnbreakable().setUnlocalizedName("miningportal").setCreativeTab(tabBlocks);
+        eventTeleportBlock = (new BlockTeleport(eventTeleportBlockID, Material.portal, "event", eventID)).setBlockUnbreakable().setUnlocalizedName("eventportal").setCreativeTab(tabBlocks);
         
         
     	gameRegisters();

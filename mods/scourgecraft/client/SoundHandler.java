@@ -6,7 +6,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 
 public class SoundHandler
 {
-	public static String[] soundFiles = new String[] {"SurvivalPortal.ogg"};
+	public static String[] soundFiles = new String[] {"survivalportal.ogg"};
 
     @ForgeSubscribe
     public void onSoundsLoaded(SoundLoadEvent var1)
@@ -22,7 +22,6 @@ public class SoundHandler
 
             try
             {
-            	System.out.println(this.getClass().getResource("/mods/scourgecraft/sounds/" + var6));
                 var2.soundPoolSounds.addSound(var6, this.getClass().getResource("/mods/scourgecraft/sounds/" + var6));
             }
             catch (Exception var8)
