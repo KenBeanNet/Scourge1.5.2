@@ -13,6 +13,6 @@ public class CreativeTabUtility extends CreativeTabs
     @Override
     public int getTabIconItemIndex()
     {
-        return ScourgeCraftCore.accelleron.blockID;
+        return ScourgeCraftCore.configBlocks.accelleron.blockID;
     }
 }

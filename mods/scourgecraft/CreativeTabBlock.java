@@ -14,6 +14,6 @@ public class CreativeTabBlock extends CreativeTabs
     @Override
     public int getTabIconItemIndex()
     {
-        return ScourgeCraftCore.ironbricks.blockID;
+        return ScourgeCraftCore.configBlocks.ironbricks.blockID;
     }
 }

@@ -1,4 +1,4 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.ArrayList;
 import java.util.Random;

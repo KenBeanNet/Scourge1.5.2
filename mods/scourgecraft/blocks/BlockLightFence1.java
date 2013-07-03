@@ -1,7 +1,8 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.Random;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
@@ -9,11 +10,11 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLightFence extends BlockFence
+public class BlockLightFence1 extends BlockFence
 {
     private final boolean powered;
 
-    public BlockLightFence(int var1, boolean var2, String var3)
+    public BlockLightFence1(int var1, boolean var2, String var3)
     {
         super(var1, var3, Material.rock);
         this.powered = var2;
@@ -37,7 +38,7 @@ public class BlockLightFence extends BlockFence
     {
         int var5 = var1.getBlockId(var2, var3, var4);
 
-        if (var5 != ScourgeCraftCore.fenceLightoff.blockID && var5 != Block.fenceGate.blockID && var5 != ScourgeCraftCore.fenceLighton.blockID && var5 != ScourgeCraftCore.fenceLighton1.blockID && var5 != ScourgeCraftCore.fenceLightoff1.blockID)
+        if (var5 != ScourgeCraftCore.configBlocks.fenceLightoff.blockID && var5 != Block.fenceGate.blockID && var5 != ScourgeCraftCore.configBlocks.fenceLighton.blockID && var5 != ScourgeCraftCore.configBlocks.fenceLighton1.blockID && var5 != ScourgeCraftCore.configBlocks.fenceLightoff1.blockID)
         {
             Block var6 = Block.blocksList[var5];
             return var6 != null && var6.blockMaterial.isOpaque() && var6.renderAsNormalBlock() ? var6.blockMaterial != Material.pumpkin : false;
@@ -61,7 +62,7 @@ public class BlockLightFence extends BlockFence
             }
             else if (!this.powered && var1.isBlockIndirectlyGettingPowered(var2, var3, var4))
             {
-                var1.setBlock(var2, var3, var4, ScourgeCraftCore.fenceLighton.blockID);
+                var1.setBlock(var2, var3, var4, ScourgeCraftCore.configBlocks.fenceLighton1.blockID);
             }
         }
     }
@@ -80,7 +81,7 @@ public class BlockLightFence extends BlockFence
             }
             else if (!this.powered && var1.isBlockIndirectlyGettingPowered(var2, var3, var4))
             {
-                var1.setBlock(var2, var3, var4, ScourgeCraftCore.fenceLighton.blockID);
+                var1.setBlock(var2, var3, var4, ScourgeCraftCore.configBlocks.fenceLighton1.blockID);
             }
         }
     }
@@ -92,7 +93,7 @@ public class BlockLightFence extends BlockFence
     {
         if (!var1.isRemote && this.powered && !var1.isBlockIndirectlyGettingPowered(var2, var3, var4))
         {
-            var1.setBlock(var2, var3, var4, ScourgeCraftCore.fenceLightoff.blockID);
+            var1.setBlock(var2, var3, var4, ScourgeCraftCore.configBlocks.fenceLightoff1.blockID);
         }
     }
 
@@ -101,6 +102,6 @@ public class BlockLightFence extends BlockFence
      */
     public int idDropped(int var1, Random var2, int var3)
     {
-        return ScourgeCraftCore.fenceLightoff.blockID;
+        return ScourgeCraftCore.configBlocks.fenceLightoff1.blockID;
     }
 }

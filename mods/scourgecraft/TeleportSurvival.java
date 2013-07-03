@@ -100,7 +100,7 @@ public class TeleportSurvival extends Teleporter
 
     public boolean isBlockPortal(World var1, int var2, int var3, int var4)
     {
-        return var1.getBlockId(var2, var3, var4) == ScourgeCraftCore.survivalTeleportBlock.blockID;
+        return var1.getBlockId(var2, var3, var4) == ScourgeCraftCore.configBlocks.survivalTeleportBlock.blockID;
     }
 
     public boolean func_85188_a(Entity var1)

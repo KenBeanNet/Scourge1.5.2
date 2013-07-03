@@ -1,4 +1,4 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.List;
 import java.util.Random;
@@ -6,6 +6,8 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import mods.scourgecraft.ScourgeCraftCore;
+import mods.scourgecraft.TeleportSurvival;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

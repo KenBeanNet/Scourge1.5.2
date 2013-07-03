@@ -1,7 +1,8 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.ArrayList;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;

@@ -1,5 +1,6 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

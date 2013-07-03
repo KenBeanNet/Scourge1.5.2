@@ -1,4 +1,4 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.List;
 import java.util.Random;
@@ -6,6 +6,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -77,34 +78,34 @@ public class BlockMiniBricks extends Block
         switch (var1)
         {
             case 0:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 1:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 2:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 3:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 4:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 5:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 6:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 7:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             case 8:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
 
             default:
-                return ScourgeCraftCore.miniBricks.blockID;
+                return ScourgeCraftCore.configBlocks.miniBricks.blockID;
         }
     }
 

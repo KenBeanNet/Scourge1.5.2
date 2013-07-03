@@ -4,16 +4,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class CreativeTabLighting extends CreativeTabs
+public class CreativeTabTiers extends CreativeTabs
 {
-    public CreativeTabLighting()
+    public CreativeTabTiers()
     {
-        super("ScourgeCraft : Lighting");
+        super("ScourgeCraft : Tiers");
     }
     
     @Override
     public int getTabIconItemIndex()
     {
-        return ScourgeCraftCore.configBlocks.workshopLamp.blockID;
+        return ScourgeCraftCore.configItems.poisonGem.itemID;
     }
 }

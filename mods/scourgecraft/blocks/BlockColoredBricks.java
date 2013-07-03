@@ -1,10 +1,11 @@
-package mods.scourgecraft;
+package mods.scourgecraft.blocks;
 
 import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -57,22 +58,22 @@ public class BlockColoredBricks extends Block
         switch (var1)
         {
             case 0:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
 
             case 1:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
 
             case 2:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
 
             case 3:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
 
             case 4:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
 
             default:
-                return ScourgeCraftCore.clrdbricks.blockID;
+                return ScourgeCraftCore.configBlocks.clrdbricks.blockID;
         }
     }
 
