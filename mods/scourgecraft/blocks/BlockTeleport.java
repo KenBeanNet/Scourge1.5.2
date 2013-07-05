@@ -7,6 +7,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import mods.scourgecraft.ScourgeCraftCore;
+import mods.scourgecraft.TeleportEvent;
+import mods.scourgecraft.TeleportMining;
 import mods.scourgecraft.TeleportSurvival;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -19,9 +21,6 @@ import net.minecraft.world.World;
 
 public class BlockTeleport extends Block
 {
-    private int firetick;
-    private int firemax = 200;
-    
     private String myWorldName;
     private int myDimensionId;
 
@@ -75,30 +74,29 @@ public class BlockTeleport extends Block
      */
     public void onEntityCollidedWithBlock(World var1, int var2, int var3, int var4, Entity var5)
     {
-        if (this.firetick == this.firemax && this.firemax != 0)
-        {
             if (var5 instanceof EntityPlayerMP && var5.ridingEntity == null && var5.riddenByEntity == null && !var1.isRemote)
             {
                 EntityPlayerMP var6 = (EntityPlayerMP)var5;
                 //var6.addStat(AchievementPageDivineRPG.liesWithin, 1);
-                var1.playSound((double)var2 + 0.5D, (double)var3 + 0.5D, (double)var4 + 0.5D, myWorldName + "portal", 0.5F, ((EntityPlayerMP)var5).getRNG().nextFloat() * 0.4F + 0.8F, false);
+                var1.playSoundEffect((double)var2 + 0.5D, (double)var3 + 0.5D, (double)var4 + 0.5D, myWorldName + "Portal", 0.5F, ((EntityPlayerMP)var5).getRNG().nextFloat() * 0.4F + 0.8F);
 
-                if (var6.dimension != myDimensionId)
+                if (var6.dimension != myDimensionId && myDimensionId == ScourgeCraftCore.configDimensions.survivalID)
                 {
                     var6.mcServer.getConfigurationManager().transferPlayerToDimension(var6, myDimensionId, new TeleportSurvival(var6.mcServer.worldServerForDimension(myDimensionId)));
+                }
+                else if (var6.dimension != myDimensionId && myDimensionId == ScourgeCraftCore.configDimensions.eventID)
+                {
+                    var6.mcServer.getConfigurationManager().transferPlayerToDimension(var6, myDimensionId, new TeleportEvent(var6.mcServer.worldServerForDimension(myDimensionId)));
+                }
+                else if (var6.dimension != myDimensionId && myDimensionId == ScourgeCraftCore.configDimensions.miningID)
+                {
+                    var6.mcServer.getConfigurationManager().transferPlayerToDimension(var6, myDimensionId, new TeleportMining(var6.mcServer.worldServerForDimension(myDimensionId)));
                 }
                 else
                 {
                     var6.mcServer.getConfigurationManager().transferPlayerToDimension(var6, 0, new TeleportSurvival(var6.mcServer.worldServerForDimension(0)));
                 }
             }
-
-            this.firetick = 0;
-        }
-        else
-        {
-            ++this.firetick;
-        }
     }
 
     @SideOnly(Side.CLIENT)

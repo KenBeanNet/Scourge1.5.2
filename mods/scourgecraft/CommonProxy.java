@@ -3,6 +3,8 @@ package mods.scourgecraft;
 import java.io.File;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import mods.scourgecraft.client.GuiRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -31,14 +33,27 @@ public class CommonProxy implements IGuiHandler {
     }
     
     public void soundRegistry() {}
-
-    public File getMinecraftDir()
-    {
-        return new File(".");
-    }
     
     public void defineEntities()
     {
         EntityHelper.defineEntities();
+    }
+    
+    public void addEntities()
+    {
+        EntityHelper.addEntities();
+    }
+    
+    public void registerGUIs()
+    {
+        GuiRegistry.registerGuiServer(ContainerMintStorage.class, ScourgeCraftCore.instance, "MintStorage");
+    }
+    
+    public void registerTileEntitySpecialRenderer()
+    { }
+
+    public File getMinecraftDir()
+    {
+        return new File(".");
     }
 }

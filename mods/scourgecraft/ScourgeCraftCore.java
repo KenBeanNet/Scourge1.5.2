@@ -8,6 +8,8 @@ import mods.scourgecraft.blocks.BlockLightFence1;
 import mods.scourgecraft.blocks.BlockNewFence;
 import mods.scourgecraft.blocks.BlockStone;
 import mods.scourgecraft.blocks.BlockTeleport;
+import mods.scourgecraft.client.GuiRegistry;
+import mods.scourgecraft.client.StorageGuiHandler;
 import mods.scourgecraft.config.ConfigBlocks;
 import mods.scourgecraft.config.ConfigDimensions;
 import mods.scourgecraft.config.ConfigItems;
@@ -27,7 +29,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(
         modid = ScourgeCraftCore.modid,
-        name = "ScourgeCraft Core",
+        name = "ScourgeCraft",
         version = "0.0.1"
 )
 @NetworkMod(
@@ -38,7 +40,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 )
 public class ScourgeCraftCore
 {
-    @Mod.Instance("ScourgeCraft")
+    @Mod.Instance("scourgecraft")
     public static ScourgeCraftCore instance;
     
     public static final String modid = "scourgecraft";
@@ -66,31 +68,41 @@ public class ScourgeCraftCore
     	configItems.initConfig(event);
     	configDimensions.initConfig(event);
     	
-    	proxy.soundRegistry();
-    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Blocks", "ScourgeCraft: Blocks");
-    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Lighting", "ScourgeCraft: Lighting");
-    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Utility", "ScourgeCraft: Utility");
-    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Tiers", "ScourgeCraft: Tiers");
-    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Weapons", "ScourgeCraft: Weapons");
-    }
-    
-    @Mod.Init
-    public void load(FMLInitializationEvent var1)
-    {
     	configBlocks.load();
     	configItems.load();
     	configDimensions.load();
         
         configBlocks.register();
-        configBlocks.languageRegister();
         
+        configBlocks.languageRegister();
         configItems.languageRegister();
         
+        proxy.soundRegistry();
+        
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Blocks", "ScourgeCraft: Blocks");
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Lighting", "ScourgeCraft: Lighting");
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Utility", "ScourgeCraft: Utility");
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Tiers", "ScourgeCraft: Tiers");
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Weapons", "ScourgeCraft: Weapons");
+    	
+    	LanguageRegistry.instance().addStringLocalization("entity.GoldenOrbSpider.name", "Golden Orb Spider");
+    	LanguageRegistry.instance().addStringLocalization("entity.BlackCappedBat.name", "Black Capped Bat");
+    }
+    
+    @Mod.Init
+    public void load(FMLInitializationEvent var1)
+    {
+    	proxy.registerGUIs();
+        proxy.registerTileEntitySpecialRenderer();
+     	NetworkRegistry.instance().registerGuiHandler(this, new StorageGuiHandler());
+     	NetworkRegistry.instance().registerGuiHandler(this, GuiRegistry.instance());
         proxy.renderRegistry();
         proxy.defineEntities();
+        proxy.addEntities();
+         
+        GameRegistry.registerWorldGenerator(new WorldGenScourgeMinable());
     	
-        NetworkRegistry.instance().registerGuiHandler(instance, proxy);
-    	MinecraftForge.EVENT_BUS.register(this);
+    	ModRecipes.init();
     }
 }
 

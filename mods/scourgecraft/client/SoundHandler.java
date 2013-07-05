@@ -6,7 +6,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 
 public class SoundHandler
 {
-	public static String[] soundFiles = new String[] {"survivalportal.ogg"};
+	public static String[] soundFiles = new String[] {"survivalPortal.ogg", "eventPortal.ogg", "miningPortal.ogg"};
 
     @ForgeSubscribe
     public void onSoundsLoaded(SoundLoadEvent var1)

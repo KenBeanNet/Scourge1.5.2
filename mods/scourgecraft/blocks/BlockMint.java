@@ -140,6 +140,7 @@ public class BlockMint extends BlockContainer
         {
             TileEntityMint var6 = (TileEntityMint)var1.getBlockTileEntity(var2, var3, var4);
 
+            
             if (var1.isBlockIndirectlyGettingPowered(var2, var3, var4))
             {
                 var6.power();

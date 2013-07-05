@@ -14,6 +14,6 @@ public class CreativeTabTiers extends CreativeTabs
     @Override
     public int getTabIconItemIndex()
     {
-        return ScourgeCraftCore.configItems.poisonGem.itemID;
+        return ScourgeCraftCore.configItems.venomGem.itemID;
     }
 }

@@ -67,32 +67,12 @@ public class WorldProviderEvent extends WorldProvider
      */
     public boolean canRespawnHere()
     {
-        return true;
-    }
-
-    public boolean func_48218_b(int var1, int var2)
-    {
-        return true;
+        return false;
     }
 
     public String getSaveFolder()
     {
         return "Event";
-    }
-
-    public String getWelcomeMessage()
-    {
-        return "Entering Event World";
-    }
-
-    public String getDepartMessage()
-    {
-        return "Leaving Event World";
-    }
-
-    public double getMovementFactor()
-    {
-        return 8.0D;
     }
 
     /**

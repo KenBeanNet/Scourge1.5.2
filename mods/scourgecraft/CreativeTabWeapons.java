@@ -12,6 +12,6 @@ public class CreativeTabWeapons extends CreativeTabs
     @Override
     public int getTabIconItemIndex()
     {
-        return ScourgeCraftCore.configItems.poisonSword.itemID;
+        return ScourgeCraftCore.configItems.venomSword.itemID;
     }
 }

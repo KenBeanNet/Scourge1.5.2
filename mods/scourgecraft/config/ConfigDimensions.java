@@ -18,6 +18,18 @@ public class ConfigDimensions {
     public static int miningID;
     public static int eventID;
     
+    public static int survivalXPos;
+    public static int survivalYPos;
+    public static int survivalZPos;
+    
+    public static int eventXPos;
+    public static int eventYPos;
+    public static int eventZPos;
+    
+    public static int miningXPos;
+    public static int miningYPos;
+    public static int miningZPos;
+    
 	public void initConfig(FMLPreInitializationEvent event)
     {
     	File var0 = new File(ScourgeCraftCore.proxy.getMinecraftDir() + "/config/ScourgeCraft");
@@ -37,6 +49,20 @@ public class ConfigDimensions {
     	survivalID = config.get("Dimensions", "Survival World Id", 10).getInt();
     	miningID = config.get("Dimensions", "Mining World Id", 11).getInt();
     	eventID = config.get("Dimensions", "Event World Id", 12).getInt();
+    	
+    	survivalXPos = config.get("Spawn Positions", "Survival X", 0).getInt();
+    	survivalYPos = config.get("Spawn Positions", "Survival Y", 0).getInt();
+    	survivalZPos = config.get("Spawn Positions", "Survival Z", 0).getInt();
+    	
+    	eventXPos = config.get("Spawn Positions", "Event X", 0).getInt();
+    	eventYPos = config.get("Spawn Positions", "Event Y", 0).getInt();
+    	eventZPos = config.get("Spawn Positions", "Event Z", 0).getInt();
+    	
+    	miningXPos = config.get("Spawn Positions", "Mining X", 0).getInt();
+    	miningYPos = config.get("Spawn Positions", "Mining Y", 0).getInt();
+    	miningZPos = config.get("Spawn Positions", "Mining Z", 0).getInt();
+    	
+    	config.save();
     }
 	
 	public void load()

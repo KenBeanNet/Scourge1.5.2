@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import mods.scourgecraft.ScourgeCraftCore;
 import mods.scourgecraft.TileEntity.TileEntityMintStorage;
+import mods.scourgecraft.client.GuiRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -142,7 +143,7 @@ public class BlockMintStorage extends BlockContainer
         }
         else
         {
-            //GuiRegistry.openGui("MintStorage", ScourgeCraftCore.instance, var5, var1, var2, var3, var4);
+            GuiRegistry.openGui("MintStorage", ScourgeCraftCore.instance, var5, var1, var2, var3, var4);
             return true;
         }
     }

@@ -12,6 +12,7 @@ import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -369,7 +370,11 @@ public class TileEntityMint extends TileEntity
 
     public String getIngotImage()
     {
-    	return "";
-        //return this.ingotId == MetallurgyMetals.preciousSet.getOreInfo("Silver").ingot.itemID ? "/mods/Metallurgy/textures/blocks/machines/mint/MintSilver.png" : (this.ingotId == MetallurgyMetals.preciousSet.getOreInfo("Brass").ingot.itemID ? "/mods/Metallurgy/textures/blocks/machines/mint/MintBrass.png" : (this.ingotId == MetallurgyMetals.preciousSet.getOreInfo("Electrum").ingot.itemID ? "/mods/Metallurgy/textures/blocks/machines/mint/MintElectrum.png" : (this.ingotId == MetallurgyMetals.preciousSet.getOreInfo("Platinum").ingot.itemID ? "/mods/Metallurgy/textures/blocks/machines/mint/MintPlatinum.png" : (this.ingotId == Item.ingotGold.itemID ? "/mods/Metallurgy/textures/blocks/machines/mint/MintGold.png" : (!MintRecipes.minting().getImage(this.ingotId).equals("") ? MintRecipes.minting().getImage(this.ingotId) : "/mods/Metallurgy/textures/blocks/machines/mint/MintBrass.png")))));
+    		if (Item.ingotIron.itemID == ingotId)
+    			return "/mods/scourgecraft/textures/blocks/mint/MintIron.png";
+    		else if( Item.ingotGold.itemID == ingotId)
+    			return "/mods/scourgecraft/textures/blocks/mint/MintGold.png";
+    		else
+    			return "";
     }
 }

@@ -67,7 +67,7 @@ public class WorldProviderMining extends WorldProvider
      */
     public boolean canRespawnHere()
     {
-        return true;
+        return false;
     }
 
     public boolean func_48218_b(int var1, int var2)
@@ -78,21 +78,6 @@ public class WorldProviderMining extends WorldProvider
     public String getSaveFolder()
     {
         return "Mining";
-    }
-
-    public String getWelcomeMessage()
-    {
-        return "Entering Mining World";
-    }
-
-    public String getDepartMessage()
-    {
-        return "Leaving Mining World";
-    }
-
-    public double getMovementFactor()
-    {
-        return 8.0D;
     }
 
     /**

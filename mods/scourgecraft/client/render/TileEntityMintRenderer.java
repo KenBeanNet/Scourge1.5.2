@@ -56,7 +56,7 @@ public class TileEntityMintRenderer extends TileEntitySpecialRenderer
 
         ModelMint var17 = this.mintModel;
         ModelMintHead var18 = new ModelMintHead();
-        this.bindTextureByName("/mods/ScourgeCraft/textures/blocks/mint/Mint.png");
+        this.bindTextureByName("/mods/scourgecraft/textures/blocks/mint/Mint.png");
         GL11.glPushMatrix();
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -96,7 +96,7 @@ public class TileEntityMintRenderer extends TileEntitySpecialRenderer
         }
 
         GL11.glTranslatef(0.0F, var14 + var13, 0.0F);
-        this.bindTextureByName("/mods/ScourgeCraft/textures/blocks/mint/MintHead.png");
+        this.bindTextureByName("/mods/scourgecraft/textures/blocks/mint/MintHead.png");
         var18.renderAll();
         GL11.glPopMatrix();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

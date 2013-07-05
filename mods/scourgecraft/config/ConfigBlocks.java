@@ -6,6 +6,7 @@ import java.io.IOException;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import mods.scourgecraft.MintRecipes;
 import mods.scourgecraft.ScourgeCraftCore;
 import mods.scourgecraft.TileEntity.TileEntityMint;
 import mods.scourgecraft.TileEntity.TileEntityMintStorage;
@@ -21,6 +22,7 @@ import mods.scourgecraft.blocks.BlockStone;
 import mods.scourgecraft.blocks.BlockTeleport;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
 
 public class ConfigBlocks
@@ -162,6 +164,21 @@ public class ConfigBlocks
     public static Block eventTeleportBlock;
     public static Block mint;
     public static Block mintStorage;
+    
+    //Ore Generation
+    public static int venomOreID;
+    public static int infernalOreID;
+    public static int aquaOreID;
+    public static int plagueOreID;
+    public static int witherOreID;
+    public static int agilityOreID;
+    
+    public static Block venomOre;
+    public static Block infernalOre;
+    public static Block aquaOre;
+    public static Block plagueOre;
+    public static Block witherOre;
+    public static Block agilityOre;
 
     public void initConfig(FMLPreInitializationEvent event)
     {
@@ -244,6 +261,13 @@ public class ConfigBlocks
     	eventTeleportBlockID = config.get("Misc Items", "eventTeleportBlock", 925).getInt();
     	mintID = config.get("Misc Items", "mint", 926).getInt();
     	mintStorageID = config.get("Misc Items", "mintStorage", 927).getInt();
+    	
+    	venomOreID = config.get("Ores", "venom", 950).getInt();
+    	infernalOreID = config.get("Ores", "infernal", 951).getInt();
+    	aquaOreID = config.get("Ores", "aqua", 952).getInt();
+    	plagueOreID = config.get("Ores", "plague", 953).getInt();
+    	witherOreID = config.get("Ores", "wither", 954).getInt();
+    	agilityOreID = config.get("Ores", "agility", 955).getInt();
         
         config.save();
     }
@@ -276,7 +300,6 @@ public class ConfigBlocks
         realmitebricks = (new BlockStone(this.realmitebricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("realmitebricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         ancientbricks = (new BlockStone(this.ancientbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(6.0F).setResistance(30.0F).setUnlocalizedName("ancientbricks").setCreativeTab(ScourgeCraftCore.tabBlocks).setBlockUnbreakable();
         netheritebricks = (new BlockStone(this.netheritebricksID)).setStepSound(Block.soundStoneFootstep).setHardness(6.0F).setResistance(30.0F).setUnlocalizedName("netheritebricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        //clrdbricks = (new BlockColoredBricks(this.clrdbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("coloredbricks").setCreativeTab(tabBlocks);
         aquatonicbricks = (new BlockStone(this.aquatonicbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("aquatonicbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         lavabricks = (new BlockStone(this.lavabricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("lavabricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         goldbricks = (new BlockStone(this.goldbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("goldbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
@@ -285,14 +308,11 @@ public class ConfigBlocks
         ironbricks = (new BlockStone(this.ironbricksID)).setStepSound(Block.soundMetalFootstep).setHardness(3.0F).setResistance(60.0F).setUnlocalizedName("ironbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         darkbricks = (new BlockStone(this.darkbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("darkbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         milkstonebricks = (new BlockStone(this.milkstonebricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("milkstonebricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        //miniBricks = (new BlockMiniBricks(this.miniBricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("minibricks").setCreativeTab(tabBlocks);
         greenbricks = (new BlockStone(this.greenbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("greenbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         purplebricks = (new BlockStone(this.purplebricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("purplebricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         pinkbricks = (new BlockStone(this.pinkbricksID)).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("pinkbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        //greenbricksstairs = (new BlockScourgeStairs(this.greenbricksstairsID, greenbricks, 205)).setLightOpacity(1).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("greenbrickstairs").setCreativeTab(tabBlocks);
-       // purplebrickstairs = (new BlockScourgeStairs(this.purplebrickstairsID, purplebricks, 206)).setLightOpacity(1).setStepSound(Block.soundStoneFootstep).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("purplebricksstairs").setCreativeTab(tabBlocks);
         enderBricks = (new BlockStone(this.enderBricksID)).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("enderbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        diamondBricks = (new BlockStone(this.diamondBricksID)).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("diamondblock").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        diamondBricks = (new BlockStone(this.diamondBricksID)).setHardness(3.0F).setResistance(30.0F).setUnlocalizedName("diamondbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         dungeonBricks = (new BlockStone(this.dungeonBricksID)).setBlockUnbreakable().setUnlocalizedName("dungeonbricks").setCreativeTab(ScourgeCraftCore.tabBlocks);
         dreambricks = (new BlockStone(dreambricksID)).setUnlocalizedName("dreambricks").setHardness(1.0F).setResistance(1.0F).setCreativeTab(ScourgeCraftCore.tabBlocks);
         lunabricks = (new BlockStone(lunabricksID)).setBlockUnbreakable().setUnlocalizedName("lunabricks").setHardness(1.0F).setResistance(1.0F).setCreativeTab(ScourgeCraftCore.tabBlocks);
@@ -316,6 +336,23 @@ public class ConfigBlocks
         mint = (new BlockMint(mintID)).setHardness(2.0F).setUnlocalizedName("M3Mint").setCreativeTab(ScourgeCraftCore.tabUtility);
         mintStorage = (new BlockMintStorage(mintStorageID)).setHardness(2.0F).setUnlocalizedName("M3MintStorage").setCreativeTab(ScourgeCraftCore.tabUtility);
         
+        venomOre = (new BlockStone(venomOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("venomOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        infernalOre = (new BlockStone(infernalOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("infernalOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        aquaOre = (new BlockStone(aquaOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("aquaOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        plagueOre = (new BlockStone(plagueOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("plagueOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        witherOre = (new BlockStone(witherOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("witherOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        agilityOre = (new BlockStone(agilityOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("agilityOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        
+        
+        
+        
+        
+        
+        
+        
+        //This section is for registering Mint Recipies
+        MintRecipes.minting().addMinting(Item.ingotIron.itemID, 0, 3);
+        MintRecipes.minting().addMinting(Item.ingotGold.itemID, 0, 5);
     }
     
     public void register()
@@ -346,7 +383,6 @@ public class ConfigBlocks
     	GameRegistry.registerBlock(realmitebricks, ScourgeCraftCore.modid + "realmitebricks");
     	GameRegistry.registerBlock(ancientbricks, ScourgeCraftCore.modid + "ancientbricks");
     	GameRegistry.registerBlock(netheritebricks, ScourgeCraftCore.modid + "netheritebricks");
-    	//GameRegistry.registerBlock(clrdbricks, modid + "clrdbricks");
     	GameRegistry.registerBlock(aquatonicbricks, ScourgeCraftCore.modid + "aquatonicbricks");
     	GameRegistry.registerBlock(lavabricks, ScourgeCraftCore.modid + "lavabricks");
     	GameRegistry.registerBlock(goldbricks, ScourgeCraftCore.modid + "goldbricks");
@@ -355,12 +391,9 @@ public class ConfigBlocks
     	GameRegistry.registerBlock(ironbricks, ScourgeCraftCore.modid + "ironbricks");
     	GameRegistry.registerBlock(darkbricks, ScourgeCraftCore.modid + "darkbricks");
     	GameRegistry.registerBlock(milkstonebricks, ScourgeCraftCore.modid + "milkstonebricks");
-    	//GameRegistry.registerBlock(miniBricks, modid + "miniBricks");
     	GameRegistry.registerBlock(greenbricks, ScourgeCraftCore.modid + "greenbricks");
     	GameRegistry.registerBlock(purplebricks, ScourgeCraftCore.modid + "purplebricks");
     	GameRegistry.registerBlock(pinkbricks, ScourgeCraftCore.modid + "pinkbricks");
-    	//GameRegistry.registerBlock(greenbricksstairs, modid + "greenbricksstairs");
-    	//GameRegistry.registerBlock(purplebrickstairs, modid + "purplebrickstairs");
     	GameRegistry.registerBlock(enderBricks, ScourgeCraftCore.modid + "enderBricks");
     	GameRegistry.registerBlock(diamondBricks, ScourgeCraftCore.modid + "diamondBricks");
     	GameRegistry.registerBlock(dungeonBricks, ScourgeCraftCore.modid + "dungeonBricks");
@@ -388,6 +421,13 @@ public class ConfigBlocks
         GameRegistry.registerBlock(mintStorage, ScourgeCraftCore.modid + "M3MintStorage");
         GameRegistry.registerTileEntity(TileEntityMint.class, ScourgeCraftCore.modid + "TileEntityMint");
         GameRegistry.registerTileEntity(TileEntityMintStorage.class, ScourgeCraftCore.modid + "TileEntityMintStorage");
+        
+        GameRegistry.registerBlock(venomOre, ScourgeCraftCore.modid + "venomOre");
+        GameRegistry.registerBlock(infernalOre, ScourgeCraftCore.modid + "infernalOre");
+        GameRegistry.registerBlock(aquaOre, ScourgeCraftCore.modid + "aquaOre");
+        GameRegistry.registerBlock(plagueOre, ScourgeCraftCore.modid + "plagueOre");
+        GameRegistry.registerBlock(witherOre, ScourgeCraftCore.modid + "witherOre");
+        GameRegistry.registerBlock(agilityOre, ScourgeCraftCore.modid + "agilityOre");
     }
     
     public void languageRegister()
@@ -418,7 +458,6 @@ public class ConfigBlocks
     	LanguageRegistry.addName(realmitebricks, "Realmite Brick");
     	LanguageRegistry.addName(ancientbricks, "Ancient Brick");
     	LanguageRegistry.addName(netheritebricks, "Netherite Brick");
-    	//LanguageRegistry.addName(clrdbricks, "Clrd Brick");
     	LanguageRegistry.addName(aquatonicbricks, "Aquatonic Brick");
     	LanguageRegistry.addName(lavabricks, "Lava Brick");
     	LanguageRegistry.addName(goldbricks, "Gold Brick");
@@ -427,12 +466,9 @@ public class ConfigBlocks
     	LanguageRegistry.addName(ironbricks, "Iron Brick");
     	LanguageRegistry.addName(darkbricks, "Dark Brick");
     	LanguageRegistry.addName(milkstonebricks, "Milkstone Brick");
-    	//LanguageRegistry.addName(miniBricks, "Mini Brick");
     	LanguageRegistry.addName(greenbricks, "Green Bricks");
     	LanguageRegistry.addName(purplebricks, "Purple Bricks");
     	LanguageRegistry.addName(pinkbricks, "Pink Bricks");
-    	//LanguageRegistry.addName(greenbricksstairs, "Green Brick Stairs");
-    	//LanguageRegistry.addName(purplebrickstairs, "Purple Brick Stairs");
     	LanguageRegistry.addName(enderBricks, "Ender Brick");
     	LanguageRegistry.addName(diamondBricks, "Diamond Bricks");
     	LanguageRegistry.addName(dungeonBricks, "Dungeon Bricks");
@@ -458,5 +494,13 @@ public class ConfigBlocks
     	
     	LanguageRegistry.addName(mint, "Mint");
     	LanguageRegistry.addName(mintStorage, "Mint Storage");
+    	
+    	LanguageRegistry.addName(venomOre, "Venom Ore");
+    	LanguageRegistry.addName(infernalOre, "Infernal Ore");
+    	LanguageRegistry.addName(aquaOre, "Aqua Ore");
+    	LanguageRegistry.addName(plagueOre, "Plague Ore");
+    	LanguageRegistry.addName(witherOre, "Wither Ore");
+    	LanguageRegistry.addName(agilityOre, "Agility Ore");
+    	
     }
 }
