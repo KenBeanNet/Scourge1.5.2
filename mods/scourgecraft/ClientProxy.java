@@ -66,6 +66,10 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerBlockHandler(new MintRenderHelper());
     }
     
+    public int addArmor(String var1)
+    {
+        return RenderingRegistry.addNewArmourRendererPrefix(var1);
+    }
 
     public void soundRegistry()
     {

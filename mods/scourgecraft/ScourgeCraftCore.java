@@ -56,6 +56,7 @@ public class ScourgeCraftCore
     public static CreativeTabUtility tabUtility = new CreativeTabUtility();
     public static CreativeTabTiers tabTiers = new CreativeTabTiers();
     public static CreativeTabWeapons tabWeapons = new CreativeTabWeapons();
+    public static CreativeTabArmors tabArmors = new CreativeTabArmors();
     
     public static ConfigBlocks configBlocks = new ConfigBlocks();
     public static ConfigItems configItems = new ConfigItems();
@@ -84,6 +85,7 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Utility", "ScourgeCraft: Utility");
     	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Tiers", "ScourgeCraft: Tiers");
     	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Weapons", "ScourgeCraft: Weapons");
+    	LanguageRegistry.instance().addStringLocalization("itemGroup.ScourgeCraft : Armors", "ScourgeCraft: Armors");
     	
     	LanguageRegistry.instance().addStringLocalization("entity.GoldenOrbSpider.name", "Golden Orb Spider");
     	LanguageRegistry.instance().addStringLocalization("entity.BlackCappedBat.name", "Black Capped Bat");
