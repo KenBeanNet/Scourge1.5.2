@@ -13,6 +13,18 @@ import mods.scourgecraft.client.StorageGuiHandler;
 import mods.scourgecraft.config.ConfigBlocks;
 import mods.scourgecraft.config.ConfigDimensions;
 import mods.scourgecraft.config.ConfigItems;
+import mods.scourgecraft.config.ConfigPotion;
+import mods.scourgecraft.core.ArmorHandler;
+import mods.scourgecraft.creative.CreativeTabArmors;
+import mods.scourgecraft.creative.CreativeTabBlock;
+import mods.scourgecraft.creative.CreativeTabLighting;
+import mods.scourgecraft.creative.CreativeTabTiers;
+import mods.scourgecraft.creative.CreativeTabUtility;
+import mods.scourgecraft.creative.CreativeTabWeapons;
+import mods.scourgecraft.potion.PotionEffectHandler;
+import mods.scourgecraft.potion.PotionEventHandler;
+import mods.scourgecraft.potion.PotionHandler;
+import mods.scourgecraft.world.WorldGenScourgeMinable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
@@ -61,6 +73,10 @@ public class ScourgeCraftCore
     public static ConfigBlocks configBlocks = new ConfigBlocks();
     public static ConfigItems configItems = new ConfigItems();
     public static ConfigDimensions configDimensions = new ConfigDimensions();
+    public static ConfigPotion configPotion = new ConfigPotion();
+    
+    public static ArmorHandler armorHandler = new ArmorHandler();
+    public static PotionEffectHandler potionHandler = new PotionEffectHandler();
 
     
     @Mod.PreInit
@@ -68,10 +84,12 @@ public class ScourgeCraftCore
     	configBlocks.initConfig(event);
     	configItems.initConfig(event);
     	configDimensions.initConfig(event);
+    	configPotion.initConfig(event);
     	
     	configBlocks.load();
     	configItems.load();
     	configDimensions.load();
+    	configPotion.load();
         
         configBlocks.register();
         
@@ -94,6 +112,11 @@ public class ScourgeCraftCore
     @Mod.Init
     public void load(FMLInitializationEvent var1)
     {
+    	MinecraftForge.EVENT_BUS.register(new PotionHandler());
+    	MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
+    	PotionHandler.registerEffectHandler(potionHandler);
+    	
+    	proxy.registerHandlers();
     	proxy.registerGUIs();
         proxy.registerTileEntitySpecialRenderer();
      	NetworkRegistry.instance().registerGuiHandler(this, new StorageGuiHandler());

@@ -1,7 +1,9 @@
-package mods.scourgecraft;
+package mods.scourgecraft.world;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import java.util.Random;
+
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;

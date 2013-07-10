@@ -6,6 +6,8 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.TextureFXManager;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import mods.scourgecraft.TileEntity.TileEntityMint;
 import mods.scourgecraft.client.GuiMintStorage;
 import mods.scourgecraft.client.GuiRegistry;
@@ -18,6 +20,7 @@ import mods.scourgecraft.client.render.RenderGoldenOrbSpider;
 import mods.scourgecraft.client.render.TileEntityMintRenderer;
 import mods.scourgecraft.mobs.EntityBlackCappedBat;
 import mods.scourgecraft.mobs.EntityGoldenOrbSpider;
+import mods.scourgecraft.tick.PlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -69,6 +72,13 @@ public class ClientProxy extends CommonProxy {
     public int addArmor(String var1)
     {
         return RenderingRegistry.addNewArmourRendererPrefix(var1);
+    }
+    
+    @Override
+    public void registerHandlers()
+    {
+    	TickRegistry.registerTickHandler(new PlayerTickHandler(), Side.CLIENT);
+    	super.registerHandlers();
     }
 
     public void soundRegistry()

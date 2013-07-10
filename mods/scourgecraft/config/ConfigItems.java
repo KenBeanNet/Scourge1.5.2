@@ -2,11 +2,15 @@ package mods.scourgecraft.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import mods.scourgecraft.ScourgeCraftCore;
+import mods.scourgecraft.core.ArmorHandler;
+import mods.scourgecraft.core.ArmorSet;
+import mods.scourgecraft.core.armorbuffs.BuffVenomSetT1;
 import mods.scourgecraft.items.ItemScourgeCraft;
 import mods.scourgecraft.items.armors.ItemAgilityArmor;
 import mods.scourgecraft.items.armors.ItemAquaArmor;
@@ -647,6 +651,12 @@ public class ConfigItems {
         agilityBoots[2]  = (new ItemAgilityArmor(agilityBootsID[2], agilityArmor, agilityArmorID, 3, 2)).setUnlocalizedName("agilityBootsT2").setCreativeTab(ScourgeCraftCore.tabArmors);
         agilityBoots[3]  = (new ItemAgilityArmor(agilityBootsID[3], agilityArmor, agilityArmorID, 3, 3)).setUnlocalizedName("agilityBootsT3").setCreativeTab(ScourgeCraftCore.tabArmors);
     
+        
+        
+        //Creation of the Item Sets
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT1", Arrays.asList(venomHelmet[1], venomChest[1], venomLegs[1], venomBoots[1]), new BuffVenomSetT1()));
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT1", Arrays.asList(venomHelmet[2], venomChest[2], venomLegs[2], venomBoots[2]), new BuffVenomSetT1()));
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT1", Arrays.asList(venomHelmet[3], venomChest[3], venomLegs[3], venomBoots[3]), new BuffVenomSetT1()));
     }
     
     public void languageRegister()

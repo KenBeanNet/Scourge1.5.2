@@ -1,5 +1,6 @@
-package mods.scourgecraft;
+package mods.scourgecraft.creative;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class CreativeTabWeapons extends CreativeTabs

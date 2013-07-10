@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 
 import mods.scourgecraft.ScourgeCraftCore;
-import mods.scourgecraft.WorldProviderEvent;
-import mods.scourgecraft.WorldProviderMining;
-import mods.scourgecraft.WorldProviderSurvival;
+import mods.scourgecraft.world.WorldProviderEvent;
+import mods.scourgecraft.world.WorldProviderMining;
+import mods.scourgecraft.world.WorldProviderSurvival;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;

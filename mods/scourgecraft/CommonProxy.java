@@ -3,7 +3,10 @@ package mods.scourgecraft;
 import java.io.File;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import mods.scourgecraft.client.GuiRegistry;
+import mods.scourgecraft.tick.PlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -42,6 +45,11 @@ public class CommonProxy implements IGuiHandler {
     public void addEntities()
     {
         EntityHelper.addEntities();
+    }
+    
+    public void registerHandlers()
+    {
+    	TickRegistry.registerTickHandler(new PlayerTickHandler(), Side.SERVER);
     }
     
     public void registerGUIs()

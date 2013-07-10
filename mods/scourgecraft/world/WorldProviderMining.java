@@ -1,4 +1,4 @@
-package mods.scourgecraft;
+package mods.scourgecraft.world;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldType;
@@ -6,7 +6,7 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
-public class WorldProviderEvent extends WorldProvider
+public class WorldProviderMining extends WorldProvider
 {
     /**
      * creates a new world chunk manager for WorldProvider
@@ -70,9 +70,14 @@ public class WorldProviderEvent extends WorldProvider
         return false;
     }
 
+    public boolean func_48218_b(int var1, int var2)
+    {
+        return true;
+    }
+
     public String getSaveFolder()
     {
-        return "Event";
+        return "Mining";
     }
 
     /**
@@ -80,6 +85,6 @@ public class WorldProviderEvent extends WorldProvider
      */
     public String getDimensionName()
     {
-        return "Event";
+        return "Mining";
     }
 }

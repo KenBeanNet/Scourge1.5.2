@@ -222,7 +222,7 @@ public class EntityCaveSpider extends EntityMob
     {
         if (this.rand.nextInt(100) + 1 <= 100) //This is a 2% drop chance
         {
-        	this.dropItem(ScourgeCraftCore.configItems.poisonGem.itemID, 1);
+        	this.dropItem(ScourgeCraftCore.configItems.venomGem.itemID, 1);
         }
         if (this.rand.nextInt(1000) + 1 <= 50) //This is a .5% drop chance
         {

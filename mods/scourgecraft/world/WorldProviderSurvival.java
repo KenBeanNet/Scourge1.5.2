@@ -1,4 +1,4 @@
-package mods.scourgecraft;
+package mods.scourgecraft.world;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldType;
