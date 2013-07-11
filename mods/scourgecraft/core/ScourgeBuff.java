@@ -6,6 +6,7 @@ public class ScourgeBuff implements IBuffHandler {
 
 	private boolean isActive = false;
 	private int lastItemCount = 0;
+	
 	@Override
 	public void applyPlayerBuffs(EntityPlayer player, int itemCount) {
 		if (itemCount >= 3)

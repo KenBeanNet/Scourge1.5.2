@@ -3,6 +3,7 @@ package mods.scourgecraft.tick;
 import java.util.EnumSet;
 
 import mods.scourgecraft.core.ArmorHandler;
+import mods.scourgecraft.core.BuffHandler;
 import net.minecraft.entity.player.EntityPlayer;
 
 import cpw.mods.fml.common.ITickHandler;
@@ -24,6 +25,9 @@ public class PlayerTickHandler implements ITickHandler {
 					}
 					else
 						tickCount++;
+					
+					BuffHandler bh = BuffHandler.getPlayerBuffHandler(ep.username);
+					bh.onTick();
 				}
 			}
 		}

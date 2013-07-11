@@ -38,8 +38,9 @@ public class ArmorHandler {
             if (matched >= 3)
             {
             	armorSet.enable(player, matched);
-            	break;
             }
+            else
+            	armorSet.disable(player, matched);
             
         }
     }

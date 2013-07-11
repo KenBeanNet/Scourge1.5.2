@@ -23,7 +23,6 @@ public class PotionEffectHandler implements IPotionEffectHandler
 				EntityPlayer ep = (EntityPlayer)living;
 				if (ep.isPotionActive(ScourgeCraftCore.configPotion.poisonResist.id))
 				{
-					effect.duration = 0;
 					ScourgeCraftCore.potionHandler.removeEffectQueue.add(ScourgeCraftCore.configPotion.poisonResist.id);
 					ScourgeCraftCore.potionHandler.removeEffectQueue.add(Potion.poison.id);
 					ep.sendChatToPlayer("ScourgeCraft : Your armor has eaten your poison!");

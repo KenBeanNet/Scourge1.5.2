@@ -28,4 +28,9 @@ public class ArmorSet {
 	{
 		buffHandler.applyPlayerBuffs(player, itemCount);
 	}
+	
+	public void disable(EntityPlayer player, int itemCount)
+	{
+		buffHandler.removePlayerBuffs(player);
+	}
 }

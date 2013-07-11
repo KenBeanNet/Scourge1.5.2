@@ -47,8 +47,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(
         channels = {"ScourgeCraft"},
         clientSideRequired = true,
-        serverSideRequired = false,
-        packetHandler = PacketHandler.class
+        serverSideRequired = false
 )
 public class ScourgeCraftCore
 {
