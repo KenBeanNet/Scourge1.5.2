@@ -1,4 +1,4 @@
-package mods.scourgecraft.client.render;
+package mods.scourgecraft.client.render.mobs;
 
 import mods.scourgecraft.mobs.EntityGoldenOrbSpider;
 import net.minecraft.client.model.ModelBase;

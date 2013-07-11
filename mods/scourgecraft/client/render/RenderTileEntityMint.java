@@ -11,7 +11,7 @@ import mods.scourgecraft.client.model.ModelMintHead;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityMintRenderer extends TileEntitySpecialRenderer
+public class RenderTileEntityMint extends TileEntitySpecialRenderer
 {
     private ModelMint mintModel = new ModelMint();
 

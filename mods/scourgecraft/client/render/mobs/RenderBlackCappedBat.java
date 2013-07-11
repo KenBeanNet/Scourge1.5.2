@@ -1,4 +1,4 @@
-package mods.scourgecraft.client.render;
+package mods.scourgecraft.client.render.mobs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

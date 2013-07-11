@@ -14,10 +14,10 @@ import mods.scourgecraft.client.GuiRegistry;
 import mods.scourgecraft.client.SoundHandler;
 import mods.scourgecraft.client.model.ModelBlackCappedBat;
 import mods.scourgecraft.client.model.ModelGoldenOrbSpider;
-import mods.scourgecraft.client.render.MintRenderHelper;
-import mods.scourgecraft.client.render.RenderBlackCappedBat;
-import mods.scourgecraft.client.render.RenderGoldenOrbSpider;
-import mods.scourgecraft.client.render.TileEntityMintRenderer;
+import mods.scourgecraft.client.render.RenderMintHelper;
+import mods.scourgecraft.client.render.RenderTileEntityMint;
+import mods.scourgecraft.client.render.mobs.RenderBlackCappedBat;
+import mods.scourgecraft.client.render.mobs.RenderGoldenOrbSpider;
 import mods.scourgecraft.mobs.EntityBlackCappedBat;
 import mods.scourgecraft.mobs.EntityGoldenOrbSpider;
 import mods.scourgecraft.tick.PlayerTickHandler;
@@ -65,8 +65,8 @@ public class ClientProxy extends CommonProxy {
     
     public void registerTileEntitySpecialRenderer()
     {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMint.class, new TileEntityMintRenderer());
-        RenderingRegistry.registerBlockHandler(new MintRenderHelper());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMint.class, new RenderTileEntityMint());
+        RenderingRegistry.registerBlockHandler(new RenderMintHelper());
     }
     
     public int addArmor(String var1)

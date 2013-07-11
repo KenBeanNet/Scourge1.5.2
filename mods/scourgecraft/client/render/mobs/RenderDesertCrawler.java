@@ -1,26 +1,29 @@
-package mods.scourgecraft.client.render;
+package mods.scourgecraft.client.render.mobs;
 
-import mods.scourgecraft.mobs.EntityCaveSpider;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mods.scourgecraft.mobs.EntityDesertCrawler;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 
-public class RenderCaveSpider extends RenderLiving
+@SideOnly(Side.CLIENT)
+public class RenderDesertCrawler extends RenderLiving
 {
-    public RenderCaveSpider(ModelBase var1, float var2)
+    public RenderDesertCrawler(ModelBase var1, float var2)
     {
         super(var1, var2);
     }
 
-    public void renderCaveSpider(EntityCaveSpider var1, double var2, double var4, double var6, float var8, float var9)
+    public void renderCow(EntityDesertCrawler var1, double var2, double var4, double var6, float var8, float var9)
     {
         super.doRenderLiving(var1, var2, var4, var6, var8, var9);
     }
 
     public void doRenderLiving(EntityLiving var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderCaveSpider((EntityCaveSpider)var1, var2, var4, var6, var8, var9);
+        this.renderCow((EntityDesertCrawler)var1, var2, var4, var6, var8, var9);
     }
 
     /**
@@ -31,6 +34,6 @@ public class RenderCaveSpider extends RenderLiving
      */
     public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderCaveSpider((EntityCaveSpider)var1, var2, var4, var6, var8, var9);
+        this.renderCow((EntityDesertCrawler)var1, var2, var4, var6, var8, var9);
     }
 }

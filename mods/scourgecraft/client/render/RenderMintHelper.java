@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class MintRenderHelper implements ISimpleBlockRenderingHandler
+public class RenderMintHelper implements ISimpleBlockRenderingHandler
 {	
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
