@@ -1,22 +1,23 @@
 package mods.scourgecraft.client.render.mobs;
 
-import mods.scourgecraft.mobs.EntityKingCrab;
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.EntityLiving;
-import org.lwjgl.opengl.GL11;
+import mods.scourgecraft.mobs.EntityKillerWhale;
 
-public class RenderKingCrab extends RenderLiving
+public class RenderKillerWhale extends RenderLiving
 {
     private float scale;
 
-    public RenderKingCrab(ModelBase var1, float var2, float var3)
+    public RenderKillerWhale(ModelBase var1, float var2, float var3)
     {
         super(var1, var2 * var3);
         this.scale = var3;
     }
 
-    protected void preRenderScale(EntityKingCrab var1, float var2)
+    protected void preRenderScale(EntityKillerWhale var1, float var2)
     {
         GL11.glScalef(this.scale, this.scale, this.scale);
     }
@@ -27,7 +28,6 @@ public class RenderKingCrab extends RenderLiving
      */
     protected void preRenderCallback(EntityLiving var1, float var2)
     {
-        this.preRenderScale((EntityKingCrab)var1, var2);
+        this.preRenderScale((EntityKillerWhale)var1, var2);
     }
 }
-

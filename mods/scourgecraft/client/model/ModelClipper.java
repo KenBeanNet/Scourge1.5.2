@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelCrab extends ModelBase
+public class ModelClipper extends ModelBase
 {
     ModelRenderer RearEnd;
     ModelRenderer Leg8;
@@ -15,7 +15,7 @@ public class ModelCrab extends ModelBase
     ModelRenderer Leg5;
     ModelRenderer Leg3;
 
-    public ModelCrab()
+    public ModelClipper()
     {
         this.textureWidth = 64;
         this.textureHeight = 32;

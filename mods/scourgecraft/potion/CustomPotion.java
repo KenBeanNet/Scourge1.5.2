@@ -86,7 +86,7 @@ public class CustomPotion extends Potion
 					modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
 
 					potionTypes = (Potion[])f.get(null);
-					final Potion[] newPotionTypes = new Potion[128];
+					final Potion[] newPotionTypes = new Potion[64];
 					System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
 					f.set(null, newPotionTypes);
 				}

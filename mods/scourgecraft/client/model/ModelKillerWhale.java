@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelWhale extends ModelBase
+public class ModelKillerWhale extends ModelBase
 {
     ModelRenderer body;
     ModelRenderer flipperL;
@@ -12,7 +12,7 @@ public class ModelWhale extends ModelBase
     ModelRenderer tailConnector;
     ModelRenderer tail;
 
-    public ModelWhale()
+    public ModelKillerWhale()
     {
         this.textureWidth = 64;
         this.textureHeight = 64;

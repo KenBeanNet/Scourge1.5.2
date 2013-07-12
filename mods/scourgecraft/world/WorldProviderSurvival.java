@@ -43,7 +43,7 @@ public class WorldProviderSurvival extends WorldProvider
      */
     public boolean isSurfaceWorld()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -51,7 +51,7 @@ public class WorldProviderSurvival extends WorldProvider
      */
     public boolean canCoordinateBeSpawn(int var1, int var2)
     {
-        return false;
+        return true;
     }
 
     /**
@@ -68,11 +68,6 @@ public class WorldProviderSurvival extends WorldProvider
     public boolean canRespawnHere()
     {
         return false;
-    }
-
-    public boolean func_48218_b(int var1, int var2)
-    {
-        return true;
     }
 
     public String getSaveFolder()

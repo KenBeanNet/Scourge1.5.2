@@ -43,7 +43,7 @@ public class WorldProviderEvent extends WorldProvider
      */
     public boolean isSurfaceWorld()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -51,7 +51,7 @@ public class WorldProviderEvent extends WorldProvider
      */
     public boolean canCoordinateBeSpawn(int var1, int var2)
     {
-        return false;
+        return true;
     }
 
     /**

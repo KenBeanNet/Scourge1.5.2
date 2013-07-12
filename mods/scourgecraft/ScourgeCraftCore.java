@@ -106,6 +106,11 @@ public class ScourgeCraftCore
     	
     	LanguageRegistry.instance().addStringLocalization("entity.GoldenOrbSpider.name", "Golden Orb Spider");
     	LanguageRegistry.instance().addStringLocalization("entity.BlackCappedBat.name", "Black Capped Bat");
+    	LanguageRegistry.instance().addStringLocalization("entity.Clipper.name", "Clipper");
+    	LanguageRegistry.instance().addStringLocalization("entity.MakoShark.name", "Mako Shark");
+    	LanguageRegistry.instance().addStringLocalization("entity.KillerWhale.name", "Killer Whale");
+    	LanguageRegistry.instance().addStringLocalization("entity.Karka.name", "Karka");
+    	LanguageRegistry.instance().addStringLocalization("entity.DesertCrawler.name", "Desert Crawler");
     }
     
     @Mod.Init

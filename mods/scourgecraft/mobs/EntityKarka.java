@@ -9,15 +9,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityKingCrab extends EntityMob
+public class EntityKarka extends EntityMob
 {
     private int angerLevel = 0;
     private int randomSoundDelay = 5;
 
-    public EntityKingCrab(World var1)
+    public EntityKarka(World var1)
     {
         super(var1);
-        this.texture = "/mob/crab.png";
+        this.texture = "/mods/scourgecraft/textures/mobs/clipper.png";
         this.moveSpeed = 0.4F;
         this.setSize(2.0F, 2.0F);
         this.experienceValue = 40;
@@ -112,13 +112,13 @@ public class EntityKingCrab extends EntityMob
             {
                 Entity var6 = (Entity)var4.get(var5);
 
-                if (var6 instanceof EntityCrab)
+                if (var6 instanceof EntityClipper)
                 {
-                    EntityCrab var7 = (EntityCrab)var6;
+                    EntityClipper var7 = (EntityClipper)var6;
                 }
-                else if (var6 instanceof EntityKingCrab)
+                else if (var6 instanceof EntityKarka)
                 {
-                    EntityKingCrab var8 = (EntityKingCrab)var6;
+                    EntityKarka var8 = (EntityKarka)var6;
                 }
             }
 

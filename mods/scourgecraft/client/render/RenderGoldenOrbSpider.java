@@ -1,29 +1,26 @@
-package mods.scourgecraft.client.render.mobs;
+package mods.scourgecraft.client.render;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import mods.scourgecraft.mobs.EntityShark;
+import mods.scourgecraft.mobs.EntityGoldenOrbSpider;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 
-@SideOnly(Side.CLIENT)
-public class RenderShark extends RenderLiving
+public class RenderGoldenOrbSpider extends RenderLiving
 {
-    public RenderShark(ModelBase var1, float var2)
+    public RenderGoldenOrbSpider(ModelBase var1, float var2)
     {
         super(var1, var2);
     }
 
-    public void renderCow(EntityShark var1, double var2, double var4, double var6, float var8, float var9)
+    public void renderCaveSpider(EntityGoldenOrbSpider var1, double var2, double var4, double var6, float var8, float var9)
     {
         super.doRenderLiving(var1, var2, var4, var6, var8, var9);
     }
 
     public void doRenderLiving(EntityLiving var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderCow((EntityShark)var1, var2, var4, var6, var8, var9);
+        this.renderCaveSpider((EntityGoldenOrbSpider)var1, var2, var4, var6, var8, var9);
     }
 
     /**
@@ -34,6 +31,6 @@ public class RenderShark extends RenderLiving
      */
     public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderCow((EntityShark)var1, var2, var4, var6, var8, var9);
+        this.renderCaveSpider((EntityGoldenOrbSpider)var1, var2, var4, var6, var8, var9);
     }
 }

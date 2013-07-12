@@ -12,7 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityWhale extends EntityWaterMob
+public class EntityMakoShark extends EntityWaterMob
 {
     private int angerLevel = 0;
     private int randomSoundDelay = 5;
@@ -31,18 +31,18 @@ public class EntityWhale extends EntityWaterMob
     private float randomMotionVecY = 0.0F;
     private float randomMotionVecZ = 0.0F;
 
-    public EntityWhale(World var1)
+    public EntityMakoShark(World var1)
     {
         super(var1);
-        this.texture = "/mob/whale.png";
-        this.moveSpeed = 0.3F;
-        this.setSize(2.0F, 3.0F);
+        this.texture = "/mods/scourgecraft/textures/mobs/makoshark.png";
+        this.moveSpeed = 1.0F;
+        this.setSize(0.95F, 0.95F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return 20;
+        return 25;
     }
 
     public int getMaxHealth()
@@ -56,11 +56,29 @@ public class EntityWhale extends EntityWaterMob
     }
 
     /**
+     * Called when the mob's health reaches 0.
+     */
+    public void onDeath(DamageSource var1)
+    {
+        super.onDeath(var1);
+
+        if (!this.worldObj.isRemote)
+        {
+            Entity var2 = var1.getEntity();
+
+            if (var2 instanceof EntityPlayer)
+            {
+                //((EntityPlayer)var2).addStat(AchievementPageDivineRPG.feedingOnTheFish, 1);
+            }
+        }
+    }
+
+    /**
      * Returns the sound this mob makes while it's alive.
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.whale";
+        return "mob.RPG.shark";
     }
 
     /**
@@ -68,7 +86,7 @@ public class EntityWhale extends EntityWaterMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.whalehurt";
+        return "mob.RPG.sharkhurt";
     }
 
     /**
@@ -76,7 +94,7 @@ public class EntityWhale extends EntityWaterMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.whalehurt";
+        return "mob.RPG.sharkhurt";
     }
 
     /**
@@ -105,17 +123,8 @@ public class EntityWhale extends EntityWaterMob
 
         for (int var4 = 0; var4 < var3; ++var4)
         {
-            //this.entityDropItem(new ItemStack(DivineRPG.whaleFin), 0.0F);
+            //this.entityDropItem(new ItemStack(DivineRPG.sharkFin), 0.0F);
         }
-    }
-
-    /**
-     * Gets called every tick from main Entity class
-     */
-    public void onEntityUpdate()
-    {
-        super.onEntityUpdate();
-        this.setAir(300);
     }
 
     /**
@@ -155,6 +164,15 @@ public class EntityWhale extends EntityWaterMob
     }
 
     /**
+     * Gets called every tick from main Entity class
+     */
+    public void onEntityUpdate()
+    {
+        super.onEntityUpdate();
+        this.setAir(300);
+    }
+
+    /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
     protected void fall(float var1) {}
@@ -174,9 +192,9 @@ public class EntityWhale extends EntityWaterMob
             {
                 Entity var6 = (Entity)var4.get(var5);
 
-                if (var6 instanceof EntityWhale)
+                if (var6 instanceof EntityMakoShark)
                 {
-                    ((EntityWhale)var6).becomeAngryAt(var3);
+                    ((EntityMakoShark)var6).becomeAngryAt(var3);
                 }
             }
 
@@ -189,7 +207,7 @@ public class EntityWhale extends EntityWaterMob
     private void becomeAngryAt(Entity var1)
     {
         this.entityToAttack = var1;
-        this.angerLevel = 1;
+        this.angerLevel = 400 + this.rand.nextInt(400);
         this.randomSoundDelay = this.rand.nextInt(40);
     }
 

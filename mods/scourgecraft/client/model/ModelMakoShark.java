@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelShark extends ModelBase
+public class ModelMakoShark extends ModelBase
 {
     ModelRenderer bodyTop;
     ModelRenderer flipperL;
@@ -17,7 +17,7 @@ public class ModelShark extends ModelBase
     ModelRenderer bodyMiddle;
     ModelRenderer bodyBack;
 
-    public ModelShark()
+    public ModelMakoShark()
     {
         this.textureWidth = 64;
         this.textureHeight = 64;

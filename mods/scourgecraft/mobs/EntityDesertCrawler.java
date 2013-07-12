@@ -10,7 +10,7 @@ public class EntityDesertCrawler extends EntityMob
     public EntityDesertCrawler(World var1)
     {
         super(var1);
-        this.texture = "/mob/crawlerdesert.png";
+        this.texture = "/mods/scourgecraft/textures/mobs/desertcrawler.png";
     }
 
     public int getMaxHealth()

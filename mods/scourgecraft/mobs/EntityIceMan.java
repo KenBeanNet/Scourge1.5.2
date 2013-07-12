@@ -22,7 +22,7 @@ public class EntityIceMan extends EntityMob
     public EntityIceMan(World var1)
     {
         super(var1);
-        this.texture = "/mob/glacon.png";
+        this.texture = "/mods/scourgecraft/textures/mobs/iceman.png";
         this.moveSpeed = 0.4F;
         this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
