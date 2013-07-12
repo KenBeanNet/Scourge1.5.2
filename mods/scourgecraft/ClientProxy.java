@@ -15,28 +15,37 @@ import mods.scourgecraft.client.SoundHandler;
 import mods.scourgecraft.client.model.ModelBlackCappedBat;
 import mods.scourgecraft.client.model.ModelClipper;
 import mods.scourgecraft.client.model.ModelCrawler;
+import mods.scourgecraft.client.model.ModelDramcryx;
 import mods.scourgecraft.client.model.ModelGoldenOrbSpider;
 import mods.scourgecraft.client.model.ModelIceMan;
 import mods.scourgecraft.client.model.ModelKillerWhale;
 import mods.scourgecraft.client.model.ModelMakoShark;
+import mods.scourgecraft.client.model.ModelPlaguedArcher;
+import mods.scourgecraft.client.model.ModelPlaguedWarrior;
 import mods.scourgecraft.client.render.RenderMintHelper;
 import mods.scourgecraft.client.render.RenderTileEntityMint;
 import mods.scourgecraft.client.render.mobs.RenderBlackCappedBat;
 import mods.scourgecraft.client.render.mobs.RenderClipper;
 import mods.scourgecraft.client.render.mobs.RenderDesertCrawler;
+import mods.scourgecraft.client.render.mobs.RenderDramcryx;
 import mods.scourgecraft.client.render.mobs.RenderGoldenOrbSpider;
 import mods.scourgecraft.client.render.mobs.RenderIceMan;
 import mods.scourgecraft.client.render.mobs.RenderKarka;
 import mods.scourgecraft.client.render.mobs.RenderKillerWhale;
 import mods.scourgecraft.client.render.mobs.RenderMakoShark;
+import mods.scourgecraft.client.render.mobs.RenderPlaguedArcher;
+import mods.scourgecraft.client.render.mobs.RenderPlaguedWarrior;
 import mods.scourgecraft.mobs.EntityBlackCappedBat;
 import mods.scourgecraft.mobs.EntityClipper;
 import mods.scourgecraft.mobs.EntityDesertCrawler;
+import mods.scourgecraft.mobs.EntityDramcryx;
 import mods.scourgecraft.mobs.EntityGoldenOrbSpider;
 import mods.scourgecraft.mobs.EntityIceMan;
 import mods.scourgecraft.mobs.EntityKarka;
 import mods.scourgecraft.mobs.EntityKillerWhale;
 import mods.scourgecraft.mobs.EntityMakoShark;
+import mods.scourgecraft.mobs.EntityPlaguedArcher;
+import mods.scourgecraft.mobs.EntityPlaguedWarrior;
 import mods.scourgecraft.tick.PlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -73,6 +82,9 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityKarka.class, new RenderKarka(new ModelClipper(), 0.0F, 2.0F));
         RenderingRegistry.registerEntityRenderingHandler(EntityDesertCrawler.class, new RenderDesertCrawler(new ModelCrawler(), 0.0F));
         RenderingRegistry.registerEntityRenderingHandler(EntityIceMan.class, new RenderIceMan(new ModelIceMan(), 0.0F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDramcryx.class, new RenderDramcryx(new ModelDramcryx(), 0.0F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlaguedWarrior.class, new RenderPlaguedWarrior(new ModelPlaguedWarrior(), 0.0F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlaguedArcher.class, new RenderPlaguedArcher(new ModelPlaguedArcher(), 0.0F));
     }
     
     @Override

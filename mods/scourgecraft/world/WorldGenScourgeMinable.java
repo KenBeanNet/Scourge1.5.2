@@ -47,7 +47,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(40);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.venomOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.venomOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
         
         for (var5 = 0; var5 < 3; ++var5)
@@ -55,7 +55,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(60);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.infernalOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.infernalOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
         
         for (var5 = 0; var5 < 3; ++var5)
@@ -63,7 +63,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(60);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.aquaOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.aquaOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
         
         for (var5 = 0; var5 < 3; ++var5)
@@ -71,7 +71,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(60);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.plagueOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.plagueOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
         
         for (var5 = 0; var5 < 3; ++var5)
@@ -79,7 +79,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(60);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.witherOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.witherOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
         
         for (var5 = 0; var5 < 3; ++var5)
@@ -87,7 +87,7 @@ public class WorldGenScourgeMinable implements IWorldGenerator
             var6 = var3 + var2.nextInt(16);
             var7 = var2.nextInt(60);
             var8 = var4 + var2.nextInt(16);
-            (new WorldGenMinable(ScourgeCraftCore.configBlocks.agilityOre.blockID, 4)).generate(var1, var2, var6, var7, var8);
+            (new WorldGenMinable(ScourgeCraftCore.configBlocks.agilityOre.blockID, 2)).generate(var1, var2, var6, var7, var8);
         }
     }
     

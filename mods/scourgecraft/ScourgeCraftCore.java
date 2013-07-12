@@ -27,6 +27,7 @@ import mods.scourgecraft.potion.PotionHandler;
 import mods.scourgecraft.world.WorldGenScourgeMinable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -111,6 +112,9 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("entity.KillerWhale.name", "Killer Whale");
     	LanguageRegistry.instance().addStringLocalization("entity.Karka.name", "Karka");
     	LanguageRegistry.instance().addStringLocalization("entity.DesertCrawler.name", "Desert Crawler");
+    	LanguageRegistry.instance().addStringLocalization("entity.Dramcryx.name", "Dramcryx");
+    	LanguageRegistry.instance().addStringLocalization("entity.PlaguedWarrior.name", "Plagued Warrior");
+    	LanguageRegistry.instance().addStringLocalization("entity.PlaguedArcher.name", "Plagued Archer");
     }
     
     @Mod.Init

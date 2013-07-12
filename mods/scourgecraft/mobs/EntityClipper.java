@@ -165,12 +165,7 @@ public class EntityClipper extends EntityMob
      */
     protected void dropFewItems(boolean var1, int var2)
     {
-        int var3 = this.rand.nextInt(2 + var2);
-
-        for (int var4 = 0; var4 < var3; ++var4)
-        {
-            //this.dropItem(DivineRPG.crabClaw.itemID, 1);
-        }
+        EntityDropHelper.aquaMonsterKilled(this);
     }
 
     /**

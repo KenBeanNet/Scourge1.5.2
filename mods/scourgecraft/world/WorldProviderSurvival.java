@@ -13,7 +13,7 @@ public class WorldProviderSurvival extends WorldProvider
      */
     public void registerWorldChunkManager()
     {
-        this.worldChunkMgr = new WorldChunkManager(0, WorldType.DEFAULT);
+        this.worldChunkMgr = new WorldChunkManager(this.worldObj);
     }
 
     /**
@@ -21,7 +21,7 @@ public class WorldProviderSurvival extends WorldProvider
      */
     protected void generateLightBrightnessTable()
     {
-        float var1 = 0.1F;
+        float var1 = 12.0F;
 
         for (int var2 = 0; var2 <= 15; ++var2)
         {
@@ -51,7 +51,7 @@ public class WorldProviderSurvival extends WorldProvider
      */
     public boolean canCoordinateBeSpawn(int var1, int var2)
     {
-        return true;
+        return false;
     }
 
     /**

@@ -96,20 +96,6 @@ public class EntityKillerWhale extends EntityWaterMob
     }
 
     /**
-     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
-     * par2 - Level of Looting used to kill this mob.
-     */
-    protected void dropFewItems(boolean var1, int var2)
-    {
-        int var3 = this.rand.nextInt(3 + var2) + 1;
-
-        for (int var4 = 0; var4 < var3; ++var4)
-        {
-            //this.entityDropItem(new ItemStack(DivineRPG.whaleFin), 0.0F);
-        }
-    }
-
-    /**
      * Gets called every tick from main Entity class
      */
     public void onEntityUpdate()
@@ -210,5 +196,14 @@ public class EntityKillerWhale extends EntityWaterMob
     public void onCollideWithPlayer(EntityPlayer var1)
     {
         var1.attackEntityFrom(DamageSource.causeMobDamage(var1), this.getAttackStrength(var1));
+    }
+    
+    /**
+     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
+     * par2 - Level of Looting used to kill this mob.
+     */
+    protected void dropFewItems(boolean var1, int var2)
+    {
+        EntityDropHelper.aquaMonsterKilled(this);
     }
 }

@@ -3,13 +3,14 @@ package mods.scourgecraft.mobs;
 import java.util.Random;
 
 import mods.scourgecraft.ScourgeCraftCore;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.monster.EntityMob;
 
 public class EntityDropHelper {
 	
 	private static Random rand = new Random();
 	
-	public static void venomMonsterKilled(EntityMob monster)
+	public static void venomMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {
@@ -25,7 +26,7 @@ public class EntityDropHelper {
         }
 	}
 	
-	public static void infernalMonsterKilled(EntityMob monster)
+	public static void infernalMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {
@@ -41,7 +42,7 @@ public class EntityDropHelper {
         }
 	}
 	
-	public static void aquaMonsterKilled(EntityMob monster)
+	public static void aquaMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {
@@ -57,7 +58,7 @@ public class EntityDropHelper {
         }
 	}
 	
-	public static void plagueMonsterKilled(EntityMob monster)
+	public static void plagueMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {
@@ -73,7 +74,7 @@ public class EntityDropHelper {
         }
 	}
 	
-	public static void witherMonsterKilled(EntityMob monster)
+	public static void witherMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {
@@ -89,7 +90,7 @@ public class EntityDropHelper {
         }
 	}
 	
-	public static void agilityMonsterKilled(EntityMob monster)
+	public static void agilityMonsterKilled(EntityCreature monster)
 	{
 		if (rand.nextInt(100) + 1 <= 2) //This is a 2% drop chance
         {

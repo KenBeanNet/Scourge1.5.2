@@ -119,12 +119,7 @@ public class EntityMakoShark extends EntityWaterMob
      */
     protected void dropFewItems(boolean var1, int var2)
     {
-        int var3 = this.rand.nextInt(3 + var2) + 1;
-
-        for (int var4 = 0; var4 < var3; ++var4)
-        {
-            //this.entityDropItem(new ItemStack(DivineRPG.sharkFin), 0.0F);
-        }
+        EntityDropHelper.aquaMonsterKilled(this);
     }
 
     /**

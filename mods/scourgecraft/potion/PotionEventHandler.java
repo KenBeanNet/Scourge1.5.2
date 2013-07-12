@@ -18,4 +18,11 @@ public class PotionEventHandler
 	{
 		
 	}
+
+	
+	@ForgeSubscribe
+	public void onLivingDeath(LivingUpdateEvent event)
+	{
+		
+	}
 }

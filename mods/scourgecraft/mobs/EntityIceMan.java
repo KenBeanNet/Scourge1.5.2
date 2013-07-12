@@ -129,34 +129,6 @@ public class EntityIceMan extends EntityMob
      */
     protected void dropFewItems(boolean var1, int var2)
     {
-        int var3 = this.rand.nextInt(2 + var2);
-        int var4;
-
-        for (var4 = 0; var4 < var3; ++var4)
-        {
-            //this.dropItem(DivineRPG.whiteMushroom.itemID, 1);
-        }
-
-        for (var4 = 0; var4 < var3; ++var4)
-        {
-            //this.dropItem(DivineRPG.blueShard.itemID, 3);
-        }
-    }
-
-    protected void dropRareDrop(int var1)
-    {
-        switch (this.rand.nextInt(3))
-        {
-            case 0:
-                //this.dropItem(DivineRPG.blueShard.itemID, 10);
-                break;
-
-            case 1:
-                //this.dropItem(DivineRPG.blueShard.itemID, 15);
-                break;
-
-            case 2:
-                //this.dropItem(DivineRPG.blueShard.itemID, 20);
-        }
+        EntityDropHelper.aquaMonsterKilled(this);
     }
 }
