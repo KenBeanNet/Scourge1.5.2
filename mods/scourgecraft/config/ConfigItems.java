@@ -647,26 +647,32 @@ public class ConfigItems {
         
         
         //Creation of the Item Sets
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSet", Arrays.asList(venomHelmet[0], venomChest[0], venomLegs[0], venomBoots[0]), new BuffVenomSet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT1", Arrays.asList(venomHelmet[1], venomChest[1], venomLegs[1], venomBoots[1]), new BuffVenomSet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT2", Arrays.asList(venomHelmet[2], venomChest[2], venomLegs[2], venomBoots[2]), new BuffVenomSet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("venomSetT3", Arrays.asList(venomHelmet[3], venomChest[3], venomLegs[3], venomBoots[3]), new BuffVenomSet(3)));
         
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("infernalSet", Arrays.asList(infernalHelmet[0], infernalChest[0], infernalLegs[0], infernalBoots[0]), new BuffInfernalSet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("infernalSetT1", Arrays.asList(infernalHelmet[1], infernalChest[1], infernalLegs[1], infernalBoots[1]), new BuffInfernalSet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("infernalSetT2", Arrays.asList(infernalHelmet[2], infernalChest[2], infernalLegs[2], infernalBoots[2]), new BuffInfernalSet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("infernalSetT3", Arrays.asList(infernalHelmet[3], infernalChest[3], infernalLegs[3], infernalBoots[3]), new BuffInfernalSet(3)));
         
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("aquaSet", Arrays.asList(aquaHelmet[0], aquaChest[0], aquaLegs[0], aquaBoots[0]), new BuffAquaSet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("aquaSetT1", Arrays.asList(aquaHelmet[1], aquaChest[1], aquaLegs[1], aquaBoots[1]), new BuffAquaSet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("aquaSetT2", Arrays.asList(aquaHelmet[2], aquaChest[2], aquaLegs[2], aquaBoots[2]), new BuffAquaSet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("aquaSetT3", Arrays.asList(aquaHelmet[3], aquaChest[3], aquaLegs[3], aquaBoots[3]), new BuffAquaSet(3)));
         
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("plaguedSet", Arrays.asList(plaguedHelmet[0], plaguedChest[0], plaguedLegs[0], plaguedBoots[0]), new BuffPlaguedSet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("plaguedSetT1", Arrays.asList(plaguedHelmet[1], plaguedChest[1], plaguedLegs[1], plaguedBoots[1]), new BuffPlaguedSet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("plaguedSetT2", Arrays.asList(plaguedHelmet[2], plaguedChest[2], plaguedLegs[2], plaguedBoots[2]), new BuffPlaguedSet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("plaguedSetT3", Arrays.asList(plaguedHelmet[3], plaguedChest[3], plaguedLegs[3], plaguedBoots[3]), new BuffPlaguedSet(3)));
         
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("witherSet", Arrays.asList(witherHelmet[0], witherChest[0], witherLegs[0], witherBoots[0]), new BuffWitherSet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("witherSetT1", Arrays.asList(witherHelmet[1], witherChest[1], witherLegs[1], witherBoots[1]), new BuffWitherSet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("witherSetT2", Arrays.asList(witherHelmet[2], witherChest[2], witherLegs[2], witherBoots[2]), new BuffWitherSet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("witherSetT3", Arrays.asList(witherHelmet[3], witherChest[3], witherLegs[3], witherBoots[3]), new BuffWitherSet(3)));
         
+        ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("agilitySet", Arrays.asList(agilityHelmet[0], agilityChest[0], agilityLegs[0], agilityBoots[0]), new BuffAgilitySet(0)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("agilitySetT1", Arrays.asList(agilityHelmet[1], agilityChest[1], agilityLegs[1], agilityBoots[1]), new BuffAgilitySet(1)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("agilitySetT2", Arrays.asList(agilityHelmet[2], agilityChest[2], agilityLegs[2], agilityBoots[2]), new BuffAgilitySet(2)));
         ScourgeCraftCore.armorHandler.addArmorSet(new ArmorSet("agilitySetT3", Arrays.asList(agilityHelmet[3], agilityChest[3], agilityLegs[3], agilityBoots[3]), new BuffAgilitySet(3)));

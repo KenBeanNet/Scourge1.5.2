@@ -135,33 +135,7 @@ public class ItemVenomSword extends ItemSword
      */
     public int getDamageVsEntity(Entity var1)
     {
-    	switch(myLevel)
-    	{
-    		case 1:
-    		{
-    			if (random.nextInt(100) < 10) {
-    				return 0;
-    			}
-    			if (random.nextInt(100) < 5)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		case 2:
-    		{
-    			if (random.nextInt(100) < 5)
-    				return 0;
-    			if (random.nextInt(100) < 10)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		case 3:
-    		{
-    			if (random.nextInt(100) < 3)
-    				return 0;
-    			if (random.nextInt(100) < 15)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		default: 
-    			return this.weaponDamage;
-    	}
+    	return this.weaponDamage;
     }
 
     /**

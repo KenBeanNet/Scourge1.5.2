@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mods.scourgecraft.ScourgeCraftCore;
+import mods.scourgecraft.core.BuffHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
@@ -77,14 +78,16 @@ public class ItemAgilitySword extends ItemSword
      */
     public boolean hitEntity(ItemStack var1, EntityLiving var2, EntityLiving var3)
     {
-    	switch (myLevel)
+    	if (!var3.worldObj.isRemote)
     	{
+    		switch (myLevel)
+    		{
     		case 0:
     		{
     			if (this.random.nextInt(10) <= 0)
     	    	{
-    	    		var3.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 60, 0));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    				ScourgeCraftCore.potionHandler.addEffectQueue.add(new PotionEffect(Potion.moveSpeed.id, 60, 0));
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You feel a speed boost");
     	    	}
     	    	break;
@@ -93,8 +96,8 @@ public class ItemAgilitySword extends ItemSword
     		{
     	    	if (this.random.nextInt(10) <= 2)
     	    	{
-    	    		var3.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 60, 0));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		ScourgeCraftCore.potionHandler.addEffectQueue.add(new PotionEffect(Potion.moveSpeed.id, 60, 0));
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You feel a speed boost");
     	    	}
     	    	break;
@@ -103,8 +106,8 @@ public class ItemAgilitySword extends ItemSword
     		{
     	    	if (this.random.nextInt(10) <= 2)
     	    	{
-    	    		var3.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 80, 1));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		ScourgeCraftCore.potionHandler.addEffectQueue.add(new PotionEffect(Potion.moveSpeed.id, 80, 1));
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You feel a speed boost");
     	    	}
     	    	break;
@@ -113,11 +116,12 @@ public class ItemAgilitySword extends ItemSword
     		{
     			if (this.random.nextInt(10) <= 5)
     	    	{
-    				var3.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100, 1));
-    				if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+					ScourgeCraftCore.potionHandler.addEffectQueue.add(new PotionEffect(Potion.moveSpeed.id, 100, 1));
+    				if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You feel a speed boost");
     	    	}
     	    	break;
+    		}
     		}
     	}
         var1.damageItem(1, var3);
@@ -135,33 +139,7 @@ public class ItemAgilitySword extends ItemSword
      */
     public int getDamageVsEntity(Entity var1)
     {
-    	switch(myLevel)
-    	{
-    		case 1:
-    		{
-    			if (random.nextInt(100) < 10) {
-    				return 0;
-    			}
-    			if (random.nextInt(100) < 5)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		case 2:
-    		{
-    			if (random.nextInt(100) < 5)
-    				return 0;
-    			if (random.nextInt(100) < 10)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		case 3:
-    		{
-    			if (random.nextInt(100) < 3)
-    				return 0;
-    			if (random.nextInt(100) < 15)
-    				return (int)(this.weaponDamage * 1.5);
-    		}
-    		default: 
-    			return this.weaponDamage;
-    	}
+    	return this.weaponDamage;
     }
 
     /**
