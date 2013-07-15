@@ -11,6 +11,7 @@ public class EntityDramcryx extends EntityMob
         super(var1);
         this.texture = "/mods/scourgecraft/textures/mobs/dramcryx.png";
         this.moveSpeed = 0.7F;
+        this.experienceValue = 10;
     }
 
     /**
@@ -18,7 +19,7 @@ public class EntityDramcryx extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.Dramcryx";
+        return "mob.dramcryx";
     }
 
     /**
@@ -26,7 +27,7 @@ public class EntityDramcryx extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.DramcryxHit";
+        return "mob.dramcryxhurt";
     }
 
     /**
@@ -34,20 +35,17 @@ public class EntityDramcryx extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.DramcryxHit";
+        return "mob.dramcryxhurt";
+    }
+
+    public int getAttackStrength(Entity var1)
+    {
+        return this.rand.nextInt(5) + 6;
     }
 
     public int getMaxHealth()
     {
-        return 100;
-    }
-
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
-    public int getAttackStrength(Entity var1)
-    {
-        return 19;
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**

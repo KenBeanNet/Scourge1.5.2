@@ -21,14 +21,14 @@ import net.minecraft.world.World;
 
 public class BlockTeleport extends Block
 {
-    private String myWorldName;
+    private String myDimensionName;
     private int myDimensionId;
 
     public BlockTeleport(int var1, Material var2, String worldName, int dimensionId)
     {
         super(var1, var2);
-        //this.setLightValue(1.0F);
-        myWorldName = worldName;
+        this.setLightValue(1.0F);
+        myDimensionName = worldName;
         myDimensionId = dimensionId;
     }
     
@@ -77,9 +77,7 @@ public class BlockTeleport extends Block
             if (var5 instanceof EntityPlayerMP && var5.ridingEntity == null && var5.riddenByEntity == null && !var1.isRemote)
             {
                 EntityPlayerMP var6 = (EntityPlayerMP)var5;
-                //var6.addStat(AchievementPageDivineRPG.liesWithin, 1);
-                var1.playSoundEffect((double)var2 + 0.5D, (double)var3 + 0.5D, (double)var4 + 0.5D, myWorldName + "Portal", 0.5F, ((EntityPlayerMP)var5).getRNG().nextFloat() * 0.4F + 0.8F);
-
+                
                 if (var6.dimension != myDimensionId && myDimensionId == ScourgeCraftCore.configDimensions.survivalID)
                 {
                     var6.mcServer.getConfigurationManager().transferPlayerToDimension(var6, myDimensionId, new TeleportSurvival(var6.mcServer.worldServerForDimension(myDimensionId)));

@@ -33,22 +33,22 @@ public class ItemVenomArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.11D, 830);
 			}
 			case 1:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.14D, 1800);
 			}
 			case 2:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.18D, 2700);
 			}
 			case 3:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.20D, 3600);
 			}
 			default:
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.0D, 0);
 		}
     }
 	
@@ -63,7 +63,13 @@ public class ItemVenomArmor extends ItemArmor implements ISpecialArmor {
     }
 	
 	@Override
-    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { }
+    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { 
+		if (entity instanceof EntityPlayer && !(((EntityPlayer) entity).capabilities.isCreativeMode)) {
+            if (stack.getItemDamage() < stack.getMaxDamage()) {
+                stack.setItemDamage(stack.getItemDamage() + 1);
+            } 
+		}
+	}
 	
 	@Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot,
@@ -84,11 +90,15 @@ public class ItemVenomArmor extends ItemArmor implements ISpecialArmor {
 			}
 			case 2:
 			{
-			 	break;
+				if (slot == 2)
+			 		return "/mods/scourgecraft/textures/models/venomArmorLegsT2.png";
+		        return "/mods/scourgecraft/textures/models/venomArmorT2.png";
 			}
 			case 3:
 			{
-				break;
+				if (slot == 2)
+			 		return "/mods/scourgecraft/textures/models/venomArmorLegsT3.png";
+		        return "/mods/scourgecraft/textures/models/venomArmorT3.png";
 			}
 		}
 		return "";
@@ -104,19 +114,26 @@ public class ItemVenomArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				var3.add("Weak Armor!");
+				var3.add("Armor Type : Gold");
+				var3.add("Armor Buffs : Hunger Resist (4)");
 				break;
 			}
 			case 1:
 			{
+				var3.add("Armor Type : Chain");
+				var3.add("Armor Buffs : Hunger Resist (3), Poison Resist (4)");
 				break;
 			}
 			case 2:
 			{
+				var3.add("Armor Type : Iron");
+				var3.add("Armor Buffs : Hunger Resist (3), Poison Resist (3), Venom Aura (4)");
 				break;
 			}
 			case 3:
 			{
+				var3.add("Armor Type : Diamond");
+				var3.add("Armor Buffs : Hunger Resist (3), Poison Resist (3), Venom Aura (4)");
 				break;
 			}
 			default:

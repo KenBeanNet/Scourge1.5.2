@@ -22,15 +22,19 @@ public class BuffHandler {
     	return buffHandlers.get(name);
     }
     
-    public boolean canCast(int skillId, int coolDown)
+    public boolean canCast(int skillId)
     {
     	for(Buff b : activeBuffs)
     	{
     		if (b.skillId == skillId)
     			return false;
     	}
-    	activeBuffs.add(new Buff(skillId, coolDown));
     	return true;
+    }
+    
+    public void stopCast(int skillId, int coolDown)
+    {
+    	activeBuffs.add(new Buff(skillId, coolDown));
     }
     
     public void onTick()

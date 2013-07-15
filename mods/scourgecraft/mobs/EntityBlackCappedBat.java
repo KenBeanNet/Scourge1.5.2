@@ -28,6 +28,7 @@ public class EntityBlackCappedBat extends EntityMob
         this.tasks.addTask(1, new EntityAIMoveTwardsRestriction(this, this.moveSpeed));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+        this.experienceValue = 10;
     }
 
     /**
@@ -35,7 +36,7 @@ public class EntityBlackCappedBat extends EntityMob
      */
     public int getAttackStrength(Entity var1)
     {
-        return 20;
+        return this.rand.nextInt(5) + 6;
     }
 
     protected void entityInit()
@@ -98,7 +99,7 @@ public class EntityBlackCappedBat extends EntityMob
 
     public int getMaxHealth()
     {
-        return 120;
+        return this.rand.nextInt(11) + 25;
     }
 
     public boolean getIsBatHanging()

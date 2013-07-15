@@ -112,9 +112,26 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("entity.KillerWhale.name", "Killer Whale");
     	LanguageRegistry.instance().addStringLocalization("entity.Karka.name", "Karka");
     	LanguageRegistry.instance().addStringLocalization("entity.DesertCrawler.name", "Desert Crawler");
+    	LanguageRegistry.instance().addStringLocalization("entity.IceMan.name", "Ice Man");
     	LanguageRegistry.instance().addStringLocalization("entity.Dramcryx.name", "Dramcryx");
     	LanguageRegistry.instance().addStringLocalization("entity.PlaguedWarrior.name", "Plagued Warrior");
     	LanguageRegistry.instance().addStringLocalization("entity.PlaguedArcher.name", "Plagued Archer");
+    	
+    	LanguageRegistry.instance().addStringLocalization("potion.PoisonResist", "Potion Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.HungerResist", "Hunger Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.LavaResist", "Lava Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.FireResist", "Fire Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.LavaLegs", "Lava Legs");
+    	LanguageRegistry.instance().addStringLocalization("potion.FireLegs", "Fire Legs");
+    	LanguageRegistry.instance().addStringLocalization("potion.AquaLegs", "Aqua Legs");
+    	LanguageRegistry.instance().addStringLocalization("potion.AquaAura", "Aqua Aura");
+    	LanguageRegistry.instance().addStringLocalization("potion.Nausea", "Potion");
+    	LanguageRegistry.instance().addStringLocalization("potion.NauseaResist", "Nausea Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.BlindnessResist", "Blindness Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.WitherResist", "Wither Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.WeaknessResist", "Weakness Resist");
+    	LanguageRegistry.instance().addStringLocalization("potion.SlowLegsAura", "Slow Legs");
+    	LanguageRegistry.instance().addStringLocalization("potion.StepUp", "Step Up");
     }
     
     @Mod.Init

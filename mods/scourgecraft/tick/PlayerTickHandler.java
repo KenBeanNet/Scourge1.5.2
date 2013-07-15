@@ -2,6 +2,7 @@ package mods.scourgecraft.tick;
 
 import java.util.EnumSet;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import mods.scourgecraft.core.ArmorHandler;
 import mods.scourgecraft.core.BuffHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,17 +15,18 @@ public class PlayerTickHandler implements ITickHandler {
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		if (type.equals(EnumSet.of(TickType.PLAYER))) {
+			tickCount++;
+			
 			for(Object tick : tickData) {
 				if (tick instanceof EntityPlayer) {
 					EntityPlayer ep = (EntityPlayer)tick;
+					
 					
 					if (tickCount == 20)
 					{
 						ArmorHandler.getMatchingSet(ep);
 						tickCount = 0;
 					}
-					else
-						tickCount++;
 					
 					BuffHandler bh = BuffHandler.getPlayerBuffHandler(ep.username);
 					bh.onTick();

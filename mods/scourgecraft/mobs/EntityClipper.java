@@ -20,20 +20,17 @@ public class EntityClipper extends EntityMob
         this.texture = "/mods/scourgecraft/textures/mobs/clipper.png";
         this.moveSpeed = 0.4F;
         this.setSize(1.5F, 0.5F);
-        this.experienceValue = 40;
+        this.experienceValue = 10;
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity var1)
     {
-        return !this.worldObj.isRemote && this.worldObj.difficultySetting > 0 ? 25 : 25;
+        return this.rand.nextInt(5) + 6;
     }
 
     public int getMaxHealth()
     {
-        return 160;
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -140,7 +137,7 @@ public class EntityClipper extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.crab";
+        return "mob.clipper";
     }
 
     /**
@@ -148,7 +145,7 @@ public class EntityClipper extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.crabhurt";
+        return "mob.clipperhurt";
     }
 
     /**
@@ -156,7 +153,7 @@ public class EntityClipper extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.crabhurt";
+        return "mob.clipperhurt";
     }
 
     /**

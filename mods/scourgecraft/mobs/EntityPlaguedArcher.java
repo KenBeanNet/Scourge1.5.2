@@ -33,14 +33,17 @@ public class EntityPlaguedArcher extends EntityMob
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
         this.setSize(2.0F, 5.0F);
+        this.experienceValue = 10;
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity var1)
     {
-        return 30;
+        return this.rand.nextInt(5) + 6;
+    }
+
+    public int getMaxHealth()
+    {
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -49,11 +52,6 @@ public class EntityPlaguedArcher extends EntityMob
     public boolean isAIEnabled()
     {
         return true;
-    }
-
-    public int getMaxHealth()
-    {
-        return 430;
     }
 
     /**
@@ -103,7 +101,7 @@ public class EntityPlaguedArcher extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.Archer";
+        return "mob.archer";
     }
 
     /**
@@ -119,7 +117,7 @@ public class EntityPlaguedArcher extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.highhit";
+        return "mob.highhurt";
     }
 
     /**
@@ -127,7 +125,7 @@ public class EntityPlaguedArcher extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.highhit";
+        return "mob.highhurt";
     }
 
     /**

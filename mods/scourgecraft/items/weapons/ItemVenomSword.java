@@ -1,6 +1,7 @@
 package mods.scourgecraft.items.weapons;
 
 import java.util.List;
+import java.util.Random;
 
 import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.block.Block;
@@ -18,16 +19,41 @@ import net.minecraft.world.World;
 
 public class ItemVenomSword extends ItemSword
 {
+	private Random random = new Random();
     private int weaponDamage;
+    private int myLevel;
     private final EnumToolMaterial field_40439_b;
 
-    public ItemVenomSword(int var1, EnumToolMaterial var2)
+    public ItemVenomSword(int var1, EnumToolMaterial var2, int level)
     {
         super(var1, var2);
         this.field_40439_b = var2;
         this.maxStackSize = 1;
+        this.myLevel = level;
         this.setMaxDamage(10000);
-        this.weaponDamage = 5;
+        switch (level)
+        {
+        	case 0:
+        	{
+                this.weaponDamage = 5;
+    	    	break;
+        	}
+        	case 1:
+        	{
+                this.weaponDamage = 8;
+    	    	break;
+        	}
+        	case 2:
+        	{
+                this.weaponDamage = 12;
+    	    	break;
+        	}
+        	case 3:
+        	{
+                this.weaponDamage = 16;
+    	    	break;
+        	}
+        }
     }
     
     @Override
@@ -51,6 +77,49 @@ public class ItemVenomSword extends ItemSword
      */
     public boolean hitEntity(ItemStack var1, EntityLiving var2, EntityLiving var3)
     {
+    	switch (myLevel)
+    	{
+    		case 0:
+    		{
+    			if (this.random.nextInt(10) <= 0)
+    	    	{
+    	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 40, 0));
+    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
+    	    	}
+    	    	break;
+    		}
+    		case 1:
+    		{
+    	    	if (this.random.nextInt(10) <= 2)
+    	    	{
+    	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 60, 0));
+    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
+    	    	}
+    	    	break;
+    		}
+    		case 2:
+    		{
+    	    	if (this.random.nextInt(10) <= 2)
+    	    	{
+    	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 1));
+    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
+    	    	}
+    	    	break;
+    		}
+    		case 3:
+    		{
+    			if (this.random.nextInt(10) <= 5)
+    	    	{
+    	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 140, 1));
+    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
+    	    	}
+    	    	break;
+    		}
+    	}
         var1.damageItem(1, var3);
         return true;
     }
@@ -66,7 +135,33 @@ public class ItemVenomSword extends ItemSword
      */
     public int getDamageVsEntity(Entity var1)
     {
-        return this.weaponDamage;
+    	switch(myLevel)
+    	{
+    		case 1:
+    		{
+    			if (random.nextInt(100) < 10) {
+    				return 0;
+    			}
+    			if (random.nextInt(100) < 5)
+    				return (int)(this.weaponDamage * 1.5);
+    		}
+    		case 2:
+    		{
+    			if (random.nextInt(100) < 5)
+    				return 0;
+    			if (random.nextInt(100) < 10)
+    				return (int)(this.weaponDamage * 1.5);
+    		}
+    		case 3:
+    		{
+    			if (random.nextInt(100) < 3)
+    				return 0;
+    			if (random.nextInt(100) < 15)
+    				return (int)(this.weaponDamage * 1.5);
+    		}
+    		default: 
+    			return this.weaponDamage;
+    	}
     }
 
     /**
@@ -121,6 +216,36 @@ public class ItemVenomSword extends ItemSword
     @Override
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
-    	par3List.add("Weak Sword!");
+    	switch (myLevel)
+    	{
+    		case 0:
+    		{
+    	    	par3List.add("Weapon Damage : 5");
+    	    	par3List.add("Ability : Poison");
+    	    	par3List.add("Ability Chance : 10%");
+    	    	break;
+    		}
+    		case 1:
+    		{
+    			par3List.add("Weapon Damage : 8");
+    			par3List.add("Ability : Poison");
+    			par3List.add("Ability Chance : 30%");
+    	    	break;
+    		}
+    		case 2:
+    		{
+    			par3List.add("Weapon Damage : 12");
+    			par3List.add("Ability : Poison");
+    			par3List.add("Ability Chance : 30%");
+    	    	break;
+    		}
+    		case 3:
+    		{
+    			par3List.add("Weapon Damage : 16");
+    			par3List.add("Ability : Poison");
+    			par3List.add("Ability Chance : 60%");
+    	    	break;
+    		}
+    	}
     }
 }

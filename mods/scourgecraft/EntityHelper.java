@@ -35,24 +35,22 @@ public class EntityHelper
 	public static void addEntities()
     {
 		//Venom Monsters
-		EntityRegistry.addSpawn(EntityGoldenOrbSpider.class, 50, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] { ScourgeCraftCore.configDimensions.venomBiome });
-		EntityRegistry.addSpawn(EntityBlackCappedBat.class, 20, 1, 4, EnumCreatureType.monster, new BiomeGenBase[] { ScourgeCraftCore.configDimensions.venomBiome  });
-		EntityRegistry.addSpawn(EntityDramcryx.class, 20, 1, 4, EnumCreatureType.monster, new BiomeGenBase[] { ScourgeCraftCore.configDimensions.venomBiome });
-        
+		EntityRegistry.addSpawn(EntityGoldenOrbSpider.class, 25, 2, 5, EnumCreatureType.monster, new BiomeGenBase[] { BiomeGenBase.swampland });
+		EntityRegistry.addSpawn(EntityBlackCappedBat.class, 20, 1, 4, EnumCreatureType.monster, new BiomeGenBase[] { BiomeGenBase.swampland  });
+		EntityRegistry.addSpawn(EntityDramcryx.class, 20, 2, 4, EnumCreatureType.monster, new BiomeGenBase[] { BiomeGenBase.swampland });
 		//Infernal Monsters
+		EntityRegistry.addSpawn(EntityDesertCrawler.class, 3, 1, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell});
 		//Aqua Monsters
-		EntityRegistry.addSpawn(EntityClipper.class, 15, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.beach});
-        EntityRegistry.addSpawn(EntityKarka.class, 5, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.beach});
-        EntityRegistry.addSpawn(EntityKillerWhale.class, 50, 1, 1, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.ocean});
-        EntityRegistry.addSpawn(EntityMakoShark.class, 50, 1, 1, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.ocean});
+		EntityRegistry.addSpawn(EntityClipper.class, 15, 2, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.beach});
+        EntityRegistry.addSpawn(EntityKarka.class, 5, 2, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.beach});
+        EntityRegistry.addSpawn(EntityKillerWhale.class, 15, 2, 4, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.ocean});
+        EntityRegistry.addSpawn(EntityMakoShark.class, 15, 2, 4, EnumCreatureType.waterCreature, new BiomeGenBase[] {BiomeGenBase.ocean});
 		//Plague Monsters
-        EntityRegistry.addSpawn(EntityPlaguedWarrior.class, 1, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.plains});
-        EntityRegistry.addSpawn(EntityPlaguedArcher.class, 1, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.plains});
+        EntityRegistry.addSpawn(EntityPlaguedWarrior.class, 1, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.sky});
+        EntityRegistry.addSpawn(EntityPlaguedArcher.class, 1, 4, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.sky});
 		//Wither Monsters
+        EntityRegistry.addSpawn(EntityIceMan.class, 10, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.sky});
 		//Agility Monsters
-        
-        EntityRegistry.addSpawn(EntityIceMan.class, 10, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.taiga, BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.taigaHills});
-        EntityRegistry.addSpawn(EntityDesertCrawler.class, 3, 1, 4, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills});
         
     }
 }

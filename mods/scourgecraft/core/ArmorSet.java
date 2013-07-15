@@ -24,6 +24,11 @@ public class ArmorSet {
 		return armors;
 	}
 	
+	public String getName()
+	{
+		return this.name;
+	}
+	
 	public void enable(EntityPlayer player, int itemCount)
 	{
 		buffHandler.applyPlayerBuffs(player, itemCount);

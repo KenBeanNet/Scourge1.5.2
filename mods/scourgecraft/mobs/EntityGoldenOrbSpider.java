@@ -22,14 +22,7 @@ public class EntityGoldenOrbSpider extends EntityMob
         this.setSize(1.4F, 0.9F);
         this.moveSpeed = 0.8F;
         this.isImmuneToFire = true;
-    }
-
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
-    public int getAttackStrength(Entity var1)
-    {
-        return 16;
+        this.experienceValue = 10;
     }
 
     protected void entityInit()
@@ -65,9 +58,14 @@ public class EntityGoldenOrbSpider extends EntityMob
         }
     }
 
+    public int getAttackStrength(Entity var1)
+    {
+        return this.rand.nextInt(5) + 6;
+    }
+
     public int getMaxHealth()
     {
-        return 120;
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -111,7 +109,7 @@ public class EntityGoldenOrbSpider extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.Hellspider";
+        return "mob.goldenorbspider";
     }
 
     /**
@@ -119,7 +117,7 @@ public class EntityGoldenOrbSpider extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.spider";
+        return "mob.spider.say";
     }
 
     /**
@@ -127,7 +125,7 @@ public class EntityGoldenOrbSpider extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.spiderdeath";
+        return "mob.spider.death";
     }
 
     /**

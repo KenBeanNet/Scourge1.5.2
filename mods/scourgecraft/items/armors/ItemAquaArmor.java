@@ -33,11 +33,11 @@ public class ItemAquaArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.11D, 50000);
 			}
 			case 1:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.14D, 50000);
 			}
 			case 2:
 			{
@@ -45,7 +45,7 @@ public class ItemAquaArmor extends ItemArmor implements ISpecialArmor {
 			}
 			case 3:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.20D, 50000);
 			}
 			default:
 				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
@@ -81,19 +81,28 @@ public class ItemAquaArmor extends ItemArmor implements ISpecialArmor {
 				}
 				case 2:
 				{
-				 	break;
+					if (slot == 2)
+				 		return "/mods/scourgecraft/textures/models/aquaArmorLegsT2.png";
+			        return "/mods/scourgecraft/textures/models/aquaArmorT2.png";
 				}
 				case 3:
 				{
-					break;
+					if (slot == 2)
+				 		return "/mods/scourgecraft/textures/models/aquaArmorLegsT3.png";
+			        return "/mods/scourgecraft/textures/models/aquaArmorT3.png";
 				}
 			}
 			return "";
 	    }
 	
-	@Override
-    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { }
-	
+	 @Override
+	    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { 
+			if (entity instanceof EntityPlayer && !(((EntityPlayer) entity).capabilities.isCreativeMode)) {
+	            if (stack.getItemDamage() < stack.getMaxDamage()) {
+	                stack.setItemDamage(stack.getItemDamage() + 1);
+	            } 
+			}
+		}
 
     /**
      * allows items to add custom lines of information to the mouseover description
@@ -105,19 +114,26 @@ public class ItemAquaArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				var3.add("Weak Armor!");
+				var3.add("Armor Type : Gold");
+				var3.add("Armor Buffs : Water Breathing (4)");
 				break;
 			}
 			case 1:
 			{
+				var3.add("Armor Type : Chain");
+				var3.add("Armor Buffs : Water Breating (3), Aqua Legs (4)");
 				break;
 			}
 			case 2:
 			{
+				var3.add("Armor Type : Iron");
+				var3.add("Armor Buffs : Water Breating (3), Aqua Legs (3), Aqua Aura (4)");
 				break;
 			}
 			case 3:
 			{
+				var3.add("Armor Type : Diamond");
+				var3.add("Armor Buffs : Water Breating (3), Aqua Legs (3), Aqua Aura (4)");
 				break;
 			}
 			default:

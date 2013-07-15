@@ -33,11 +33,11 @@ public class ItemWitherArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.11D, 50000);
 			}
 			case 1:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.14D, 50000);
 			}
 			case 2:
 			{
@@ -45,7 +45,7 @@ public class ItemWitherArmor extends ItemArmor implements ISpecialArmor {
 			}
 			case 3:
 			{
-				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
+				return new ISpecialArmor.ArmorProperties(0, 0.20D, 50000);
 			}
 			default:
 				return new ISpecialArmor.ArmorProperties(0, 0.18D, 50000);
@@ -63,8 +63,13 @@ public class ItemWitherArmor extends ItemArmor implements ISpecialArmor {
     }
 	
 	@Override
-    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { }
-	
+    public void damageArmor(EntityLiving entity, ItemStack stack, DamageSource source, int damage, int slot) { 
+		if (entity instanceof EntityPlayer && !(((EntityPlayer) entity).capabilities.isCreativeMode)) {
+            if (stack.getItemDamage() < stack.getMaxDamage()) {
+                stack.setItemDamage(stack.getItemDamage() + 1);
+            } 
+		}
+	}
 
 	@Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot,
@@ -85,11 +90,15 @@ public class ItemWitherArmor extends ItemArmor implements ISpecialArmor {
 			}
 			case 2:
 			{
-				break;
+				if (slot == 2)
+			 		return "/mods/scourgecraft/textures/models/witherArmorLegsT2.png";
+		        return "/mods/scourgecraft/textures/models/witherArmorT2.png";
 			}
 			case 3:
 			{
-				break;
+				if (slot == 2)
+			 		return "/mods/scourgecraft/textures/models/witherArmorLegsT3.png";
+		        return "/mods/scourgecraft/textures/models/witherArmorT3.png";
 			}
 		}
 		return "";
@@ -105,19 +114,26 @@ public class ItemWitherArmor extends ItemArmor implements ISpecialArmor {
 		{
 			case 0:  
 			{
-				var3.add("Weak Armor!");
+				var3.add("Armor Type : Gold");
+				var3.add("Armor Buffs : Wither Resist (4)");
 				break;
 			}
 			case 1:
 			{
+				var3.add("Armor Type : Chain");
+				var3.add("Armor Buffs : Wither Resist (3), Weakness Resist (4)");
 				break;
 			}
 			case 2:
 			{
+				var3.add("Armor Type : Iron");
+				var3.add("Armor Buffs : Wither Resist (3), Weakness Resist (3), Weakness Aura (4)");
 				break;
 			}
 			case 3:
 			{
+				var3.add("Armor Type : Diamond");
+				var3.add("Armor Buffs : Wither Resist (3), Weakness Resist (3), Weakness Aura (4)");
 				break;
 			}
 			default:

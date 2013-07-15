@@ -20,20 +20,17 @@ public class EntityKarka extends EntityMob
         this.texture = "/mods/scourgecraft/textures/mobs/clipper.png";
         this.moveSpeed = 0.4F;
         this.setSize(2.0F, 2.0F);
-        this.experienceValue = 40;
+        this.experienceValue = 30;
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity var1)
     {
-        return 29;
+        return this.rand.nextInt(5) + 8;
     }
 
     public int getMaxHealth()
     {
-        return 500;
+    	return this.rand.nextInt(25) + 75;
     }
 
     /**
@@ -140,7 +137,7 @@ public class EntityKarka extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.crab";
+        return "mob.clipper";
     }
 
     /**
@@ -148,7 +145,7 @@ public class EntityKarka extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.crabhurt";
+        return "mob.clipperhurt";
     }
 
     /**
@@ -156,7 +153,7 @@ public class EntityKarka extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.crabhurt";
+        return "mob.clipperhurt";
     }
 
     /**

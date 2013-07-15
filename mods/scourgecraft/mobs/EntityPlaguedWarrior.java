@@ -19,6 +19,7 @@ public class EntityPlaguedWarrior extends EntityZombie
         super(var1);
         this.texture = "/mods/scourgecraft/textures/mobs/plaguedwarrior.png";
         this.moveSpeed = 0.4F;
+        this.experienceValue = 10;
     }
 
     @SideOnly(Side.CLIENT)
@@ -28,20 +29,17 @@ public class EntityPlaguedWarrior extends EntityZombie
      */
     public String getTexture()
     {
-        return this.isVillager() ? "/mods/scourgecraft/textures/mobs/enchantedWarrior.png" : "/mods/scourgecraft/textures/mobs/enchantedWarrior.png";
+        return this.texture;
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity var1)
     {
-        return 30;
+        return this.rand.nextInt(5) + 6;
     }
 
     public int getMaxHealth()
     {
-        return 430;
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -76,7 +74,7 @@ public class EntityPlaguedWarrior extends EntityZombie
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.hiss";
+        return "mob.hiss";
     }
 
     /**
@@ -92,7 +90,7 @@ public class EntityPlaguedWarrior extends EntityZombie
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.growlhit";
+        return "mob.growlhurt";
     }
 
     /**
@@ -100,7 +98,7 @@ public class EntityPlaguedWarrior extends EntityZombie
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.growlhit";
+        return "mob.growlhurt";
     }
 
     /**

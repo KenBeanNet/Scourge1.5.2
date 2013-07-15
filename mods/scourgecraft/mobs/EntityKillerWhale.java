@@ -38,16 +38,17 @@ public class EntityKillerWhale extends EntityWaterMob
         this.moveSpeed = 0.3F;
         this.setSize(2.0F, 3.0F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
+        this.experienceValue = 40;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return 20;
+        return this.rand.nextInt(5) + 8;
     }
 
     public int getMaxHealth()
     {
-        return 800;
+    	return this.rand.nextInt(50) + 200;
     }
 
     public boolean canBreatheUnderwater()
@@ -60,7 +61,7 @@ public class EntityKillerWhale extends EntityWaterMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.whale";
+        return "mob.whale";
     }
 
     /**
@@ -68,7 +69,7 @@ public class EntityKillerWhale extends EntityWaterMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.whalehurt";
+        return "mob.whalehurt";
     }
 
     /**
@@ -76,7 +77,7 @@ public class EntityKillerWhale extends EntityWaterMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.whalehurt";
+        return "mob.whalehurt";
     }
 
     /**

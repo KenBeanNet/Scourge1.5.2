@@ -11,19 +11,17 @@ public class EntityDesertCrawler extends EntityMob
     {
         super(var1);
         this.texture = "/mods/scourgecraft/textures/mobs/desertcrawler.png";
+        this.experienceValue = 10;
+    }
+
+    public int getAttackStrength(Entity var1)
+    {
+        return this.rand.nextInt(5) + 6;
     }
 
     public int getMaxHealth()
     {
-        return 60;
-    }
-
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
-    public int getAttackStrength(Entity var1)
-    {
-        return !this.worldObj.isRemote && this.worldObj.difficultySetting > 0 ? 15 : 15;
+    	return this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -31,7 +29,7 @@ public class EntityDesertCrawler extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.Crawler";
+        return "mob.crawler";
     }
 
     /**
@@ -39,7 +37,7 @@ public class EntityDesertCrawler extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.CrawlerHit";
+        return "mob.crawlerhurt";
     }
 
     /**
@@ -47,7 +45,7 @@ public class EntityDesertCrawler extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.RPG.CrawlerHit";
+        return "mob.crawlerhurt";
     }
 
     /**
@@ -64,20 +62,7 @@ public class EntityDesertCrawler extends EntityMob
      */
     protected void dropFewItems(boolean var1, int var2)
     {
-        int var3 = this.rand.nextInt(3 + var2);
-        int var4;
-
-        for (var4 = 0; var4 < var3; ++var4)
-        {
-            this.dropItem(Block.sandStone.blockID, 20);
-        }
-
-        var3 = this.rand.nextInt(3 + var2);
-
-        for (var4 = 0; var4 < var3; ++var4)
-        {
-            this.dropItem(Block.sandStone.blockID, 60);
-        }
+        EntityDropHelper.infernalMonsterKilled(this);
     }
 
     /**

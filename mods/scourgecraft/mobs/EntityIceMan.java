@@ -37,19 +37,17 @@ public class EntityIceMan extends EntityMob
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 16.0F, 0, false));
+        this.experienceValue = 20;
     }
 
-    /**
-     * Returns the amount of damage a mob should deal.
-     */
     public int getAttackStrength(Entity var1)
     {
-        return 20;
+        return this.rand.nextInt(5) + 8;
     }
 
     public int getMaxHealth()
     {
-        return 100;
+    	return this.rand.nextInt(25) + 75;
     }
 
     /**
@@ -87,7 +85,7 @@ public class EntityIceMan extends EntityMob
      */
     protected String getLivingSound()
     {
-        return "mob.RPG.Iceman";
+        return "mob.iceman";
     }
 
     /**
@@ -95,7 +93,7 @@ public class EntityIceMan extends EntityMob
      */
     protected String getHurtSound()
     {
-        return "mob.RPG.IcemanHit";
+        return "mob.icemanhurt";
     }
 
     /**
@@ -103,7 +101,7 @@ public class EntityIceMan extends EntityMob
      */
     protected String getDeathSound()
     {
-        return "mob.zombiedeath";
+        return "mob.zombie.death";
     }
 
     /**
@@ -129,6 +127,6 @@ public class EntityIceMan extends EntityMob
      */
     protected void dropFewItems(boolean var1, int var2)
     {
-        EntityDropHelper.aquaMonsterKilled(this);
+        EntityDropHelper.witherMonsterKilled(this);
     }
 }

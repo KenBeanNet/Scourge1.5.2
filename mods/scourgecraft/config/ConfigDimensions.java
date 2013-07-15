@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import mods.scourgecraft.ScourgeCraftCore;
-import mods.scourgecraft.biomes.BiomeGenVenom;
 import mods.scourgecraft.world.WorldProviderEvent;
 import mods.scourgecraft.world.WorldProviderMining;
 import mods.scourgecraft.world.WorldProviderSurvival;
@@ -32,9 +31,6 @@ public class ConfigDimensions {
     public static int miningXPos;
     public static int miningYPos;
     public static int miningZPos;
-    
-    public static int venomBiomeID;
-    public static BiomeGenBase venomBiome;
     
     
 	public void initConfig(FMLPreInitializationEvent event)
@@ -68,8 +64,6 @@ public class ConfigDimensions {
     	miningXPos = config.get("Spawn Positions", "Mining X", 0).getInt();
     	miningYPos = config.get("Spawn Positions", "Mining Y", 0).getInt();
     	miningZPos = config.get("Spawn Positions", "Mining Z", 0).getInt();
-
-    	venomBiomeID = config.get("Biomes", "Venom", 24).getInt();
     	
     	config.save();
     }
@@ -82,8 +76,5 @@ public class ConfigDimensions {
         DimensionManager.registerDimension(miningID, miningID);
         DimensionManager.registerProviderType(eventID, WorldProviderEvent.class, true);
         DimensionManager.registerDimension(eventID, eventID);
-        
-        venomBiome = new BiomeGenVenom(venomBiomeID);
-        GameRegistry.addBiome(venomBiome);
 	}
 }
