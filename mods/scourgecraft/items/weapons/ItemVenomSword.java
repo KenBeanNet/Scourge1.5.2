@@ -77,14 +77,16 @@ public class ItemVenomSword extends ItemSword
      */
     public boolean hitEntity(ItemStack var1, EntityLiving var2, EntityLiving var3)
     {
-    	switch (myLevel)
+    	if (!var3.worldObj.isRemote)
     	{
+    		switch (myLevel)
+    		{
     		case 0:
     		{
     			if (this.random.nextInt(10) <= 0)
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 40, 0));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
     	    	}
     	    	break;
@@ -94,7 +96,7 @@ public class ItemVenomSword extends ItemSword
     	    	if (this.random.nextInt(10) <= 2)
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 60, 0));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
     	    	}
     	    	break;
@@ -104,7 +106,7 @@ public class ItemVenomSword extends ItemSword
     	    	if (this.random.nextInt(10) <= 2)
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 1));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
     	    	}
     	    	break;
@@ -114,10 +116,11 @@ public class ItemVenomSword extends ItemSword
     			if (this.random.nextInt(10) <= 5)
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 140, 1));
-    	    		if (var3 instanceof EntityPlayer && var3.worldObj.isRemote)
+    	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have poisoned your target");
     	    	}
     	    	break;
+    		}
     		}
     	}
         var1.damageItem(1, var3);

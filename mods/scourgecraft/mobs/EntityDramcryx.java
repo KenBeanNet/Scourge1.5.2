@@ -6,12 +6,14 @@ import net.minecraft.world.World;
 
 public class EntityDramcryx extends EntityMob
 {
+    private int maxHealth;
     public EntityDramcryx(World var1)
     {
         super(var1);
         this.texture = "/mods/scourgecraft/textures/mobs/dramcryx.png";
         this.moveSpeed = 0.7F;
         this.experienceValue = 10;
+        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -45,7 +47,7 @@ public class EntityDramcryx extends EntityMob
 
     public int getMaxHealth()
     {
-    	return this.rand.nextInt(11) + 25;
+    	return this.maxHealth;
     }
 
     /**

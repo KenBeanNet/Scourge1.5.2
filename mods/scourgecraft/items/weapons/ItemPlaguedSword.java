@@ -85,7 +85,7 @@ public class ItemPlaguedSword extends ItemSword
     		{
     			if (this.random.nextInt(10) <= 0)
     	    	{
-    				ScourgeCraftCore.potionHandler.addEffectQueue.add(new PotionEffect(Potion.blindness.id, 40, 0));
+    				var2.addPotionEffect(new PotionEffect(Potion.blindness.id, 40, 0));
     	    		if (var3 instanceof EntityPlayer)
     	    			((EntityPlayer)var3).sendChatToPlayer("ScourgeCraft : You have blinded your target");
     	    	}

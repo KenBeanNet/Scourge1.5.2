@@ -61,6 +61,64 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.coin, 9), new Object[] {ScourgeCraftCore.configItems.ctack}));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.ctack, 9), new Object[] {ScourgeCraftCore.configItems.bag}));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.bag, 9), new Object[] {ScourgeCraftCore.configItems.bullion}));
-    
+        
+        
+        //Armor Tier 0
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.venomGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.infernalGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.aquaGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.plagueGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.witherGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityHelmet[0], 1), new Object[] {"xxx", "x x", "   ", 'x', ScourgeCraftCore.configItems.agilityGem });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.venomGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.infernalGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.aquaGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.plagueGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.witherGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityChest[0], 1), new Object[] {"x x", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.agilityGem });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.venomGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.infernalGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.aquaGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.plagueGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.witherGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityLegs[0], 1), new Object[] {"xxx", "x x", "x x", 'x', ScourgeCraftCore.configItems.agilityGem });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.venomGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.infernalGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.aquaGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.plagueGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.witherGem });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityBoots[0], 1), new Object[] {"   ", "x x", "x x", 'x', ScourgeCraftCore.configItems.agilityGem });
+        
+        //Armor Tier 1
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.venomGem, 'C', ScourgeCraftCore.configItems.venomHelmet[0], 'o', ScourgeCraftCore.configItems.venomOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.infernalGem, 'C', ScourgeCraftCore.configItems.infernalHelmet[0], 'o', ScourgeCraftCore.configItems.infernalOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.aquaGem, 'C', ScourgeCraftCore.configItems.aquaHelmet[0], 'o', ScourgeCraftCore.configItems.aquaOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.plagueGem, 'C', ScourgeCraftCore.configItems.plaguedHelmet[0], 'o', ScourgeCraftCore.configItems.plagueOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.witherGem, 'C', ScourgeCraftCore.configItems.witherHelmet[0], 'o', ScourgeCraftCore.configItems.witherOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityHelmet[1], 1), new Object[] {"xxx", "oCo", "   ", 'x', ScourgeCraftCore.configItems.agilityGem, 'C', ScourgeCraftCore.configItems.agilityHelmet[0], 'o', ScourgeCraftCore.configItems.agilityOrb });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.venomGem, 'C', ScourgeCraftCore.configItems.venomChest[0], 'o', ScourgeCraftCore.configItems.venomOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.infernalGem, 'C', ScourgeCraftCore.configItems.infernalChest[0], 'o', ScourgeCraftCore.configItems.infernalOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.aquaGem, 'C', ScourgeCraftCore.configItems.aquaChest[0], 'o', ScourgeCraftCore.configItems.aquaOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.plagueGem, 'C', ScourgeCraftCore.configItems.plaguedChest[0], 'o', ScourgeCraftCore.configItems.plagueOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.witherGem, 'C', ScourgeCraftCore.configItems.witherChest[0], 'o', ScourgeCraftCore.configItems.witherOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityChest[1], 1), new Object[] {"oCo", "xxx", "ooo", 'x', ScourgeCraftCore.configItems.agilityGem, 'C', ScourgeCraftCore.configItems.agilityChest[0], 'o', ScourgeCraftCore.configItems.agilityOrb  });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.venomGem, 'C', ScourgeCraftCore.configItems.venomLegs[0], 'o', ScourgeCraftCore.configItems.agilityOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.infernalGem, 'C', ScourgeCraftCore.configItems.infernalLegs[0], 'o', ScourgeCraftCore.configItems.infernalOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.aquaGem, 'C', ScourgeCraftCore.configItems.aquaLegs[0], 'o', ScourgeCraftCore.configItems.aquaOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.plagueGem, 'C', ScourgeCraftCore.configItems.plaguedLegs[0], 'o', ScourgeCraftCore.configItems.plagueOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.witherGem, 'C', ScourgeCraftCore.configItems.witherLegs[0], 'o', ScourgeCraftCore.configItems.witherOrb  });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityLegs[1], 1), new Object[] {"xxx", "oCo", "x x", 'x', ScourgeCraftCore.configItems.agilityGem, 'C', ScourgeCraftCore.configItems.agilityLegs[0], 'o', ScourgeCraftCore.configItems.agilityOrb  });
+        
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.venomGem, 'C', ScourgeCraftCore.configItems.venomBoots[0], 'o', ScourgeCraftCore.configItems.agilityOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.infernalGem, 'C', ScourgeCraftCore.configItems.infernalBoots[0], 'o', ScourgeCraftCore.configItems.infernalOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.aquaGem, 'C', ScourgeCraftCore.configItems.aquaBoots[0], 'o', ScourgeCraftCore.configItems.aquaOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.plagueGem, 'C', ScourgeCraftCore.configItems.plaguedBoots[0], 'o', ScourgeCraftCore.configItems.plagueOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.witherGem, 'C', ScourgeCraftCore.configItems.witherBoots[0], 'o', ScourgeCraftCore.configItems.witherOrb });
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.agilityGem, 'C', ScourgeCraftCore.configItems.agilityBoots[0], 'o', ScourgeCraftCore.configItems.agilityOrb });
     }
 }

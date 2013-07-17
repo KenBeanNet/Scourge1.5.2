@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 
 public class EntityGoldenOrbSpider extends EntityMob
 {
+	private int maxHealth;
     public EntityGoldenOrbSpider(World var1)
     {
         super(var1);
@@ -23,6 +24,7 @@ public class EntityGoldenOrbSpider extends EntityMob
         this.moveSpeed = 0.8F;
         this.isImmuneToFire = true;
         this.experienceValue = 10;
+        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     protected void entityInit()
@@ -65,7 +67,7 @@ public class EntityGoldenOrbSpider extends EntityMob
 
     public int getMaxHealth()
     {
-    	return this.rand.nextInt(11) + 25;
+    	return this.maxHealth;
     }
 
     /**

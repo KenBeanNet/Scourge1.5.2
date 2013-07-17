@@ -20,7 +20,8 @@ import net.minecraft.world.World;
 public class EntityPlaguedArcher extends EntityMob
 {
     private static final ItemStack defaultHeldItem = new ItemStack(Item.bow, 1);
-
+    private int maxHealth;
+    
     public EntityPlaguedArcher(World var1)
     {
         super(var1);
@@ -34,6 +35,7 @@ public class EntityPlaguedArcher extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
         this.setSize(2.0F, 5.0F);
         this.experienceValue = 10;
+        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     public int getAttackStrength(Entity var1)
@@ -43,7 +45,7 @@ public class EntityPlaguedArcher extends EntityMob
 
     public int getMaxHealth()
     {
-    	return this.rand.nextInt(11) + 25;
+    	return this.maxHealth;
     }
 
     /**

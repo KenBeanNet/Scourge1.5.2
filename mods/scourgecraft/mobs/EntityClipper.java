@@ -13,6 +13,7 @@ public class EntityClipper extends EntityMob
 {
     private int angerLevel = 0;
     private int randomSoundDelay = 5;
+    private int maxHealth;
 
     public EntityClipper(World var1)
     {
@@ -21,6 +22,7 @@ public class EntityClipper extends EntityMob
         this.moveSpeed = 0.4F;
         this.setSize(1.5F, 0.5F);
         this.experienceValue = 10;
+        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     public int getAttackStrength(Entity var1)
@@ -30,7 +32,7 @@ public class EntityClipper extends EntityMob
 
     public int getMaxHealth()
     {
-    	return this.rand.nextInt(11) + 25;
+    	return this.maxHealth;
     }
 
     /**
