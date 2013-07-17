@@ -117,11 +117,14 @@ public class PotionEffectHandler implements IPotionEffectHandler
 		}
 		else if (effect.getPotionID() == Potion.weakness.id)
 		{
-			EntityPlayer ep = (EntityPlayer)living;
-			if (ep.isPotionActive(ScourgeCraftCore.configPotion.weaknessResist.id))
+			if (living instanceof EntityPlayer)
 			{
-				ScourgeCraftCore.potionHandler.removeEffectQueue.add(Potion.weakness.id);
-				ep.sendChatToPlayer("ScourgeCraft : Your armor has eaten your Weakness!");
+				EntityPlayer ep = (EntityPlayer)living;
+				if (ep.isPotionActive(ScourgeCraftCore.configPotion.weaknessResist.id))
+				{
+					ScourgeCraftCore.potionHandler.removeEffectQueue.add(Potion.weakness.id);
+					ep.sendChatToPlayer("ScourgeCraft : Your armor has eaten your Weakness!");
+				}
 			}
 		}
 		else if (effect.getPotionID() == ScourgeCraftCore.configPotion.stepUp.id)
