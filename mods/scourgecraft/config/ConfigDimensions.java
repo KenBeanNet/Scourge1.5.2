@@ -32,6 +32,10 @@ public class ConfigDimensions {
     public static int miningYPos;
     public static int miningZPos;
     
+    public static String survivalSeed;
+    public static String miningSeed;
+    public static String eventSeed;
+    
     
 	public void initConfig(FMLPreInitializationEvent event)
     {
@@ -65,16 +69,58 @@ public class ConfigDimensions {
     	miningYPos = config.get("Spawn Positions", "Mining Y", 0).getInt();
     	miningZPos = config.get("Spawn Positions", "Mining Z", 0).getInt();
     	
+    	survivalSeed = config.get("Dimensions Seed", "Survival World Seed", 0).getString();
+    	miningSeed = config.get("Dimensions Seed", "Mining World Seed", 0).getString();
+    	eventSeed = config.get("Dimensions Seed", "Event World Seed", 0).getString();
+    	
     	config.save();
     }
 	
 	public void load()
 	{
-    	DimensionManager.registerProviderType(survivalID, WorldProviderSurvival.class, true);
-        DimensionManager.registerDimension(survivalID, survivalID);
-        DimensionManager.registerProviderType(miningID, WorldProviderMining.class, true);
-        DimensionManager.registerDimension(miningID, miningID);
-        DimensionManager.registerProviderType(eventID, WorldProviderEvent.class, true);
-        DimensionManager.registerDimension(eventID, eventID);
+		DimensionManager.registerProviderType(survivalID, WorldProviderSurvival.class, false);
+		DimensionManager.registerProviderType(miningID, WorldProviderMining.class, false);
+		DimensionManager.registerProviderType(eventID, WorldProviderEvent.class, false);
 	}
+	
+	public void postLoad()
+	{
+		if (isDimensionUnregistered(survivalID))
+        {
+			DimensionManager.registerDimension(survivalID, survivalID);
+        }
+        else
+        {
+        	new Exception();
+        }
+		if (isDimensionUnregistered(miningID))
+        {
+	        DimensionManager.registerDimension(miningID, miningID);
+        }
+        else
+        {
+        	new Exception();
+        }
+		if (isDimensionUnregistered(eventID))
+        {
+	        DimensionManager.registerDimension(eventID, eventID);
+        }
+        else
+        {
+        	new Exception();
+        }
+	}
+	
+	private boolean isDimensionUnregistered(int dimID)
+	  {
+	    try
+	    {
+	      DimensionManager.getProviderType(dimID);
+
+	      return false;
+	    }
+	    catch (IllegalArgumentException ex) {
+	    }
+	    return true;
+	  }
 }

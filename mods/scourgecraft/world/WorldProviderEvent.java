@@ -1,5 +1,6 @@
 package mods.scourgecraft.world;
 
+import mods.scourgecraft.ScourgeCraftCore;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -8,34 +9,16 @@ import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldProviderEvent extends WorldProvider
 {
+	public WorldProviderEvent()
+	{
+		setDimension(ScourgeCraftCore.configDimensions.eventID);
+	}
     /**
      * creates a new world chunk manager for WorldProvider
      */
     public void registerWorldChunkManager()
     {
-        this.worldChunkMgr = new WorldChunkManager(0, WorldType.DEFAULT);
-    }
-
-    /**
-     * Creates the light to brightness table
-     */
-    protected void generateLightBrightnessTable()
-    {
-        float var1 = 0.1F;
-
-        for (int var2 = 0; var2 <= 15; ++var2)
-        {
-            float var3 = 1.0F - (float)var2 / 15.0F;
-            this.lightBrightnessTable[var2] = (1.0F - var3) / (var3 * 3.0F + 1.0F) * (1.0F - var1) + var1;
-        }
-    }
-
-    /**
-     * the y level at which clouds are rendered.
-     */
-    public float getCloudHeight()
-    {
-        return 128.0F;
+        this.worldChunkMgr = new WorldChunkManager(getSeed(), WorldType.LARGE_BIOMES);
     }
 
     /**
@@ -54,25 +37,10 @@ public class WorldProviderEvent extends WorldProvider
         return true;
     }
 
-    /**
-     * Calculates the angle of sun and moon in the sky relative to a specified time (usually worldTime)
-     */
-    public float calculateCelestialAngle(long var1, float var3)
-    {
-        return 0.0F;
-    }
-
-    /**
-     * True if the player can respawn in this dimension (true = overworld, false = nether).
-     */
-    public boolean canRespawnHere()
-    {
-        return false;
-    }
 
     public String getSaveFolder()
     {
-        return "Event";
+        return ("DIM" + ScourgeCraftCore.configDimensions.eventID);
     }
 
     /**
@@ -80,6 +48,16 @@ public class WorldProviderEvent extends WorldProvider
      */
     public String getDimensionName()
     {
-        return "Event";
+        return "Event World";
+    }
+    
+    public long getSeed()
+    {
+      if ((ScourgeCraftCore.configDimensions.eventSeed == null) || (ScourgeCraftCore.configDimensions.eventSeed.length() == 0))
+      {
+        return super.getSeed();
+      }
+
+      return ScourgeCraftCore.configDimensions.eventSeed.hashCode();
     }
 }

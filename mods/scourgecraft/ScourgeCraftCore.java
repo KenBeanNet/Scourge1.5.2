@@ -34,6 +34,7 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -85,7 +86,11 @@ public class ScourgeCraftCore
     	configItems.initConfig(event);
     	configDimensions.initConfig(event);
     	configPotion.initConfig(event);
-    	
+    }
+    
+    @Mod.Init
+    public void load(FMLInitializationEvent var1)
+    {
     	configBlocks.load();
     	configItems.load();
     	configDimensions.load();
@@ -132,11 +137,8 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("potion.WeaknessResist", "Weakness Resist");
     	LanguageRegistry.instance().addStringLocalization("potion.SlowLegsAura", "Slow Legs");
     	LanguageRegistry.instance().addStringLocalization("potion.StepUp", "Step Up");
-    }
-    
-    @Mod.Init
-    public void load(FMLInitializationEvent var1)
-    {
+    	
+    	MinecraftForge.EVENT_BUS.register(new EventListener());
     	MinecraftForge.EVENT_BUS.register(new PotionHandler());
     	MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
     	PotionHandler.registerEffectHandler(potionHandler);
@@ -153,6 +155,12 @@ public class ScourgeCraftCore
         GameRegistry.registerWorldGenerator(new WorldGenScourgeMinable());
     	
     	ModRecipes.init();
+    }
+    
+    @Mod.PostInit
+    public void postInit(FMLPostInitializationEvent evt)
+    {
+    	configDimensions.postLoad();
     }
 }
 
