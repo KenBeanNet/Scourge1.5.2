@@ -18,6 +18,7 @@ import mods.scourgecraft.blocks.BlockLightFence1;
 import mods.scourgecraft.blocks.BlockMint;
 import mods.scourgecraft.blocks.BlockMintStorage;
 import mods.scourgecraft.blocks.BlockNewFence;
+import mods.scourgecraft.blocks.BlockOre;
 import mods.scourgecraft.blocks.BlockStone;
 import mods.scourgecraft.blocks.BlockTeleport;
 import net.minecraft.block.Block;
@@ -330,18 +331,18 @@ public class ConfigBlocks
         accelleron = (new BlockAccelleron(this.accelleronID)).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setHardness(6.0F).setResistance(10.0F).setUnlocalizedName("accelleron").setCreativeTab(ScourgeCraftCore.tabUtility);
         accelleraunch = (new BlockAcceleraunch(this.accelleraunchID)).setStepSound(Block.soundGlassFootstep).setHardness(2.0F).setResistance(1.0F).setUnlocalizedName("accelleraunch").setCreativeTab(ScourgeCraftCore.tabUtility);
         emptyBlock = (new BlockGlass(emptyBlockID)).setBlockUnbreakable().setUnlocalizedName("emptyBlock").setHardness(1.0F).setResistance(1.0F).setCreativeTab(ScourgeCraftCore.tabUtility);
-        survivalTeleportBlock = (new BlockTeleport(survivalTeleportBlockID, Material.portal, "survival", ScourgeCraftCore.configDimensions.survivalID)).setBlockUnbreakable().setUnlocalizedName("survivalportal").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        survivalTeleportBlock = (new BlockTeleport(survivalTeleportBlockID, Material.portal, "survival", ScourgeCraftCore.configDimensions.survivalID)).setBlockUnbreakable().setUnlocalizedName("survivalportal").setResistance(1F).setCreativeTab(ScourgeCraftCore.tabBlocks);
         miningTeleportBlock = (new BlockTeleport(miningTeleportBlockID, Material.portal, "mining", ScourgeCraftCore.configDimensions.miningID)).setBlockUnbreakable().setUnlocalizedName("miningportal").setCreativeTab(ScourgeCraftCore.tabBlocks);
         eventTeleportBlock = (new BlockTeleport(eventTeleportBlockID, Material.portal, "event", ScourgeCraftCore.configDimensions.eventID)).setBlockUnbreakable().setUnlocalizedName("eventportal").setCreativeTab(ScourgeCraftCore.tabBlocks);
         mint = (new BlockMint(mintID)).setHardness(2.0F).setUnlocalizedName("M3Mint").setCreativeTab(ScourgeCraftCore.tabUtility);
         mintStorage = (new BlockMintStorage(mintStorageID)).setHardness(2.0F).setUnlocalizedName("M3MintStorage").setCreativeTab(ScourgeCraftCore.tabUtility);
         
-        venomOre = (new BlockStone(venomOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("venomOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        infernalOre = (new BlockStone(infernalOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("infernalOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        aquaOre = (new BlockStone(aquaOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("aquaOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        plagueOre = (new BlockStone(plagueOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("plagueOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        witherOre = (new BlockStone(witherOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("witherOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
-        agilityOre = (new BlockStone(agilityOreID)).setStepSound(Block.soundStoneFootstep).setHardness(30.0F).setResistance(300.0F).setUnlocalizedName("agilityOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        venomOre = (new BlockOre(venomOreID, ScourgeCraftCore.configItems.venomGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("venomOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        infernalOre = (new BlockOre(infernalOreID, ScourgeCraftCore.configItems.infernalGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("infernalOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        aquaOre = (new BlockOre(aquaOreID, ScourgeCraftCore.configItems.aquaGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("aquaOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        plagueOre = (new BlockOre(plagueOreID, ScourgeCraftCore.configItems.plagueGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("plagueOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        witherOre = (new BlockOre(witherOreID, ScourgeCraftCore.configItems.witherGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("witherOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        agilityOre = (new BlockOre(agilityOreID, ScourgeCraftCore.configItems.agilityGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("agilityOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
         
         
         

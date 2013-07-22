@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 
 public class EntityIceMan extends EntityMob
 {
-	private int maxHealth;
     public EntityIceMan(World var1)
     {
         super(var1);
@@ -39,17 +38,16 @@ public class EntityIceMan extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 16.0F, 0, false));
         this.experienceValue = 20;
-        maxHealth = this.rand.nextInt(25) + 75;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 8;
+        return 9;
     }
 
     public int getMaxHealth()
     {
-    	return this.maxHealth;
+    	return 85;
     }
 
     /**

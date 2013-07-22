@@ -307,20 +307,20 @@ public class ConfigItems {
         agilityWeaponT3SchematicID = config.get("Weapon Schematic", "Agility Weapon T3", 27037).getInt();
         
         //Gem Ids
-        venomGemID = config.get("Gems", "venom", 27100).getInt();
-        infernalGemID = config.get("Gems", "infernal", 27101).getInt();
-        aquaGemID = config.get("Gems", "aqua", 27102).getInt();
-        plagueGemID = config.get("Gems", "plague", 27103).getInt();
-        witherGemID = config.get("Gems", "wither", 27104).getInt();
-        agilityGemID = config.get("Gems", "agility", 27105).getInt();
+        venomGemID = config.get("Gems", "venom", 27200).getInt();
+        infernalGemID = config.get("Gems", "infernal", 27201).getInt();
+        aquaGemID = config.get("Gems", "aqua", 27202).getInt();
+        plagueGemID = config.get("Gems", "plague", 27203).getInt();
+        witherGemID = config.get("Gems", "wither", 27204).getInt();
+        agilityGemID = config.get("Gems", "agility", 27205).getInt();
         
         //Orb Ids
-        venomOrbID = config.get("Orbs", "venom", 27110).getInt();
-        infernalOrbID = config.get("Orbs", "infernal", 27111).getInt();
-        aquaOrbID = config.get("Orbs", "aqua", 27112).getInt();
-        plagueOrbID = config.get("Orbs", "plague", 27113).getInt();
-        witherOrbID = config.get("Orbs", "wither", 27114).getInt();
-        agilityOrbID = config.get("Orbs", "agility", 27115).getInt();
+        venomOrbID = config.get("Orbs", "venom", 27210).getInt();
+        infernalOrbID = config.get("Orbs", "infernal", 27211).getInt();
+        aquaOrbID = config.get("Orbs", "aqua", 27212).getInt();
+        plagueOrbID = config.get("Orbs", "plague", 27213).getInt();
+        witherOrbID = config.get("Orbs", "wither", 27124).getInt();
+        agilityOrbID = config.get("Orbs", "agility", 27215).getInt();
         
         //Weapon Ids
         venomSwordID = config.get("Venom", "sword", 27500).getInt();

@@ -19,14 +19,6 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherOrb, 1), new Object[] {"xxx", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.witherGem});
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityOrb, 1), new Object[] {"xxx", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.agilityGem});
 		
-		//Ores to Gems
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.venomOre.blockID, new ItemStack(ScourgeCraftCore.configItems.venomGem, 1), 5);
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.infernalOre.blockID, new ItemStack(ScourgeCraftCore.configItems.infernalGem, 1), 5);
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.aquaOre.blockID, new ItemStack(ScourgeCraftCore.configItems.aquaGem, 1), 5);
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.plagueOre.blockID, new ItemStack(ScourgeCraftCore.configItems.plagueGem, 1), 5);
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.witherOre.blockID, new ItemStack(ScourgeCraftCore.configItems.witherGem, 1), 5);
-		GameRegistry.addSmelting(ScourgeCraftCore.configBlocks.agilityOre.blockID, new ItemStack(ScourgeCraftCore.configItems.agilityGem, 1), 5);
-		
 		//T0 Weapons
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomSword, 1), new Object[] {" x ", " x ", " y ", 'x', ScourgeCraftCore.configItems.venomGem, 'y', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalSword, 1), new Object[] {" x ", " x ", " y ", 'x', ScourgeCraftCore.configItems.infernalGem, 'y', Item.stick});

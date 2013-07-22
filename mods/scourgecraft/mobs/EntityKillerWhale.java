@@ -30,7 +30,6 @@ public class EntityKillerWhale extends EntityWaterMob
     private float randomMotionVecX = 0.0F;
     private float randomMotionVecY = 0.0F;
     private float randomMotionVecZ = 0.0F;
-    private int maxHealth;
 
     public EntityKillerWhale(World var1)
     {
@@ -40,17 +39,16 @@ public class EntityKillerWhale extends EntityWaterMob
         this.setSize(2.0F, 3.0F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
         this.experienceValue = 40;
-        this.maxHealth = this.rand.nextInt(50) + 200;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 8;
+        return 11;
     }
 
     public int getMaxHealth()
     {
-    	return this.maxHealth;
+    	return 225;
     }
 
     public boolean canBreatheUnderwater()

@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 public class EntityBlackCappedBat extends EntityMob
 {
     private ChunkCoordinates currentFlightTarget;
-    private int maxHealth;
     public EntityBlackCappedBat(World var1)
     {
         super(var1);
@@ -29,7 +28,6 @@ public class EntityBlackCappedBat extends EntityMob
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
         this.experienceValue = 10;
-        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     /**
@@ -37,7 +35,7 @@ public class EntityBlackCappedBat extends EntityMob
      */
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 6;
+        return 7;
     }
 
     protected void entityInit()
@@ -100,7 +98,7 @@ public class EntityBlackCappedBat extends EntityMob
 
     public int getMaxHealth()
     {
-        return this.maxHealth;
+        return 25;
     }
 
     public boolean getIsBatHanging()

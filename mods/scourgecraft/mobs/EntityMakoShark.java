@@ -30,7 +30,6 @@ public class EntityMakoShark extends EntityWaterMob
     private float randomMotionVecX = 0.0F;
     private float randomMotionVecY = 0.0F;
     private float randomMotionVecZ = 0.0F;
-    private int maxHealth;
     
     public EntityMakoShark(World var1)
     {
@@ -40,17 +39,16 @@ public class EntityMakoShark extends EntityWaterMob
         this.setSize(0.95F, 0.95F);
         this.field_70864_bA = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
         this.experienceValue = 40;
-        this.maxHealth = this.rand.nextInt(25) + 50;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 8;
+        return 10;
     }
 
     public int getMaxHealth()
     {
-    	return this.maxHealth;
+    	return 65;
     }
 
     public boolean canBreatheUnderwater()

@@ -32,29 +32,29 @@ public class BlockTeleport extends Block
         myDimensionId = dimensionId;
     }
     
+    /**
+    * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two
+    * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
+    */
+        public boolean isOpaqueCube()
+        {
+            return false;
+        }
+        
+        /**
+        * Updates the blocks bounds based on its current state. Args: world, x, y, z
+        */
+            public void setBlockBoundsBasedOnState(IBlockAccess var1, int var2, int var3, int var4)
+            {
+                float var5 = 0.0625F;
+                this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, var5, 1.0F);
+            }
+    
     @Override
 	public void registerIcons(IconRegister reg)
 	{
 		this.blockIcon = reg.registerIcon(ScourgeCraftCore.modid + ":" + this.getUnlocalizedName2());
 	}
-
-    /**
-     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
-     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
-     */
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
-
-    /**
-     * Updates the blocks bounds based on its current state. Args: world, x, y, z
-     */
-    public void setBlockBoundsBasedOnState(IBlockAccess var1, int var2, int var3, int var4)
-    {
-        float var5 = 0.0625F;
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, var5, 1.0F);
-    }
 
     /**
      * if the specified block is in the given AABB, add its collision bounding box to the given list
@@ -67,6 +67,11 @@ public class BlockTeleport extends Block
     public int quantityDropped(Random var1)
     {
         return 0;
+    }
+    
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    {
+        return null;
     }
 
     /**

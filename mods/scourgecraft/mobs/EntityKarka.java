@@ -13,7 +13,6 @@ public class EntityKarka extends EntityMob
 {
     private int angerLevel = 0;
     private int randomSoundDelay = 5;
-    private int maxHealth;
     
     public EntityKarka(World var1)
     {
@@ -22,17 +21,16 @@ public class EntityKarka extends EntityMob
         this.moveSpeed = 0.4F;
         this.setSize(2.0F, 2.0F);
         this.experienceValue = 30;
-        this.maxHealth = this.rand.nextInt(25) + 75;
     }
 
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 8;
+        return 11;
     }
 
     public int getMaxHealth()
     {
-    	return this.maxHealth;
+    	return 90;
     }
 
     /**

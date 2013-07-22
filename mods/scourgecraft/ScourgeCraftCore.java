@@ -24,6 +24,7 @@ import mods.scourgecraft.creative.CreativeTabWeapons;
 import mods.scourgecraft.potion.PotionEffectHandler;
 import mods.scourgecraft.potion.PotionEventHandler;
 import mods.scourgecraft.potion.PotionHandler;
+import mods.scourgecraft.tick.PlayerTracker;
 import mods.scourgecraft.world.WorldGenScourgeMinable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -78,6 +79,7 @@ public class ScourgeCraftCore
     
     public static ArmorHandler armorHandler = new ArmorHandler();
     public static PotionEffectHandler potionHandler = new PotionEffectHandler();
+    public static EventListener eventListener = new EventListener();
 
     
     @Mod.PreInit
@@ -91,8 +93,8 @@ public class ScourgeCraftCore
     @Mod.Init
     public void load(FMLInitializationEvent var1)
     {
-    	configBlocks.load();
     	configItems.load();
+    	configBlocks.load();
     	configDimensions.load();
     	configPotion.load();
         
@@ -121,6 +123,12 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("entity.Dramcryx.name", "Dramcryx");
     	LanguageRegistry.instance().addStringLocalization("entity.PlaguedWarrior.name", "Plagued Warrior");
     	LanguageRegistry.instance().addStringLocalization("entity.PlaguedArcher.name", "Plagued Archer");
+    	LanguageRegistry.instance().addStringLocalization("entity.Vhraak.name", "Vhraak");
+    	LanguageRegistry.instance().addStringLocalization("entity.EnderSpider.name", "Ender Spider");
+    	LanguageRegistry.instance().addStringLocalization("entity.EnderWatcher.name", "Ender Watcher");
+    	LanguageRegistry.instance().addStringLocalization("entity.SoulStealer.name", "Soul Stealer");
+    	LanguageRegistry.instance().addStringLocalization("entity.WildFire.name", "Wild Fire");
+    	LanguageRegistry.instance().addStringLocalization("entity.Scorcher.name", "Scorcher");
     	
     	LanguageRegistry.instance().addStringLocalization("potion.PoisonResist", "Potion Resist");
     	LanguageRegistry.instance().addStringLocalization("potion.HungerResist", "Hunger Resist");
@@ -138,7 +146,7 @@ public class ScourgeCraftCore
     	LanguageRegistry.instance().addStringLocalization("potion.SlowLegsAura", "Slow Legs");
     	LanguageRegistry.instance().addStringLocalization("potion.StepUp", "Step Up");
     	
-    	MinecraftForge.EVENT_BUS.register(new EventListener());
+    	MinecraftForge.EVENT_BUS.register(eventListener);
     	MinecraftForge.EVENT_BUS.register(new PotionHandler());
     	MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
     	PotionHandler.registerEffectHandler(potionHandler);
@@ -161,6 +169,7 @@ public class ScourgeCraftCore
     public void postInit(FMLPostInitializationEvent evt)
     {
     	configDimensions.postLoad();
+    	GameRegistry.registerPlayerTracker(PlayerTracker.instance);
     }
 }
 

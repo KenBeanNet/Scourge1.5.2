@@ -98,13 +98,13 @@ public class ItemAgilityArmor extends ItemArmor implements ISpecialArmor {
 			{
 				if (slot == 2)
 			 		return "/mods/scourgecraft/textures/models/agilityArmorLegsT2.png";
-		        return "/mods/scourgecraft/textures/models/agilityArmorT1.png";
+		        return "/mods/scourgecraft/textures/models/agilityArmorT2.png";
 			}
 			case 3:
 			{
 				if (slot == 2)
 			 		return "/mods/scourgecraft/textures/models/agilityArmorLegsT3.png";
-		        return "/mods/scourgecraft/textures/models/agilityArmorT1.png";
+		        return "/mods/scourgecraft/textures/models/agilityArmorT3.png";
 			}
 		}
 		return "";

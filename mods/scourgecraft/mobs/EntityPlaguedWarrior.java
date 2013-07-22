@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 public class EntityPlaguedWarrior extends EntityZombie
 {
     private static final ItemStack defaultHeldItem = new ItemStack(ScourgeCraftCore.configItems.plagueSwordT1, 1);
-    private int maxHealth;
     
     public EntityPlaguedWarrior(World var1)
     {
@@ -21,7 +20,6 @@ public class EntityPlaguedWarrior extends EntityZombie
         this.texture = "/mods/scourgecraft/textures/mobs/plaguedwarrior.png";
         this.moveSpeed = 0.4F;
         this.experienceValue = 10;
-        this.maxHealth = this.rand.nextInt(11) + 25;
     }
 
     @SideOnly(Side.CLIENT)
@@ -36,12 +34,12 @@ public class EntityPlaguedWarrior extends EntityZombie
 
     public int getAttackStrength(Entity var1)
     {
-        return this.rand.nextInt(5) + 6;
+        return 8;
     }
 
     public int getMaxHealth()
     {
-    	return this.maxHealth;
+    	return 30;
     }
 
     /**

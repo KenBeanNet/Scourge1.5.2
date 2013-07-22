@@ -92,7 +92,7 @@ public class ItemInfernalArmor extends ItemArmor implements ISpecialArmor {
 			{
 				if (slot == 2)
 			 		return "/mods/scourgecraft/textures/models/infernalArmorLegsT2.png";
-		        return "/mods/scourgecraft/textures/models/infernalArmorT3.png";
+		        return "/mods/scourgecraft/textures/models/infernalArmorT2.png";
 			}
 			case 3:
 			{
