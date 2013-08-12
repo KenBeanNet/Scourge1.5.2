@@ -3,6 +3,7 @@ package mods.scourgecraft.config;
 import java.io.File;
 import java.io.IOException;
 
+import biomesoplenty.api.Biomes;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -346,14 +347,11 @@ public class ConfigBlocks
         
         
         
-        
-        
-        
-        
-        
         //This section is for registering Mint Recipies
         MintRecipes.minting().addMinting(Item.ingotIron.itemID, 0, 3);
         MintRecipes.minting().addMinting(Item.ingotGold.itemID, 0, 5);
+        MintRecipes.minting().addMinting(Item.emerald.itemID, 0, 9);
+        MintRecipes.minting().addMinting(Item.diamond.itemID, 0, 9);
     }
     
     public void register()

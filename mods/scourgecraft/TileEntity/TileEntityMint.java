@@ -374,6 +374,10 @@ public class TileEntityMint extends TileEntity
     			return "/mods/scourgecraft/textures/blocks/mint/MintIron.png";
     		else if( Item.ingotGold.itemID == ingotId)
     			return "/mods/scourgecraft/textures/blocks/mint/MintGold.png";
+    		else if( Item.diamond.itemID == ingotId)
+    			return "/mods/scourgecraft/textures/blocks/mint/MintDiamond.png";
+    		else if( Item.emerald.itemID == ingotId)
+    			return "/mods/scourgecraft/textures/blocks/mint/MintEmerald.png";
     		else
     			return "";
     }

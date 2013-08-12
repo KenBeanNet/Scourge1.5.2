@@ -19,6 +19,13 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherOrb, 1), new Object[] {"xxx", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.witherGem});
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityOrb, 1), new Object[] {"xxx", "xxx", "xxx", 'x', ScourgeCraftCore.configItems.agilityGem});
 		
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.venomGem, 9), new Object[] {ScourgeCraftCore.configItems.venomOrb}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalGem, 9), new Object[] {ScourgeCraftCore.configItems.infernalGem}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.aquaGem, 9), new Object[] {ScourgeCraftCore.configItems.aquaGem}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.plagueGem, 9), new Object[] {ScourgeCraftCore.configItems.plagueGem}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.witherGem, 9), new Object[] {ScourgeCraftCore.configItems.witherGem}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityGem, 9), new Object[] {ScourgeCraftCore.configItems.agilityGem}));
+		
 		//T0 Weapons
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.venomSword, 1), new Object[] {" x ", " x ", " y ", 'x', ScourgeCraftCore.configItems.venomGem, 'y', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.infernalSword, 1), new Object[] {" x ", " x ", " y ", 'x', ScourgeCraftCore.configItems.infernalGem, 'y', Item.stick});
