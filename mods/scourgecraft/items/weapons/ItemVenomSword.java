@@ -11,64 +11,23 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemVenomSword extends ItemSword
+public class ItemVenomSword extends ItemScourgeSword
 {
 	private Random random = new Random();
-    private int weaponDamage;
-    private int myLevel;
-    private final EnumToolMaterial field_40439_b;
 
     public ItemVenomSword(int var1, EnumToolMaterial var2, int level)
     {
-        super(var1, var2);
-        this.field_40439_b = var2;
+    	super(var1, var2);
         this.maxStackSize = 1;
         this.myLevel = level;
-        this.setMaxDamage(10000);
-        switch (level)
-        {
-        	case 0:
-        	{
-                this.weaponDamage = 5;
-    	    	break;
-        	}
-        	case 1:
-        	{
-                this.weaponDamage = 8;
-    	    	break;
-        	}
-        	case 2:
-        	{
-                this.weaponDamage = 12;
-    	    	break;
-        	}
-        	case 3:
-        	{
-                this.weaponDamage = 16;
-    	    	break;
-        	}
-        }
-    }
-    
-    @Override
-	public void registerIcons(IconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon(ScourgeCraftCore.modid + ":weapons/" + this.getUnlocalizedName().replaceAll("item.", ""));
-	}
-
-    /**
-     * Returns the strength of the stack against a given block. 1.0F base, (Quality+1)*2 if correct blocktype, 1.5F if
-     * sword
-     */
-    public float getStrVsBlock(ItemStack var1, Block var2)
-    {
-        return var2.blockID != Block.web.blockID ? 1.5F : 15.0F;
     }
 
     /**
@@ -83,7 +42,7 @@ public class ItemVenomSword extends ItemSword
     		{
     		case 0:
     		{
-    			if (this.random.nextInt(10) <= 0)
+    			if (this.random.nextInt(100) <= getAbilityChance(var1))
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 40, 0));
     	    		if (var3 instanceof EntityPlayer)
@@ -93,7 +52,7 @@ public class ItemVenomSword extends ItemSword
     		}
     		case 1:
     		{
-    	    	if (this.random.nextInt(10) <= 2)
+    	    	if (this.random.nextInt(100) <= getAbilityChance(var1))
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 60, 0));
     	    		if (var3 instanceof EntityPlayer)
@@ -103,7 +62,7 @@ public class ItemVenomSword extends ItemSword
     		}
     		case 2:
     		{
-    	    	if (this.random.nextInt(10) <= 2)
+    	    	if (this.random.nextInt(100) <= getAbilityChance(var1))
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 1));
     	    		if (var3 instanceof EntityPlayer)
@@ -113,7 +72,7 @@ public class ItemVenomSword extends ItemSword
     		}
     		case 3:
     		{
-    			if (this.random.nextInt(10) <= 5)
+    			if (this.random.nextInt(100) <= getAbilityChance(var1))
     	    	{
     	    		var2.addPotionEffect(new PotionEffect(Potion.poison.id, 140, 1));
     	    		if (var3 instanceof EntityPlayer)
@@ -123,106 +82,22 @@ public class ItemVenomSword extends ItemSword
     		}
     		}
     	}
+    	
         var1.damageItem(1, var3);
+        if (var3 instanceof EntityPlayer)
+        {
+        	this.increaseBlood(var1, (EntityPlayer)var3, var2 instanceof EntityPlayer ? 2 : 1);
+        }
+        
         return true;
-    }
-
-    public boolean onBlockDestroyed(ItemStack var1, int var2, int var3, int var4, int var5, EntityLiving var6)
-    {
-        var1.damageItem(2, var6);
-        return true;
-    }
-
-    /**
-     * Returns the damage against a given entity.
-     */
-    public int getDamageVsEntity(Entity var1)
-    {
-    	return this.weaponDamage;
-    }
-
-    /**
-     * Returns True is the item is renderer in full 3D when hold.
-     */
-    public boolean isFull3D()
-    {
-        return true;
-    }
-
-    /**
-     * returns the action that specifies what animation to play when the items is being used
-     */
-    public EnumAction getItemUseAction(ItemStack var1)
-    {
-        return EnumAction.block;
-    }
-
-    /**
-     * How long it takes to use or consume an item
-     */
-    public int getMaxItemUseDuration(ItemStack var1)
-    {
-        return 800;
-    }
-
-    /**
-     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-     */
-    public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
-    {
-        var3.setItemInUse(var1, this.getMaxItemUseDuration(var1));
-        return var1;
-    }
-
-    /**
-     * Returns if the item (tool) can harvest results from the block type.
-     */
-    public boolean canHarvestBlock(Block var1)
-    {
-        return var1.blockID == Block.web.blockID;
-    }
-
-    /**
-     * Return the enchantability factor of the item, most of the time is based on material.
-     */
-    public int getItemEnchantability()
-    {
-        return this.field_40439_b.getEnchantability();
     }
     
     @Override
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
     {
-    	switch (myLevel)
-    	{
-    		case 0:
-    		{
-    	    	par3List.add("Weapon Damage : 5");
-    	    	par3List.add("Ability : Poison");
-    	    	par3List.add("Ability Chance : 10%");
-    	    	break;
-    		}
-    		case 1:
-    		{
-    			par3List.add("Weapon Damage : 8");
-    			par3List.add("Ability : Poison");
-    			par3List.add("Ability Chance : 30%");
-    	    	break;
-    		}
-    		case 2:
-    		{
-    			par3List.add("Weapon Damage : 12");
-    			par3List.add("Ability : Poison");
-    			par3List.add("Ability Chance : 30%");
-    	    	break;
-    		}
-    		case 3:
-    		{
-    			par3List.add("Weapon Damage : 16");
-    			par3List.add("Ability : Poison");
-    			par3List.add("Ability Chance : 60%");
-    	    	break;
-    		}
-    	}
+    	par3List.add("Weapon Damage : " + getWeaponDamage(par1ItemStack));
+		par3List.add("Ability : Poison");
+		par3List.add("Ability Chance : " + getAbilityChance(par1ItemStack) + "%");
+		par3List.add("Blood Level : " + getBloodLevel(par1ItemStack) + "/" + getMaxBloodLevel());
     }
 }
