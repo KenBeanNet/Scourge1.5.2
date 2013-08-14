@@ -27,12 +27,6 @@ public class ItemInfernalSword extends ItemScourgeSword
         this.maxStackSize = 1;
         this.myLevel = level;
     }
-    
-    @Override
-	public void registerIcons(IconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon(ScourgeCraftCore.modid + ":weapons/" + this.getUnlocalizedName().replaceAll("item.", ""));
-	}
 
 
     /**

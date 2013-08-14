@@ -28,12 +28,6 @@ public class ItemWitherSword extends ItemScourgeSword
         this.myLevel = level;
     }
     
-    @Override
-	public void registerIcons(IconRegister reg)
-	{
-		this.itemIcon = reg.registerIcon(ScourgeCraftCore.modid + ":weapons/" + this.getUnlocalizedName().replaceAll("item.", ""));
-	}
-
     /**
      * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
      * the damage on the stack.

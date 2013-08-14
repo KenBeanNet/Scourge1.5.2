@@ -5,7 +5,9 @@ import java.io.File;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
+import mods.scourgecraft.client.GuiBloodFurnace;
 import mods.scourgecraft.client.GuiRegistry;
+import mods.scourgecraft.inventory.ContainerBloodFurnace;
 import mods.scourgecraft.tick.PlayerTickHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,6 +57,7 @@ public class CommonProxy implements IGuiHandler {
     public void registerGUIs()
     {
         GuiRegistry.registerGuiServer(ContainerMintStorage.class, ScourgeCraftCore.instance, "MintStorage");
+        GuiRegistry.registerGuiServer(GuiBloodFurnace.class, ScourgeCraftCore.instance, "BloodFurnace");
     }
     
     public void registerTileEntitySpecialRenderer()

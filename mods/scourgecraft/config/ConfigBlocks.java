@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import biomesoplenty.api.Biomes;
+import biomesoplenty.api.BlockReferences;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -13,6 +14,7 @@ import mods.scourgecraft.TileEntity.TileEntityMint;
 import mods.scourgecraft.TileEntity.TileEntityMintStorage;
 import mods.scourgecraft.blocks.BlockAcceleraunch;
 import mods.scourgecraft.blocks.BlockAccelleron;
+import mods.scourgecraft.blocks.BlockBloodFurnace;
 import mods.scourgecraft.blocks.BlockGlass;
 import mods.scourgecraft.blocks.BlockLightFence;
 import mods.scourgecraft.blocks.BlockLightFence1;
@@ -22,6 +24,7 @@ import mods.scourgecraft.blocks.BlockNewFence;
 import mods.scourgecraft.blocks.BlockOre;
 import mods.scourgecraft.blocks.BlockStone;
 import mods.scourgecraft.blocks.BlockTeleport;
+import mods.scourgecraft.client.render.TileEntityBloodFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -181,6 +184,10 @@ public class ConfigBlocks
     public static Block plagueOre;
     public static Block witherOre;
     public static Block agilityOre;
+    
+    //Furnace
+    public static int bloodFurnaceID;
+    public static Block bloodFurnace;
 
     public void initConfig(FMLPreInitializationEvent event)
     {
@@ -270,6 +277,8 @@ public class ConfigBlocks
     	plagueOreID = config.get("Ores", "plague", 953).getInt();
     	witherOreID = config.get("Ores", "wither", 954).getInt();
     	agilityOreID = config.get("Ores", "agility", 955).getInt();
+    	
+    	bloodFurnaceID = config.get("Furnances", "Blood", 960).getInt();
         
         config.save();
     }
@@ -345,6 +354,7 @@ public class ConfigBlocks
         witherOre = (new BlockOre(witherOreID, ScourgeCraftCore.configItems.witherGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("witherOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
         agilityOre = (new BlockOre(agilityOreID, ScourgeCraftCore.configItems.agilityGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("agilityOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
         
+        bloodFurnace = (new BlockBloodFurnace(this.bloodFurnaceID, false)).setStepSound(Block.soundGlassFootstep).setHardness(6.0F).setResistance(10.0F).setUnlocalizedName("bloodFurnace").setCreativeTab(ScourgeCraftCore.tabBlocks);
         
         
         //This section is for registering Mint Recipies
@@ -420,6 +430,7 @@ public class ConfigBlocks
         GameRegistry.registerBlock(mintStorage, ScourgeCraftCore.modid + "M3MintStorage");
         GameRegistry.registerTileEntity(TileEntityMint.class, ScourgeCraftCore.modid + "TileEntityMint");
         GameRegistry.registerTileEntity(TileEntityMintStorage.class, ScourgeCraftCore.modid + "TileEntityMintStorage");
+        GameRegistry.registerTileEntity(TileEntityBloodFurnace.class, ScourgeCraftCore.modid + "TileEntityBloodFurnace");
         
         GameRegistry.registerBlock(venomOre, ScourgeCraftCore.modid + "venomOre");
         GameRegistry.registerBlock(infernalOre, ScourgeCraftCore.modid + "infernalOre");
@@ -427,6 +438,8 @@ public class ConfigBlocks
         GameRegistry.registerBlock(plagueOre, ScourgeCraftCore.modid + "plagueOre");
         GameRegistry.registerBlock(witherOre, ScourgeCraftCore.modid + "witherOre");
         GameRegistry.registerBlock(agilityOre, ScourgeCraftCore.modid + "agilityOre");
+        
+        GameRegistry.registerBlock(bloodFurnace, ScourgeCraftCore.modid + "bloodFurnace");
     }
     
     public void languageRegister()
@@ -500,6 +513,8 @@ public class ConfigBlocks
     	LanguageRegistry.addName(plagueOre, "Plague Ore");
     	LanguageRegistry.addName(witherOre, "Wither Ore");
     	LanguageRegistry.addName(agilityOre, "Agility Ore");
+    	
+    	LanguageRegistry.addName(bloodFurnace, "Blood Furnace");
     	
     }
 }

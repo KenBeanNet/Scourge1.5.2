@@ -9,6 +9,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import mods.scourgecraft.TileEntity.TileEntityMint;
+import mods.scourgecraft.client.GuiBloodFurnace;
 import mods.scourgecraft.client.GuiMintStorage;
 import mods.scourgecraft.client.GuiRegistry;
 import mods.scourgecraft.client.SoundHandler;
@@ -46,6 +47,7 @@ import mods.scourgecraft.client.render.mobs.RenderScorcher;
 import mods.scourgecraft.client.render.mobs.RenderSoulStealer;
 import mods.scourgecraft.client.render.mobs.RenderVhraak;
 import mods.scourgecraft.client.render.mobs.RenderWildFire;
+import mods.scourgecraft.inventory.ContainerBloodFurnace;
 import mods.scourgecraft.mobs.EntityBlackCappedBat;
 import mods.scourgecraft.mobs.EntityClipper;
 import mods.scourgecraft.mobs.EntityDesertCrawler;
@@ -120,6 +122,7 @@ public class ClientProxy extends CommonProxy {
     public void registerGUIs()
     {
         GuiRegistry.registerGuiClient(GuiMintStorage.class, ContainerMintStorage.class, ScourgeCraftCore.instance, "MintStorage");
+        GuiRegistry.registerGuiClient(GuiBloodFurnace.class, ContainerBloodFurnace.class, ScourgeCraftCore.instance, "BloodFurnace");
     }
     
     public void registerTileEntitySpecialRenderer()
