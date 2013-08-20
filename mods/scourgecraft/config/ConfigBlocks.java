@@ -187,7 +187,9 @@ public class ConfigBlocks
     
     //Furnace
     public static int bloodFurnaceID;
+    public static int bloodFurnaceBurningID;
     public static Block bloodFurnace;
+    public static Block bloodFurnaceBurning;
 
     public void initConfig(FMLPreInitializationEvent event)
     {
@@ -278,7 +280,8 @@ public class ConfigBlocks
     	witherOreID = config.get("Ores", "wither", 954).getInt();
     	agilityOreID = config.get("Ores", "agility", 955).getInt();
     	
-    	bloodFurnaceID = config.get("Furnances", "Blood", 960).getInt();
+    	bloodFurnaceID = config.get("Furnances", "BloodFurnace", 960).getInt();
+    	bloodFurnaceBurningID = config.get("Furnances", "BloodFurnaceBurning", 961).getInt();
         
         config.save();
     }
@@ -354,7 +357,8 @@ public class ConfigBlocks
         witherOre = (new BlockOre(witherOreID, ScourgeCraftCore.configItems.witherGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("witherOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
         agilityOre = (new BlockOre(agilityOreID, ScourgeCraftCore.configItems.agilityGem.itemID)).setStepSound(Block.soundStoneFootstep).setHardness(20.0F).setResistance(200.0F).setUnlocalizedName("agilityOre").setCreativeTab(ScourgeCraftCore.tabBlocks);
         
-        bloodFurnace = (new BlockBloodFurnace(this.bloodFurnaceID, false)).setStepSound(Block.soundGlassFootstep).setHardness(6.0F).setResistance(10.0F).setUnlocalizedName("bloodFurnace").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        bloodFurnace = (new BlockBloodFurnace(this.bloodFurnaceID, false)).setStepSound(Block.soundStoneFootstep).setHardness(10.0F).setResistance(30.0F).setUnlocalizedName("bloodFurnace").setCreativeTab(ScourgeCraftCore.tabBlocks);
+        bloodFurnaceBurning = (new BlockBloodFurnace(this.bloodFurnaceBurningID, true)).setStepSound(Block.soundStoneFootstep).setLightValue(0.875F).setHardness(10.0F).setResistance(30.0F).setUnlocalizedName("bloodFurnace").setCreativeTab(ScourgeCraftCore.tabBlocks);
         
         
         //This section is for registering Mint Recipies

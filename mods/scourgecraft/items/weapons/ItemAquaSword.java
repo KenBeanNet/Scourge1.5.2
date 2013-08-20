@@ -69,7 +69,7 @@ public class ItemAquaSword extends ItemScourgeSword
         
         if (var3 instanceof EntityPlayer)
         {
-        	this.increaseBlood(var1, (EntityPlayer)var3, var2 instanceof EntityPlayer ? 2 : 1);
+        	this.increaseBlood(var1, (EntityPlayer)var3, getBaseWeaponDamage(), var2 instanceof EntityPlayer ? 2 : 1);
         }
         
         return true;

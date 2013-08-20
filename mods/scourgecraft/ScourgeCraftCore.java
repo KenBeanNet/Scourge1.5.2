@@ -8,8 +8,7 @@ import mods.scourgecraft.blocks.BlockLightFence1;
 import mods.scourgecraft.blocks.BlockNewFence;
 import mods.scourgecraft.blocks.BlockStone;
 import mods.scourgecraft.blocks.BlockTeleport;
-import mods.scourgecraft.client.GuiRegistry;
-import mods.scourgecraft.client.StorageGuiHandler;
+import mods.scourgecraft.client.GuiHandler;
 import mods.scourgecraft.config.ConfigBlocks;
 import mods.scourgecraft.config.ConfigDimensions;
 import mods.scourgecraft.config.ConfigItems;
@@ -50,12 +49,15 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(
         channels = {"ScourgeCraft"},
         clientSideRequired = true,
-        serverSideRequired = false
+        serverSideRequired = false,
+		packetHandler = PacketHandler.class
 )
 public class ScourgeCraftCore
 {
     @Mod.Instance("scourgecraft")
     public static ScourgeCraftCore instance;
+    
+    public static final int BROADCAST_RANGE = 128;
     
     public static final String modid = "scourgecraft";
     
@@ -154,8 +156,7 @@ public class ScourgeCraftCore
     	proxy.registerHandlers();
     	proxy.registerGUIs();
         proxy.registerTileEntitySpecialRenderer();
-     	NetworkRegistry.instance().registerGuiHandler(this, new StorageGuiHandler());
-     	NetworkRegistry.instance().registerGuiHandler(this, GuiRegistry.instance());
+     	NetworkRegistry.instance().registerGuiHandler(this, GuiHandler.instance());
         proxy.renderRegistry();
         proxy.defineEntities();
         proxy.addEntities();

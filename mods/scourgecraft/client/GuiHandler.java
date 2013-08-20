@@ -3,6 +3,8 @@ package mods.scourgecraft.client;
 import java.util.HashMap;
 import java.util.Map;
 
+import mods.scourgecraft.client.render.TileEntityBloodFurnace;
+import mods.scourgecraft.inventory.ContainerBloodFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

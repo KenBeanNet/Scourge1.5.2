@@ -11,5 +11,4 @@ public class Fluids
 
 	public static Optional<? extends Block> springWater                     = Optional.absent();
 	public static Optional<? extends Block> liquidPoison                    = Optional.absent();
-
 }

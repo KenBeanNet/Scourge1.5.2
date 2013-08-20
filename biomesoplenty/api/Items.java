@@ -28,7 +28,7 @@ public class Items
 	public static Optional<? extends Item> chestplateAmethyst   = Optional.absent();
 	public static Optional<? extends Item> leggingsAmethyst     = Optional.absent();
 	public static Optional<? extends Item> bootsAmethyst        = Optional.absent();
-	
+
 	public static Optional<? extends Item> scytheWood           = Optional.absent();
 	public static Optional<? extends Item> scytheStone          = Optional.absent();
 	public static Optional<? extends Item> scytheIron           = Optional.absent();

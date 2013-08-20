@@ -1,9 +1,15 @@
 package mods.scourgecraft.client.render;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.scourgecraft.ScourgeCraftCore;
+import mods.scourgecraft.blocks.BlockBloodFurnace;
 import mods.scourgecraft.items.weapons.ItemAgilitySword;
 import mods.scourgecraft.items.weapons.ItemAquaSword;
 import mods.scourgecraft.items.weapons.ItemInfernalSword;
@@ -25,19 +31,13 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityBloodFurnace extends TileEntity implements IInventory {
 
 	private ItemStack[] furnaceItemStacks = new ItemStack[3];
-	
-	/** The number of ticks that the furnace will keep burning */
-    public int furnaceBurnTime = 0;
-    
-    /**
-     * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
-     */
-    public int currentItemBurnTime = 0;
+
 
     /** The number of ticks that the current item has been cooking for */
     public int furnaceCookTime = 0;
@@ -138,16 +138,6 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
     }
 
 	@Override
-	public String getInvName() {
-		return "hello1";
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		return true;
-	}
-
-	@Override
 	public int getInventoryStackLimit() {
 		return 64;
 	}
@@ -175,7 +165,7 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
      */
     public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack)
     {
-        return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
+		return true;
     }
 	
 	/**
@@ -216,32 +206,7 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
      */
     public boolean isBurning()
     {
-        return this.furnaceBurnTime > 0;
-    }
-    
-    /**
-     * Returns an integer between 0 and the passed value representing how close the current item is to being completely
-     * cooked
-     */
-    public int getCookProgressScaled(int par1)
-    {
-        return this.furnaceCookTime * par1 / 200;
-    }
-
-    @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns an integer between 0 and the passed value representing how much burn time is left on the current fuel
-     * item, where 0 means that the item is exhausted and the passed value means that the item is fresh
-     */
-    public int getBurnTimeRemainingScaled(int par1)
-    {
-        if (this.currentItemBurnTime == 0)
-        {
-            this.currentItemBurnTime = 200;
-        }
-
-        return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
+        return this.furnaceCookTime > 0;
     }
     
     /**
@@ -263,18 +228,12 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
                 this.furnaceItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
-
-        this.furnaceBurnTime = par1NBTTagCompound.getShort("BurnTime");
-        this.furnaceCookTime = par1NBTTagCompound.getShort("CookTime");
-        
         this.venomStorageAmount = par1NBTTagCompound.getInteger("VenomAmount");
         this.infernalStorageAmount = par1NBTTagCompound.getInteger("InfernalAmount");
         this.aquaStorageAmount = par1NBTTagCompound.getInteger("AquaAmount");
         this.plaguedStorageAmount = par1NBTTagCompound.getInteger("PlaguedAmount");
         this.witherStorageAmount = par1NBTTagCompound.getInteger("WitherAmount");
         this.agilityStorageAmount = par1NBTTagCompound.getInteger("AgilityAmount");
-        
-        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
     }
 
     /**
@@ -283,8 +242,6 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-        par1NBTTagCompound.setShort("BurnTime", (short)this.furnaceBurnTime);
-        par1NBTTagCompound.setShort("CookTime", (short)this.furnaceCookTime);
         par1NBTTagCompound.setInteger("VenomAmount", this.venomStorageAmount);
         par1NBTTagCompound.setInteger("InfernalAmount", this.infernalStorageAmount);
         par1NBTTagCompound.setInteger("AquaAmount", this.aquaStorageAmount);
@@ -313,14 +270,8 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
      */
     public void updateEntity()
     {
-        boolean flag = this.furnaceBurnTime > 0;
-        boolean flag1 = false;
-
-        if (this.furnaceBurnTime > 0)
-        {
-            --this.furnaceBurnTime;
-        }
-
+    	boolean toUpdate = false;
+    	
         if (!this.worldObj.isRemote)
         {
         	if (this.furnaceItemStacks[1] != null)
@@ -329,8 +280,6 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
         		{
         			if (addGemToStorage(this.furnaceItemStacks[1]))
         			{
-        				flag1 = true;
-        				
         				--this.furnaceItemStacks[1].stackSize;
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
@@ -338,42 +287,32 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
                             this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
                         }
                         
-                        this.onInventoryChanged();
+                        toUpdate = true;
         			}
         		}
             }
-            if (this.furnaceBurnTime == 0 && this.canSmelt())
-            {
-                if (this.furnaceBurnTime > 0)
-                {
-                }
-            }
-
-            if (this.isBurning() && this.canSmelt())
-            {
-                ++this.furnaceCookTime;
-
-                if (this.furnaceCookTime == 200)
-                {
-                    this.furnaceCookTime = 0;
-                    flag1 = true;
-                }
-            }
-            else
-            {
-                this.furnaceCookTime = 0;
-            }
-
-            if (flag != this.furnaceBurnTime > 0)
-            {
-                flag1 = true;
-                //BlockFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-            }
-        }
-
-        if (flag1)
-        {
-            this.onInventoryChanged();
+        	if (canSmelt())
+        	{
+        		toUpdate = true;
+        		smelt();
+        		furnaceCookTime++;
+        		
+        		if (furnaceCookTime == 100)
+        			furnaceCookTime = 1;
+        		
+        	}
+        	else 
+        	{
+        		furnaceCookTime = 0;
+        		toUpdate = true;
+        	}
+        	
+        	if (toUpdate)
+        	{
+        		toUpdate = false;
+                sendUpdatePacket();
+                this.onInventoryChanged();
+        	}
         }
     }
     
@@ -382,7 +321,7 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
      */
     private boolean canSmelt()
     {
-        if (this.furnaceItemStacks[0] == null || furnaceItemStacks[1] == null)
+        if (this.furnaceItemStacks[0] == null)
         {
             return false;
         }
@@ -390,21 +329,39 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
         {
         	if (furnaceItemStacks[0].getItem() instanceof ItemScourgeSword)
         	{
-        		if (furnaceItemStacks[0].getItem() instanceof ItemVenomSword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.venomGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.venomOrb.itemID))
-        			return true;
-        		else if (furnaceItemStacks[0].getItem() instanceof ItemInfernalSword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.infernalGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.infernalOrb.itemID))
-        			return true;
-        		else if (furnaceItemStacks[0].getItem() instanceof ItemAquaSword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.aquaGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.aquaOrb.itemID))
-        			return true;
-        		else if (furnaceItemStacks[0].getItem() instanceof ItemPlaguedSword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.plagueGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.plagueOrb.itemID))
-        			return true;
-        		else if (furnaceItemStacks[0].getItem() instanceof ItemWitherSword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.witherGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.witherOrb.itemID))
-        			return true;
-        		else if (furnaceItemStacks[0].getItem() instanceof ItemAgilitySword && (furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.agilityGem.itemID || furnaceItemStacks[1].itemID == ScourgeCraftCore.configItems.agilityOrb.itemID))
-        			return true;
+    			ItemScourgeSword sword = ((ItemScourgeSword)furnaceItemStacks[0].getItem());
+        		if ((sword instanceof ItemVenomSword && venomStorageAmount > 0) ||
+        			(sword instanceof ItemAquaSword && aquaStorageAmount > 0) ||
+        			(sword instanceof ItemPlaguedSword && plaguedStorageAmount > 0) ||
+        			(sword instanceof ItemWitherSword && witherStorageAmount > 0) ||
+        			(sword instanceof ItemAgilitySword && agilityStorageAmount > 0))
+        		{
+        			if (sword.getBloodLevel(furnaceItemStacks[0]) < sword.getMaxBloodLevel())
+        				return true;
+        		}
         	}
         }
         return false;
+    }
+    
+    private void smelt()
+    {
+    	ItemScourgeSword sword = ((ItemScourgeSword)furnaceItemStacks[0].getItem());
+    	
+    	if (sword instanceof ItemVenomSword)
+        	venomStorageAmount -= 5;
+    	else if (sword instanceof ItemInfernalSword)
+    		infernalStorageAmount -= 5;
+    	else if (sword instanceof ItemAquaSword)
+    		aquaStorageAmount -= 5;
+    	else if (sword instanceof ItemPlaguedSword)
+    		plaguedStorageAmount -= 5;
+    	else if (sword instanceof ItemWitherSword)
+    		witherStorageAmount -= 5;
+    	else if (sword instanceof ItemAgilitySword)
+    		agilityStorageAmount -= 5;
+    	
+    	sword.increaseBlood(furnaceItemStacks[0], null, 1, 1);
     }
     
     private boolean addGemToStorage(ItemStack stack)
@@ -474,11 +431,110 @@ public class TileEntityBloodFurnace extends TileEntity implements IInventory {
     
     public int getVenomPixAmount()
     {
-    	 int amountPerPix = this.maxStorageAmount / 41; //The image is 41 pix in height.
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
          
          if (amountPerPix == 0)
          	return 0;
          
          return this.venomStorageAmount / amountPerPix;
     }
+    
+    public int getInfernalPixAmount()
+    {
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.infernalStorageAmount / amountPerPix;
+    }
+    
+    public int getAquaPixAmount()
+    {
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.aquaStorageAmount / amountPerPix;
+    }
+    
+    public int getPlaguedPixAmount()
+    {
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.plaguedStorageAmount / amountPerPix;
+    }
+    
+    public int getWitherPixAmount()
+    {
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.witherStorageAmount / amountPerPix;
+    }
+    
+    public int getAgilityPixAmount()
+    {
+    	 int amountPerPix = this.maxStorageAmount / 46; //The image is 41 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.agilityStorageAmount / amountPerPix;
+    }
+    
+    public int getBurningPixAmount()
+    {
+    	 int amountPerPix = 100 / 14; //The image is 14 pix in height.
+         
+         if (amountPerPix == 0)
+         	return 0;
+         
+         return this.furnaceCookTime / amountPerPix;
+    }
+    
+    public void sendUpdatePacket()
+    {
+    	ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
+        DataOutputStream outputStream = new DataOutputStream(bos);
+        try {
+                        outputStream.writeInt(this.xCoord );
+                        outputStream.writeInt(this.yCoord );
+                        outputStream.writeInt(this.zCoord );
+                        outputStream.writeShort(this.furnaceCookTime );
+                        outputStream.writeInt(this.venomStorageAmount );
+                        outputStream.writeInt(this.infernalStorageAmount );
+                        outputStream.writeInt(this.aquaStorageAmount );
+                        outputStream.writeInt(this.plaguedStorageAmount );
+                        outputStream.writeInt(this.witherStorageAmount );
+                        outputStream.writeInt(this.agilityStorageAmount );
+        } catch (Exception ex) {
+                        ex.printStackTrace();
+        }
+       
+        Packet250CustomPayload packet = new Packet250CustomPayload();
+        packet.channel = "ScourgeCraft";
+        packet.data = bos.toByteArray();
+        packet.length = bos.size();
+        
+        PacketDispatcher.sendPacketToAllAround(this.xCoord, this.yCoord, this.zCoord, ScourgeCraftCore.BROADCAST_RANGE, this.worldObj.provider.dimensionId, packet);
+    }
+
+	@Override
+	public String getInvName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -86,7 +86,7 @@ public class ItemVenomSword extends ItemScourgeSword
         var1.damageItem(1, var3);
         if (var3 instanceof EntityPlayer)
         {
-        	this.increaseBlood(var1, (EntityPlayer)var3, var2 instanceof EntityPlayer ? 2 : 1);
+        	this.increaseBlood(var1, (EntityPlayer)var3, getBaseWeaponDamage(), var2 instanceof EntityPlayer ? 2 : 1);
         }
         
         return true;

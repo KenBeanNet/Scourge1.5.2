@@ -119,5 +119,8 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.plaguedBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.plagueGem, 'C', ScourgeCraftCore.configItems.plaguedBoots[0], 'o', ScourgeCraftCore.configItems.plagueOrb });
         GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.witherBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.witherGem, 'C', ScourgeCraftCore.configItems.witherBoots[0], 'o', ScourgeCraftCore.configItems.witherOrb });
         GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configItems.agilityBoots[1], 1), new Object[] {"   ", "x x", "oCo", 'x', ScourgeCraftCore.configItems.agilityGem, 'C', ScourgeCraftCore.configItems.agilityBoots[0], 'o', ScourgeCraftCore.configItems.agilityOrb });
+    
+        GameRegistry.addRecipe(new ItemStack(ScourgeCraftCore.configBlocks.bloodFurnace, 1), new Object[] {"xxx", "xfx", "xxx", 'x', Item.ingotIron, 'f', Block.furnaceIdle });
+        
     }
 }

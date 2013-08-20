@@ -45,7 +45,27 @@ public class GuiBloodFurnace extends GuiContainer
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
         
         int l1 = this.furnaceInventory.getVenomPixAmount();
-        this.drawTexturedModalRect(k + 98, l + 25 + 41 - l1, 176, 14, 5, l1);
+        this.drawTexturedModalRect(k + 68, l + 20 + 46 - l1, 188, 14, 8, l1);
+        
+        l1 = this.furnaceInventory.getInfernalPixAmount();
+        this.drawTexturedModalRect(k + 81, l + 20 + 46 - l1, 200, 14, 8, l1);
+        
+        l1 = this.furnaceInventory.getAquaPixAmount();
+        this.drawTexturedModalRect(k + 94, l + 20 + 46 - l1, 176, 14, 8, l1);
+        
+        l1 = this.furnaceInventory.getPlaguedPixAmount();
+        this.drawTexturedModalRect(k + 107, l + 20 + 46 - l1, 212, 14, 8, l1);
+        
+        l1 = this.furnaceInventory.getWitherPixAmount();
+        this.drawTexturedModalRect(k + 120, l + 20 + 46 - l1, 224, 14, 8, l1);
+        
+        l1 = this.furnaceInventory.getAgilityPixAmount();
+        this.drawTexturedModalRect(k + 133, l + 20 + 46 - l1, 236, 14, 8, l1);
 
+        if (this.furnaceInventory.isBurning())
+        {
+        	l1 = this.furnaceInventory.getBurningPixAmount();
+        	this.drawTexturedModalRect(k + 33, l + 36, 176, 0, 14, l1);
+        }
     }
 }

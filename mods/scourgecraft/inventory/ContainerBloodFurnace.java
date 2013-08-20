@@ -26,9 +26,8 @@ public class ContainerBloodFurnace extends Container
     	if (par2TileEntityFurnace instanceof TileEntityBloodFurnace)
     	{
         this.furnace = (TileEntityBloodFurnace)par2TileEntityFurnace;
-        this.addSlotToContainer(new Slot((TileEntityBloodFurnace)par2TileEntityFurnace, 0, 56, 17));
-        this.addSlotToContainer(new Slot((TileEntityBloodFurnace)par2TileEntityFurnace, 1, 56, 53));
-        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, (TileEntityBloodFurnace)par2TileEntityFurnace, 2, 116, 35));
+        this.addSlotToContainer(new Slot((TileEntityBloodFurnace)par2TileEntityFurnace, 0, 33, 53));
+        this.addSlotToContainer(new Slot((TileEntityBloodFurnace)par2TileEntityFurnace, 1, 33, 17));
         int i;
 
         for (i = 0; i < 3; ++i)
@@ -44,65 +43,6 @@ public class ContainerBloodFurnace extends Container
             this.addSlotToContainer(new Slot(par1InventoryPlayer, i, 8 + i * 18, 142));
         }
     	}
-    }
-
-    public void addCraftingToCrafters(ICrafting par1ICrafting)
-    {
-        super.addCraftingToCrafters(par1ICrafting);
-        par1ICrafting.sendProgressBarUpdate(this, 0, this.furnace.furnaceCookTime);
-        par1ICrafting.sendProgressBarUpdate(this, 1, this.furnace.furnaceBurnTime);
-        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
-    }
-
-    /**
-     * Looks for changes made in the container, sends them to every listener.
-     */
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
-
-        for (int i = 0; i < this.crafters.size(); ++i)
-        {
-            ICrafting icrafting = (ICrafting)this.crafters.get(i);
-
-            if (this.lastCookTime != this.furnace.furnaceCookTime)
-            {
-                icrafting.sendProgressBarUpdate(this, 0, this.furnace.furnaceCookTime);
-            }
-
-            if (this.lastBurnTime != this.furnace.furnaceBurnTime)
-            {
-                icrafting.sendProgressBarUpdate(this, 1, this.furnace.furnaceBurnTime);
-            }
-
-            if (this.lastItemBurnTime != this.furnace.currentItemBurnTime)
-            {
-                icrafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
-            }
-        }
-
-        this.lastCookTime = this.furnace.furnaceCookTime;
-        this.lastBurnTime = this.furnace.furnaceBurnTime;
-        this.lastItemBurnTime = this.furnace.currentItemBurnTime;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int par1, int par2)
-    {
-        if (par1 == 0)
-        {
-            this.furnace.furnaceCookTime = par2;
-        }
-
-        if (par1 == 1)
-        {
-            this.furnace.furnaceBurnTime = par2;
-        }
-
-        if (par1 == 2)
-        {
-            this.furnace.currentItemBurnTime = par2;
-        }
     }
 
     public boolean canInteractWith(EntityPlayer par1EntityPlayer)

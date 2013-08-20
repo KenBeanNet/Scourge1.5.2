@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import com.google.common.base.Optional;
 
 public class BlockReferences {
-
 	public static enum EnumBlocks
 	{
 		acaciaLog (Blocks.logs1, 0),
@@ -118,7 +117,7 @@ public class BlockReferences {
 		redRockCobble (Blocks.redRock, 1),
 		giantFlowerRed (Blocks.petals, 0),
 		giantFlowerYellow (Blocks.petals, 1),
-		
+
 		amethystOre (Blocks.amethystOre, 0),
 		amethystBlock (Blocks.amethystOre, 1),
 		rubyOre (Blocks.amethystOre, 2),
@@ -203,7 +202,7 @@ public class BlockReferences {
 		{
 			return new ItemStack(stackblock.get(), 1, stackmeta);
 		}
-		
+
 		return new ItemStack(stackblock.get(), 1);
 	}
 

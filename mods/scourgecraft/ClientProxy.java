@@ -10,8 +10,8 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import mods.scourgecraft.TileEntity.TileEntityMint;
 import mods.scourgecraft.client.GuiBloodFurnace;
+import mods.scourgecraft.client.GuiHandler;
 import mods.scourgecraft.client.GuiMintStorage;
-import mods.scourgecraft.client.GuiRegistry;
 import mods.scourgecraft.client.SoundHandler;
 import mods.scourgecraft.client.model.ModelBlackCappedBat;
 import mods.scourgecraft.client.model.ModelClipper;
@@ -75,7 +75,6 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
-
     @Override
     public World getClientWorld()
     {
@@ -90,7 +89,7 @@ public class ClientProxy extends CommonProxy {
             return null;
         }
     }
-    
+
     @Override
     public void renderRegistry()
     {
@@ -112,30 +111,30 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityWildFire.class, new RenderWildFire(new ModelWildFire(), 0.0F, 3.0F));
         RenderingRegistry.registerEntityRenderingHandler(EntityScorcher.class, new RenderScorcher(new ModelScorcher(), 0.0F, 2.0F));
     }
-    
+
     @Override
     public File getMinecraftDir()
     {
         return Minecraft.getMinecraftDir();
     }
-    
+
     public void registerGUIs()
     {
-        GuiRegistry.registerGuiClient(GuiMintStorage.class, ContainerMintStorage.class, ScourgeCraftCore.instance, "MintStorage");
-        GuiRegistry.registerGuiClient(GuiBloodFurnace.class, ContainerBloodFurnace.class, ScourgeCraftCore.instance, "BloodFurnace");
+        GuiHandler.registerGuiClient(GuiMintStorage.class, ContainerMintStorage.class, ScourgeCraftCore.instance, "MintStorage");
+        GuiHandler.registerGuiClient(GuiBloodFurnace.class, ContainerBloodFurnace.class, ScourgeCraftCore.instance, "BloodFurnace");
     }
-    
+
     public void registerTileEntitySpecialRenderer()
     {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMint.class, new RenderTileEntityMint());
         RenderingRegistry.registerBlockHandler(new RenderMintHelper());
     }
-    
+
     public int addArmor(String var1)
     {
         return RenderingRegistry.addNewArmourRendererPrefix(var1);
     }
-    
+
     @Override
     public void registerHandlers()
     {

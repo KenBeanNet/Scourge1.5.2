@@ -59,9 +59,10 @@ public class ItemScourgeSword extends ItemSword {
 	}
     
     // Multiplyer is active when hitting a player to encourage PvP
-    public void increaseBlood(ItemStack par1ItemStack, EntityPlayer attacker, int multiplyer)
+    public void increaseBlood(ItemStack par1ItemStack, EntityPlayer attacker, int amount, int multiplyer)
     {
-    	par1ItemStack.stackTagCompound.setInteger("bloodLevel", getBloodLevel(par1ItemStack) + (getBaseWeaponDamage() * multiplyer));
+    	//WARNING ATTACKER CAN BE NULL!!!!
+    	par1ItemStack.stackTagCompound.setInteger("bloodLevel", getBloodLevel(par1ItemStack) + (amount * multiplyer));
     	
     	if (getBloodLevel(par1ItemStack) > getMaxBloodLevel())
     		par1ItemStack.stackTagCompound.setInteger("bloodLevel", getMaxBloodLevel());
@@ -83,7 +84,7 @@ public class ItemScourgeSword extends ItemSword {
     	}
     }
     
-    protected int getMaxBloodLevel()
+    public int getMaxBloodLevel()
     {
     	switch (myLevel)
 		{
@@ -107,7 +108,7 @@ public class ItemScourgeSword extends ItemSword {
     	return 0;
     }
     
-    protected int getBloodLevel(ItemStack par1ItemStack)
+    public int getBloodLevel(ItemStack par1ItemStack)
     {
     	if (par1ItemStack.stackTagCompound == null || !par1ItemStack.stackTagCompound.hasKey("bloodLevel"))
     		return 0;
